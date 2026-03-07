@@ -20,6 +20,7 @@ export function Navigation() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const pathname = usePathname();
   const { scrollY } = useScroll();
+  const isHome = pathname === '/';
 
   useMotionValueEvent(scrollY, 'change', (latest) => {
     setIsScrolled(latest > 20);
@@ -68,7 +69,7 @@ export function Navigation() {
           <Link href="/" className="relative z-10 flex items-center gap-0.5 group" aria-label="Lubrecision home">
             <span
               className="text-[22px] font-semibold tracking-[0.18em] transition-colors duration-300"
-              style={{ color: isScrolled || mobileOpen ? '#0F1B3D' : '#ffffff' }}
+              style={{ color: isScrolled || mobileOpen || !isHome ? '#0F1B3D' : '#ffffff' }}
             >
               LUBRE
             </span>
@@ -98,7 +99,7 @@ export function Navigation() {
                   style={{
                     color: isActive
                       ? '#D4A843'
-                      : isScrolled
+                      : isScrolled || !isHome
                         ? '#434B65'
                         : 'rgba(255,255,255,0.85)',
                   }}
@@ -183,7 +184,7 @@ export function Navigation() {
                 >
                   <Menu
                     size={24}
-                    color={isScrolled ? '#0F1B3D' : '#ffffff'}
+                    color={isScrolled || !isHome ? '#0F1B3D' : '#ffffff'}
                     strokeWidth={1.5}
                   />
                 </motion.div>

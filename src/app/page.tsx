@@ -155,38 +155,15 @@ function FloatingShapes() {
   );
 }
 
-/* ──────────────── Comparison Row ──────────────── */
-function ComparisonRow({
-  label,
-  without,
-  withLubrecision,
-  delay = 0,
-}: {
-  label: string;
-  without: string;
-  withLubrecision: string;
-  delay?: number;
-}) {
-  return (
-    <motion.div
-      className="grid grid-cols-[1fr,1fr,1fr] gap-4 md:gap-8 py-5 border-b border-white/5 last:border-0"
-      initial={{ opacity: 0, x: -20 }}
-      whileInView={{ opacity: 1, x: 0 }}
-      viewport={{ once: true, margin: '-30px' }}
-      transition={{ duration: 0.5, delay }}
-    >
-      <div className="text-sm md:text-base text-slate-300 font-medium">{label}</div>
-      <div className="flex items-center gap-2 text-sm md:text-base">
-        <XCircle size={16} className="text-red-400 shrink-0" />
-        <span className="text-red-300/80">{without}</span>
-      </div>
-      <div className="flex items-center gap-2 text-sm md:text-base">
-        <CheckCircle2 size={16} className="text-gold-400 shrink-0" />
-        <span className="text-gold-300">{withLubrecision}</span>
-      </div>
-    </motion.div>
-  );
-}
+/* ──────────────── Comparison Data ──────────────── */
+const comparisonData = [
+  { label: 'Eschar Buildup', without: 'Rapid accumulation', withL: 'Dramatically reduced' },
+  { label: 'Surgical Pauses', without: '5–12 per case', withL: 'Near zero' },
+  { label: 'Procedure Time', without: 'Extended 10–40 min', withL: 'Optimized flow' },
+  { label: 'Instrument Wear', without: 'Accelerated degradation', withL: 'Preserved longevity' },
+  { label: 'Current Flow', without: 'Impeded by buildup', withL: 'Consistent performance' },
+  { label: 'AORN Compliance', without: 'Not addressed', withL: 'Guideline 3.11.1 aligned' },
+];
 
 /* ════════════════════════════════════════════════════
    HOME PAGE
@@ -290,7 +267,7 @@ export default function Home() {
 
           {/* Trust Micro-badges */}
           <motion.div
-            className="flex items-center justify-center gap-6 md:gap-8 mt-14"
+            className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-8 mt-14 mb-8 relative z-10"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 1.0 }}
@@ -299,9 +276,9 @@ export default function Home() {
               (badge) => (
                 <div
                   key={badge}
-                  className="flex items-center gap-1.5 text-[11px] tracking-wider text-white/40 uppercase"
+                  className="flex items-center gap-2 text-xs tracking-wider text-white font-medium uppercase"
                 >
-                  <div className="w-1 h-1 rounded-full bg-gold-500/60" />
+                  <ShieldCheck size={14} className="text-gold-400" />
                   {badge}
                 </div>
               ),
@@ -310,7 +287,7 @@ export default function Home() {
         </motion.div>
 
         {/* Bottom gradient fade */}
-        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white to-transparent" />
+        <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-white to-transparent z-0" />
       </section>
 
       {/* ═══════════════════════════════════════════
@@ -607,7 +584,7 @@ export default function Home() {
           }}
         />
 
-        <div className="relative mx-auto max-w-5xl px-6 lg:px-8">
+        <div className="relative mx-auto max-w-6xl px-6 lg:px-8">
           {/* Header */}
           <motion.div
             className="text-center"
@@ -626,66 +603,70 @@ export default function Home() {
             </h2>
           </motion.div>
 
-          {/* Comparison Table */}
-          <div className="mt-14">
-            {/* Column Headers */}
-            <div className="grid grid-cols-[1fr,1fr,1fr] gap-4 md:gap-8 pb-4 border-b border-white/10">
-              <div className="text-xs font-semibold tracking-wider text-slate-500 uppercase">
-                Factor
+          {/* Side-by-side cards */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12">
+            {/* Without Treatment Card */}
+            <motion.div
+              className="rounded-2xl border border-red-500/20 bg-red-950/20 p-8"
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: '-60px' }}
+              transition={{ duration: 0.5 }}
+            >
+              <div className="flex items-center gap-2.5 mb-6">
+                <XCircle size={20} className="text-red-400" />
+                <h3 className="text-sm font-semibold tracking-wider text-red-400 uppercase">
+                  Without Treatment
+                </h3>
               </div>
-              <div className="text-xs font-semibold tracking-wider text-red-400/70 uppercase">
-                Without Treatment
+              <div className="space-y-4">
+                {comparisonData.map((row) => (
+                  <div key={row.label} className="flex items-start gap-3">
+                    <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-red-400/60 shrink-0" />
+                    <div>
+                      <span className="text-sm font-medium text-white/60">{row.label}: </span>
+                      <span className="text-sm text-red-300/80">{row.without}</span>
+                    </div>
+                  </div>
+                ))}
               </div>
-              <div className="text-xs font-semibold tracking-wider text-gold-500 uppercase">
-                With Lubrecision
-              </div>
-            </div>
+            </motion.div>
 
-            <ComparisonRow
-              label="Eschar Buildup"
-              without="Rapid accumulation"
-              withLubrecision="Dramatically reduced"
-              delay={0.1}
-            />
-            <ComparisonRow
-              label="Surgical Pauses"
-              without="5–12 per case"
-              withLubrecision="Near zero"
-              delay={0.15}
-            />
-            <ComparisonRow
-              label="Procedure Time"
-              without="Extended by 10–40 min"
-              withLubrecision="Optimized flow"
-              delay={0.2}
-            />
-            <ComparisonRow
-              label="Instrument Wear"
-              without="Accelerated degradation"
-              withLubrecision="Preserved longevity"
-              delay={0.25}
-            />
-            <ComparisonRow
-              label="Current Flow"
-              without="Impeded by buildup"
-              withLubrecision="Consistent performance"
-              delay={0.3}
-            />
-            <ComparisonRow
-              label="AORN Compliance"
-              without="Not addressed"
-              withLubrecision="Guideline 3.11.1 aligned"
-              delay={0.35}
-            />
+            {/* With Lubrecision Card */}
+            <motion.div
+              className="rounded-2xl border border-gold-500/30 bg-gold-500/5 p-8"
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: '-60px' }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+            >
+              <div className="flex items-center gap-2.5 mb-6">
+                <CheckCircle2 size={20} className="text-gold-400" />
+                <h3 className="text-sm font-semibold tracking-wider text-gold-400 uppercase">
+                  With Lubrecision
+                </h3>
+              </div>
+              <div className="space-y-4">
+                {comparisonData.map((row) => (
+                  <div key={row.label} className="flex items-start gap-3">
+                    <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-gold-400/60 shrink-0" />
+                    <div>
+                      <span className="text-sm font-medium text-white/60">{row.label}: </span>
+                      <span className="text-sm text-gold-300">{row.withL}</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
           </div>
 
           {/* Bottom nudge */}
           <motion.div
-            className="text-center mt-12"
+            className="text-center mt-10"
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.4 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
           >
             <Link
               href="/product"
@@ -787,10 +768,10 @@ export default function Home() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <p className="text-center text-xs font-semibold tracking-[0.2em] uppercase text-slate-300 mb-8">
+            <p className="text-center text-xs font-semibold tracking-[0.2em] uppercase text-navy-900/60 mb-8">
               Trusted by Leading Healthcare Institutions
             </p>
-            <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12">
+            <div className="flex flex-wrap items-center justify-center gap-6 md:gap-8">
               {[
                 'Regional Medical Center',
                 'University Hospital',
@@ -800,9 +781,9 @@ export default function Home() {
               ].map((name) => (
                 <div
                   key={name}
-                  className="flex items-center justify-center h-12 px-6 rounded-lg border border-slate-100 bg-slate-50/50"
+                  className="flex items-center justify-center h-12 px-6 rounded-lg border border-slate-200 bg-slate-50"
                 >
-                  <span className="text-xs font-medium text-slate-300 tracking-wide whitespace-nowrap">
+                  <span className="text-xs font-semibold text-navy-900/50 tracking-wide whitespace-nowrap">
                     {name}
                   </span>
                 </div>

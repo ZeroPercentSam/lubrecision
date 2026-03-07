@@ -19,6 +19,7 @@ import {
   Quote,
   Stethoscope,
   FlaskConical,
+  CheckCircle2,
 } from 'lucide-react';
 
 /* ─── Shared animation preset ─── */
@@ -497,6 +498,174 @@ export default function SurgeonsPage() {
       </section>
 
       {/* ═══════════════════════════════════════════
+          SECTION 4.5 — ROBOTIC SURGERY
+          ═══════════════════════════════════════════ */}
+      <section className="relative bg-slate-50 section-padding overflow-hidden">
+        {/* Dot pattern */}
+        <div
+          className="absolute inset-0 opacity-[0.4]"
+          style={{
+            backgroundImage:
+              'radial-gradient(circle at 1px 1px, rgba(15,27,61,0.04) 1px, transparent 0)',
+            backgroundSize: '32px 32px',
+          }}
+        />
+
+        <div className="relative mx-auto max-w-6xl px-6 lg:px-8">
+          <motion.div
+            className="text-center max-w-3xl mx-auto"
+            variants={reveal}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: '-80px' }}
+          >
+            <span className="text-xs font-semibold tracking-[0.2em] uppercase text-gold-600">
+              da Vinci® Compatible
+            </span>
+            <h2 className="mt-4 text-3xl md:text-4xl lg:text-5xl font-light tracking-tight text-navy-900">
+              Built for the{' '}
+              <span className="text-gradient font-normal">Robotic OR</span>
+            </h2>
+            <p className="mt-5 text-lg text-slate-500 leading-relaxed">
+              Robotic surgery introduces unique workflow constraints that make
+              anti-stick protection not just beneficial — but essential. When
+              you are operating from the console, instrument cleaning pauses
+              are exponentially more disruptive.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 mt-14">
+            {/* Left — The Robotic Challenge */}
+            <motion.div
+              className="rounded-2xl border border-navy-100 bg-navy-950 p-8 md:p-10"
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: '-60px' }}
+              transition={{ duration: 0.5 }}
+            >
+              <h3 className="text-sm font-semibold tracking-wider uppercase text-gold-400 mb-6">
+                The Robotic Surgery Challenge
+              </h3>
+              <div className="space-y-5">
+                {[
+                  {
+                    title: 'Console-Based Workflow',
+                    desc: 'In robotic surgery, you are physically separated from the operative field. When eschar builds on your instrument tips, you cannot simply hand the tool to your scrub nurse. The instrument must be removed from the port, cleaned, and reinserted — a process that can take several minutes and requires breaking your operative flow.',
+                  },
+                  {
+                    title: 'Complex Instrument Design',
+                    desc: 'da Vinci instruments feature intricate articulating wrist mechanisms and multi-jointed tips. These complex geometries create more surface area for tissue adhesion and make cleaning more difficult than with standard electrosurgical devices.',
+                  },
+                  {
+                    title: 'High-Cost Instruments at Risk',
+                    desc: 'At $600–$3,500 per procedure, da Vinci instruments represent a significant investment. Eschar buildup and repeated abrasive cleaning accelerate wear, particularly on the precision articulation mechanisms that define robotic surgery.',
+                  },
+                ].map((item, i) => (
+                  <motion.div
+                    key={item.title}
+                    className="flex gap-4"
+                    initial={{ opacity: 0, y: 12 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.4, delay: 0.1 + i * 0.1 }}
+                  >
+                    <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-gold-400 shrink-0" />
+                    <div>
+                      <p className="text-sm font-semibold text-white">{item.title}</p>
+                      <p className="mt-1 text-sm text-slate-400 leading-relaxed">{item.desc}</p>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+
+            {/* Right — How Lubrecision Solves It */}
+            <div className="space-y-6">
+              <motion.div
+                className="rounded-2xl border border-gold-200 bg-gradient-to-br from-gold-50/60 to-white p-8 relative overflow-hidden"
+                initial={{ opacity: 0, x: 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, margin: '-60px' }}
+                transition={{ duration: 0.5, delay: 0.1 }}
+              >
+                <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-gold-100/60 to-transparent rounded-bl-full" />
+                <h3 className="relative text-sm font-semibold tracking-wider uppercase text-gold-600 mb-5">
+                  The Lubrecision Advantage
+                </h3>
+                <div className="relative space-y-4">
+                  {[
+                    'Apply pre-operatively to all robotic instrument tips before docking',
+                    'Maintain continuous electrosurgical performance throughout the entire case',
+                    'Eliminate the need to undock and clean instruments mid-procedure',
+                    'Preserve instrument articulation and precision mechanisms',
+                    'Reduce capacitive coupling risk from eschar insulation buildup',
+                  ].map((item, i) => (
+                    <motion.div
+                      key={item}
+                      className="flex items-start gap-3"
+                      initial={{ opacity: 0, x: -10 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.35, delay: 0.15 + i * 0.06 }}
+                    >
+                      <CheckCircle2 size={16} className="text-gold-500 mt-0.5 shrink-0" />
+                      <span className="text-sm text-slate-600 leading-relaxed">{item}</span>
+                    </motion.div>
+                  ))}
+                </div>
+              </motion.div>
+
+              {/* Testimonial */}
+              <motion.div
+                className="rounded-2xl border border-slate-100 bg-white p-6"
+                initial={{ opacity: 0, y: 12 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.25 }}
+              >
+                <Quote size={20} className="text-gold-200 mb-3" />
+                <p className="text-sm text-slate-600 leading-relaxed italic">
+                  &ldquo;We use the product for our robotically assisted laparoscopic
+                  cases. It reduces tissue sticking to the tips and greatly reduces
+                  charring of the cautery tips. Very time beneficial since we do not
+                  have to stop and remove instruments to continually clean
+                  them.&rdquo;
+                </p>
+                <p className="mt-3 text-xs font-semibold text-navy-900">
+                  Robotic Surgery Clinical Team
+                </p>
+                <p className="text-[11px] text-slate-400">
+                  Robotically Assisted Laparoscopic Cases
+                </p>
+              </motion.div>
+            </div>
+          </div>
+
+          {/* Robotic surgery stats */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-12">
+            {[
+              { stat: '2.7M+', label: 'Robotic Procedures in 2024' },
+              { stat: '17%', label: 'Annual Growth Rate' },
+              { stat: '7,500+', label: 'da Vinci Systems Worldwide' },
+              { stat: '$600–$3.5K', label: 'Instrument Cost Per Case' },
+            ].map((item, i) => (
+              <motion.div
+                key={item.label}
+                className="rounded-xl border border-slate-100 bg-white p-5 text-center"
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: i * 0.08 }}
+              >
+                <div className="text-xl md:text-2xl font-semibold text-navy-900">{item.stat}</div>
+                <p className="mt-1 text-[11px] text-slate-500 leading-tight">{item.label}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════
           SECTION 5 — SPECIALTIES
           ═══════════════════════════════════════════ */}
       <section className="relative bg-navy-950 section-padding overflow-hidden">
@@ -538,6 +707,7 @@ export default function SurgeonsPage() {
             transition={{ duration: 0.6, delay: 0.15 }}
           >
             {[
+              'Robotic Surgery (da Vinci®)',
               'General Surgery',
               'ENT',
               'OB/GYN',
@@ -571,8 +741,8 @@ export default function SurgeonsPage() {
             transition={{ duration: 0.5, delay: 0.5 }}
           >
             <Stethoscope size={14} className="inline-block mr-2 text-gold-500/60 -mt-0.5" />
-            Any procedure using monopolar, bipolar, or laparoscopic
-            electrosurgical devices.
+            Any procedure using monopolar, bipolar, laparoscopic, or
+            robotic electrosurgical devices.
           </motion.p>
         </div>
       </section>

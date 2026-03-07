@@ -23,6 +23,7 @@ import {
   Syringe,
   BadgeCheck,
   Download,
+  AlertTriangle,
 } from 'lucide-react';
 
 /* ─── Shared animation presets ─── */
@@ -330,7 +331,7 @@ export default function SciencePage() {
               {
                 icon: FlaskConical,
                 title: 'Sustained Protection',
-                desc: 'Unlike saline or wax-based alternatives, the phospholipid barrier maintains its protective properties throughout the procedure, reducing the need for repeated cleaning and instrument hand-backs.',
+                desc: 'Unlike saline or wax-based alternatives, the phospholipid barrier maintains its protective properties throughout the procedure — especially critical in robotic surgery (da Vinci®) where instrument cleaning requires removal from ports.',
               },
             ].map((point, i) => (
               <motion.div
@@ -494,6 +495,132 @@ export default function SciencePage() {
               </motion.div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* ═══════════ SECTION 3.5 — ROBOTIC SURGERY EVIDENCE ═══════════ */}
+      <section className="relative bg-slate-50 section-padding">
+        <div className="mx-auto max-w-6xl px-6 lg:px-8">
+          <motion.div
+            className="text-center max-w-3xl mx-auto"
+            variants={reveal}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: '-80px' }}
+          >
+            <span className="text-xs font-semibold tracking-[0.2em] uppercase text-gold-600">
+              Robotic Surgery
+            </span>
+            <h2 className="mt-4 text-3xl md:text-4xl font-light tracking-tight text-navy-900">
+              Evidence for{' '}
+              <span className="text-gradient font-normal">da Vinci® Applications</span>
+            </h2>
+            <p className="mt-4 text-lg text-slate-500 max-w-2xl mx-auto">
+              Robotic surgery introduces unique electrosurgical challenges that
+              make anti-stick protection especially impactful. The clinical and
+              safety evidence supports Lubrecision across all robotic platforms.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-14">
+            {/* Safety Data Card */}
+            <motion.div
+              className="rounded-2xl border border-slate-200 bg-white p-8 md:p-10"
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: '-40px' }}
+              transition={{ duration: 0.5 }}
+            >
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-red-50 text-red-500 text-[10px] font-bold tracking-wider uppercase mb-5">
+                <AlertTriangle size={11} />
+                Safety Concern
+              </div>
+              <h3 className="text-lg font-semibold text-navy-900 leading-snug">
+                Electrosurgical Injury Reports in Robotic Surgery
+              </h3>
+              <p className="mt-4 text-sm text-slate-500 leading-relaxed">
+                FDA MAUDE database analysis identified electrosurgical injury
+                reports associated with robotic surgical instruments, including
+                cases linked to micro-cracks in instrument tips and capacitive
+                coupling events. Eschar insulation on instrument surfaces is a
+                contributing factor to stray energy events in robotic
+                procedures.
+              </p>
+              <div className="mt-5 p-4 rounded-xl bg-gold-50/60 border border-gold-200/60">
+                <p className="text-[10px] font-semibold tracking-wider uppercase text-gold-600 mb-1.5">
+                  Lubrecision&apos;s Role
+                </p>
+                <p className="text-sm text-slate-600 leading-relaxed">
+                  By preventing eschar accumulation on instrument tips,
+                  Lubrecision helps maintain consistent current flow and reduces
+                  the conditions that contribute to capacitive coupling and
+                  stray energy events during robotic procedures.
+                </p>
+              </div>
+            </motion.div>
+
+            {/* Robotic Workflow Impact Card */}
+            <motion.div
+              className="rounded-2xl border border-gold-200 bg-gradient-to-br from-gold-50/40 to-white p-8 md:p-10"
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: '-40px' }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+            >
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-gold-500 text-navy-950 text-[10px] font-bold tracking-wider uppercase mb-5">
+                <BookOpen size={11} />
+                Clinical Feedback
+              </div>
+              <h3 className="text-lg font-semibold text-navy-900 leading-snug">
+                Robotic Surgery Workflow Impact
+              </h3>
+              <p className="mt-4 text-sm text-slate-500 leading-relaxed">
+                Clinical teams using anti-stick phospholipid solutions in
+                robotically assisted laparoscopic cases report significant
+                reductions in tissue sticking and cautery tip charring — key
+                factors that necessitate instrument removal and cleaning during
+                robotic procedures.
+              </p>
+              <blockquote className="mt-5 p-4 rounded-xl bg-navy-950">
+                <p className="text-sm text-slate-300 leading-relaxed italic">
+                  &ldquo;Very time beneficial since we do not have to stop and
+                  remove instruments and continually clean them.&rdquo;
+                </p>
+                <p className="mt-2 text-xs text-gold-400 font-medium">
+                  — Robotic Surgery Clinical Team
+                </p>
+              </blockquote>
+            </motion.div>
+          </div>
+
+          {/* Market Context */}
+          <motion.div
+            className="mt-10 rounded-2xl border border-slate-200 bg-white p-6 md:p-8"
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+              {[
+                { stat: '2.7M+', label: 'da Vinci Procedures in 2024' },
+                { stat: '17%', label: 'Annual Procedure Growth' },
+                { stat: '7,500+', label: 'Systems Installed Globally' },
+                { stat: '6+', label: 'Surgical Specialties Using Robotic Platforms' },
+              ].map((item, i) => (
+                <motion.div
+                  key={item.label}
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.35, delay: 0.25 + i * 0.08 }}
+                >
+                  <div className="text-2xl font-semibold text-navy-900">{item.stat}</div>
+                  <p className="mt-1 text-[11px] text-slate-500 leading-tight">{item.label}</p>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
         </div>
       </section>
 

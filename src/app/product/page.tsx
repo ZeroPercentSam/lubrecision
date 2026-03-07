@@ -372,8 +372,8 @@ export default function ProductPage() {
               },
               {
                 icon: Zap,
-                title: 'Universal Compatibility',
-                desc: 'Works with all standard electrosurgical devices including monopolar, bipolar, and laparoscopic instruments. Validated for open, minimally invasive, and robotic procedures.',
+                title: 'da Vinci® & Universal Compatibility',
+                desc: 'Validated for robotic (da Vinci®), monopolar, bipolar, and laparoscopic instruments. Especially critical for robotic surgery where instruments lack anti-stick coatings and cleaning pauses require removing instruments from ports.',
               },
               {
                 icon: Package,
@@ -452,7 +452,7 @@ export default function ProductPage() {
               {
                 label: 'Compatibility',
                 value:
-                  'All standard electrosurgical devices — monopolar, bipolar, laparoscopic, robotic (uncoated instruments)',
+                  'All standard electrosurgical devices — monopolar, bipolar, laparoscopic, and robotic systems including da Vinci® (especially critical for uncoated robotic instrument tips)',
               },
               {
                 label: 'Regulatory',
@@ -492,6 +492,97 @@ export default function ProductPage() {
                 </button>
               ),
             )}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ═══════════ SECTION 4.5 — ROBOTIC SURGERY ═══════════ */}
+      <section className="relative bg-white section-padding">
+        <div className="mx-auto max-w-5xl px-6 lg:px-8">
+          <motion.div
+            className="text-center mb-12"
+            variants={reveal}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: '-80px' }}
+          >
+            <span className="text-xs font-semibold tracking-[0.2em] uppercase text-gold-600">
+              Robotic Surgery Ready
+            </span>
+            <h2 className="mt-4 text-3xl md:text-4xl font-light tracking-tight text-navy-900">
+              Optimized for{' '}
+              <span className="text-gradient font-normal">da Vinci® Systems</span>
+            </h2>
+            <p className="mt-4 text-lg text-slate-500 max-w-2xl mx-auto">
+              With over 2.7 million da Vinci procedures annually, Lubrecision
+              addresses the unique challenges of robotic electrosurgery where
+              instruments cannot be easily cleaned mid-procedure.
+            </p>
+          </motion.div>
+
+          <motion.div
+            className="rounded-2xl border border-navy-100 bg-navy-950 p-8 md:p-12 overflow-hidden relative"
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-40px' }}
+            transition={{ duration: 0.55 }}
+          >
+            <div className="absolute top-0 right-0 w-48 h-48 bg-gradient-to-bl from-gold-500/10 to-transparent rounded-bl-full" />
+
+            <div className="relative grid grid-cols-1 md:grid-cols-3 gap-8">
+              {[
+                {
+                  title: 'Pre-Dock Application',
+                  desc: 'Apply Lubrecision to all robotic instrument tips before docking. The phospholipid barrier protects throughout the entire case — no interruptions needed.',
+                },
+                {
+                  title: 'Instrument Preservation',
+                  desc: 'da Vinci instruments cost $600–$3,500 per procedure. By reducing eschar buildup and abrasive cleaning, Lubrecision helps extend instrument life and protect your investment.',
+                },
+                {
+                  title: 'Uninterrupted Workflow',
+                  desc: 'Robotic surgeons operate from the console, making instrument cleaning especially disruptive. Lubrecision eliminates these pauses, maintaining continuous surgical flow.',
+                },
+              ].map((item, i) => (
+                <motion.div
+                  key={item.title}
+                  initial={{ opacity: 0, y: 16 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.45, delay: 0.1 + i * 0.1 }}
+                >
+                  <h3 className="text-sm font-semibold text-gold-400 tracking-wide mb-2">
+                    {item.title}
+                  </h3>
+                  <p className="text-sm text-slate-400 leading-relaxed">
+                    {item.desc}
+                  </p>
+                </motion.div>
+              ))}
+            </div>
+
+            <motion.div
+              className="relative mt-8 pt-6 border-t border-white/[0.06] flex flex-wrap items-center gap-6"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.4 }}
+            >
+              {[
+                'da Vinci Si®',
+                'da Vinci Xi®',
+                'da Vinci SP®',
+                'Ion®',
+                'All EndoWrist® Instruments',
+              ].map((system) => (
+                <span
+                  key={system}
+                  className="px-4 py-1.5 text-xs font-medium tracking-wide rounded-full border border-white/10 bg-white/[0.04] text-slate-300"
+                >
+                  {system}
+                </span>
+              ))}
+            </motion.div>
           </motion.div>
         </div>
       </section>

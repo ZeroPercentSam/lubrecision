@@ -26,6 +26,7 @@ import {
   Mail,
   Download,
   Sliders,
+  CheckCircle2,
 } from 'lucide-react';
 
 /* ─── Shared animation preset ─── */
@@ -589,6 +590,134 @@ export default function ProcurementPage() {
                     />
                   </Link>
                 </div>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ═══════════ SECTION 3.5 — ROBOTIC SURGERY ROI ═══════════ */}
+      <section className="relative bg-navy-950 section-padding overflow-hidden">
+        <div
+          className="absolute inset-0 opacity-[0.08]"
+          style={{
+            backgroundImage:
+              'radial-gradient(circle at 1px 1px, rgba(255,255,255,0.07) 1px, transparent 0)',
+            backgroundSize: '24px 24px',
+          }}
+        />
+
+        <div className="relative mx-auto max-w-6xl px-6 lg:px-8">
+          <motion.div
+            className="text-center max-w-3xl mx-auto"
+            variants={reveal}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: '-80px' }}
+          >
+            <span className="text-xs font-semibold tracking-[0.2em] uppercase text-gold-500">
+              Robotic Surgery Market
+            </span>
+            <h2 className="mt-4 text-3xl md:text-4xl lg:text-5xl font-light tracking-tight text-white">
+              The Growing Case for{' '}
+              <span className="text-gradient-gold font-normal">
+                Robotic OR Investment
+              </span>
+            </h2>
+            <p className="mt-5 text-lg text-slate-400 leading-relaxed">
+              da Vinci® robotic surgery is the fastest-growing segment in
+              electrosurgery. If your facility has robotic ORs, Lubrecision
+              delivers outsized ROI by protecting high-cost instruments and
+              eliminating costly workflow interruptions.
+            </p>
+          </motion.div>
+
+          {/* Key Market Stats */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-5 mt-14">
+            {[
+              {
+                stat: '2.7M+',
+                label: 'da Vinci Procedures in 2024',
+                desc: 'Growing 17% year-over-year — the fastest-growing surgical platform.',
+              },
+              {
+                stat: '$600–$3.5K',
+                label: 'Instrument Cost Per Case',
+                desc: 'Robotic instruments cost significantly more than traditional electrosurgical tools.',
+              },
+              {
+                stat: '$0.5–2.5M',
+                label: 'System Capital Cost',
+                desc: 'Plus $190K+ in annual service contracts per da Vinci system.',
+              },
+              {
+                stat: '17.1%',
+                label: 'Market CAGR',
+                desc: 'Robotic surgery market projected to reach $7.28B by 2032.',
+              },
+            ].map((card, i) => (
+              <motion.div
+                key={card.label}
+                className="relative rounded-2xl border border-white/[0.06] bg-white/[0.03] p-6 group hover:border-gold-500/20 transition-all duration-500"
+                variants={reveal}
+                custom={i}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: '-30px' }}
+              >
+                <div className="text-2xl md:text-3xl font-semibold text-white">
+                  {card.stat}
+                </div>
+                <div className="mt-1 text-sm font-semibold text-gold-400 tracking-wide">
+                  {card.label}
+                </div>
+                <p className="mt-2 text-xs text-slate-400 leading-relaxed">
+                  {card.desc}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* ROI Argument */}
+          <motion.div
+            className="mt-10 rounded-2xl border border-gold-500/20 bg-gold-500/[0.04] p-8 md:p-10"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-60px' }}
+            transition={{ duration: 0.55, delay: 0.2 }}
+          >
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+              <div>
+                <h3 className="text-lg font-semibold text-white tracking-tight">
+                  Why Lubrecision Is Essential for Robotic Programs
+                </h3>
+                <p className="mt-3 text-sm text-slate-400 leading-relaxed">
+                  Robotic instruments lack anti-stick coatings. When eschar
+                  builds up during procedures, surgeons must remove instruments
+                  from ports for cleaning — a process far more disruptive than
+                  in open surgery. This means more OR time wasted, faster
+                  instrument degradation, and higher per-case costs.
+                </p>
+                <p className="mt-3 text-sm text-slate-400 leading-relaxed">
+                  Lubrecision eliminates this problem with a single
+                  pre-operative application, protecting your highest-cost
+                  instruments and keeping your robotic ORs running at peak
+                  efficiency.
+                </p>
+              </div>
+              <div className="space-y-3">
+                {[
+                  'Extends da Vinci instrument usable life',
+                  'Reduces per-case instrument replacement costs',
+                  'Eliminates instrument removal for cleaning',
+                  'Improves robotic OR throughput and scheduling',
+                  'Protects your $0.5–2.5M system investment',
+                ].map((item) => (
+                  <div key={item} className="flex items-start gap-3">
+                    <CheckCircle2 size={16} className="text-gold-400 mt-0.5 shrink-0" />
+                    <span className="text-sm text-gold-200/90 leading-relaxed">{item}</span>
+                  </div>
+                ))}
               </div>
             </div>
           </motion.div>

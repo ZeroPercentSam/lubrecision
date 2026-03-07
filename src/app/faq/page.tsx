@@ -81,6 +81,31 @@ const faqs: FAQItem[] = [
     answer:
       'Yes. Lubrecision is manufactured in an FDA-registered facility and complies with all applicable regulatory requirements for medical devices in its classification.',
   },
+  // Robotic Surgery
+  {
+    category: 'Robotic Surgery',
+    question: 'Can Lubrecision be used with da Vinci® robotic surgical systems?',
+    answer:
+      'Yes. Lubrecision is fully compatible with all da Vinci® robotic surgical systems including the Si, Xi, SP, and Ion platforms. It is particularly beneficial for robotic surgery because da Vinci instruments lack anti-stick coatings, and cleaning instruments mid-procedure requires removing them from ports — a far more disruptive process than in open surgery.',
+  },
+  {
+    category: 'Robotic Surgery',
+    question: 'How do I apply Lubrecision to robotic instruments?',
+    answer:
+      'Apply Lubrecision to the electrosurgical instrument tips before docking the robotic arms. Simply dip or coat the instrument tips using the sterile foam applicator pad included in each kit. The application takes seconds and the phospholipid barrier will protect throughout the entire procedure.',
+  },
+  {
+    category: 'Robotic Surgery',
+    question: 'Why is anti-stick protection especially important for robotic surgery?',
+    answer:
+      'In robotic surgery, the surgeon operates from a console and is physically separated from the patient. When eschar builds up on instrument tips, cleaning requires undocking and removing instruments from the ports — a process that can take several minutes and significantly disrupts surgical flow. Additionally, da Vinci instruments cost $600–$3,500 per procedure and eschar-related wear accelerates their degradation. Lubrecision eliminates these issues with a single pre-operative application.',
+  },
+  {
+    category: 'Robotic Surgery',
+    question: 'Does Lubrecision help with capacitive coupling concerns in robotic instruments?',
+    answer:
+      'Eschar buildup on instrument tips can create insulation that contributes to stray energy events and capacitive coupling — a known safety concern in robotic electrosurgery. By preventing eschar accumulation, Lubrecision helps maintain consistent current flow and reduces the conditions that contribute to these adverse events.',
+  },
   // Ordering
   {
     category: 'Ordering',

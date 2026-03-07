@@ -557,6 +557,155 @@ export default function Home() {
       </section>
 
       {/* ═══════════════════════════════════════════
+          SECTION 3.5 — ROBOTIC SURGERY
+          ═══════════════════════════════════════════ */}
+      <section className="relative bg-white section-padding overflow-hidden">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <motion.div
+            className="text-center max-w-3xl mx-auto"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-80px' }}
+            transition={{ duration: 0.6 }}
+          >
+            <span className="text-xs font-semibold tracking-[0.2em] uppercase text-gold-600">
+              Robotic Surgery
+            </span>
+            <h2 className="mt-4 text-3xl md:text-4xl lg:text-5xl font-light tracking-tight text-navy-900">
+              Essential for{' '}
+              <span className="text-gradient font-normal">da Vinci® Procedures</span>
+            </h2>
+            <p className="mt-5 text-lg text-slate-500 leading-relaxed">
+              With over 2.7 million robotic surgeries performed annually and growing
+              17% year-over-year, da Vinci® systems are transforming the OR — but
+              their instruments lack anti-stick coatings. Lubrecision fills this
+              critical gap.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center mt-14">
+            {/* Left — The Challenge */}
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: '-60px' }}
+              transition={{ duration: 0.5 }}
+            >
+              <div className="rounded-2xl border border-navy-100 bg-navy-950 p-8 md:p-10">
+                <h3 className="text-sm font-semibold tracking-wider uppercase text-gold-400 mb-5">
+                  Why It Matters for Robotics
+                </h3>
+                <div className="space-y-4">
+                  {[
+                    {
+                      title: 'Surgeon Is at the Console',
+                      desc: 'Unlike open surgery, the surgeon cannot hand back instruments for quick cleaning. Every cleaning pause requires removing and reinserting instruments — disrupting the entire workflow.',
+                    },
+                    {
+                      title: 'Instruments Lack Anti-Stick Coating',
+                      desc: 'da Vinci instruments are engineered for precision articulation, not eschar prevention. Tissue adheres to instrument jaws and cautery tips throughout the procedure.',
+                    },
+                    {
+                      title: '$600–$3,500 Per Procedure in Instruments',
+                      desc: 'Robotic instrument costs far exceed traditional tools. Reducing eschar-related degradation extends instrument life and protects your facility\'s investment.',
+                    },
+                  ].map((item, i) => (
+                    <motion.div
+                      key={item.title}
+                      className="flex gap-4"
+                      initial={{ opacity: 0, y: 12 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.4, delay: 0.1 + i * 0.1 }}
+                    >
+                      <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-gold-400 shrink-0" />
+                      <div>
+                        <p className="text-sm font-semibold text-white">{item.title}</p>
+                        <p className="mt-1 text-sm text-slate-400 leading-relaxed">{item.desc}</p>
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Right — Stats + Testimonial */}
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: '-60px' }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+            >
+              {/* Stats Grid */}
+              <div className="grid grid-cols-2 gap-4 mb-6">
+                {[
+                  { stat: '2.7M+', label: 'da Vinci Procedures in 2024' },
+                  { stat: '17%', label: 'Annual Growth Rate' },
+                  { stat: '7,500+', label: 'Systems Installed Worldwide' },
+                  { stat: '6+', label: 'Surgical Specialties' },
+                ].map((item, i) => (
+                  <motion.div
+                    key={item.label}
+                    className="rounded-xl border border-slate-100 bg-slate-50 p-5 text-center"
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.4, delay: 0.15 + i * 0.08 }}
+                  >
+                    <div className="text-2xl font-semibold text-navy-900">{item.stat}</div>
+                    <p className="mt-1 text-[11px] text-slate-500 leading-tight">{item.label}</p>
+                  </motion.div>
+                ))}
+              </div>
+
+              {/* Testimonial */}
+              <motion.div
+                className="rounded-xl border border-gold-200 bg-gold-50/40 p-6"
+                initial={{ opacity: 0, y: 12 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.3 }}
+              >
+                <svg className="w-6 h-6 text-gold-300 mb-2" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M4.583 17.321C3.553 16.227 3 15 3 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311C9.591 11.69 11.072 13.22 11.072 15.103c0 .99-.378 1.941-1.05 2.642-.674.7-1.587 1.094-2.54 1.094-1.076 0-2.21-.545-2.899-1.518zM16.583 17.321C15.553 16.227 15 15 15 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.986.179 3.467 1.709 3.467 3.592 0 .99-.378 1.941-1.05 2.642-.674.7-1.587 1.094-2.54 1.094-1.076 0-2.21-.545-2.899-1.518z" />
+                </svg>
+                <p className="text-sm text-slate-600 leading-relaxed italic">
+                  &ldquo;We use the product for our robotically assisted laparoscopic
+                  cases. It reduces tissue sticking to the tips and greatly reduces
+                  charring of the cautery tips. Very time beneficial since we do not
+                  have to stop and remove instruments to continually clean
+                  them.&rdquo;
+                </p>
+                <p className="mt-3 text-xs font-semibold text-navy-900">
+                  Robotic Surgery Team
+                </p>
+                <p className="text-[11px] text-slate-400">
+                  Clinical Feedback · Robotically Assisted Laparoscopic Cases
+                </p>
+              </motion.div>
+            </motion.div>
+          </div>
+
+          {/* Bottom CTA */}
+          <motion.div
+            className="text-center mt-12"
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
+            <Link
+              href="/surgeons"
+              className="inline-flex items-center gap-2 text-sm text-gold-600 hover:text-gold-500 transition-colors font-medium tracking-wide"
+            >
+              Learn more about robotic surgery applications
+              <ArrowRight size={14} />
+            </Link>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════
           SECTION 4 — HOW IT COMPARES (Superiority)
           ═══════════════════════════════════════════ */}
       <section className="relative bg-navy-950 section-padding overflow-hidden">

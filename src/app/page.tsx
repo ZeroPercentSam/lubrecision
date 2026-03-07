@@ -24,7 +24,6 @@ import {
   XCircle,
   Stethoscope,
   Building2,
-  Sparkles,
   ChevronRight,
 } from 'lucide-react';
 
@@ -192,25 +191,12 @@ export default function Home() {
         <FloatingShapes />
 
         <motion.div
-          className="relative z-10 mx-auto max-w-5xl px-6 lg:px-8 text-center"
+          className="relative z-10 mx-auto max-w-5xl px-6 lg:px-8 pt-20 sm:pt-8 text-center"
           style={{ opacity: heroOpacity, scale: heroScale }}
         >
-          {/* Eyebrow */}
-          <motion.div
-            className="inline-flex items-center gap-2 mb-8 px-4 py-1.5 rounded-full border border-gold-500/30 bg-gold-500/5"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
-            <Sparkles size={14} className="text-gold-400" />
-            <span className="text-xs font-medium tracking-widest text-gold-400 uppercase">
-              Next-Generation Electrosurgical Solution
-            </span>
-          </motion.div>
-
           {/* Main Headline */}
           <motion.h1
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-light tracking-tight text-white leading-[1.1]"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-light tracking-tight text-white leading-[1.15]"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.35 }}

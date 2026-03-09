@@ -71,7 +71,7 @@ export function Navigation() {
               className="text-[22px] font-semibold tracking-[0.18em] transition-colors duration-300"
               style={{ color: isScrolled || mobileOpen || !isHome ? '#0F1B3D' : '#ffffff' }}
             >
-              LUBRE
+              LUBE
             </span>
             <span
               className="text-[22px] font-semibold tracking-[0.18em] transition-colors duration-300"

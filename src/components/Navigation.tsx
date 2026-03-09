@@ -66,7 +66,7 @@ export function Navigation() {
 
         <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 lg:px-8 h-[72px]">
           {/* Logo */}
-          <Link href="/" className="relative z-10 flex items-center gap-0.5 group" aria-label="Lubrecision home">
+          <Link href="/" className="relative z-10 flex items-center gap-0.5 group" aria-label="Lubecision home">
             <span
               className="text-[22px] font-semibold tracking-[0.18em] transition-colors duration-300"
               style={{ color: isScrolled || mobileOpen || !isHome ? '#0F1B3D' : '#ffffff' }}

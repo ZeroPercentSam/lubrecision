@@ -167,7 +167,7 @@ function ContactPageInner() {
                     {activeTab === 'sample'
                       ? 'Your evaluation kit request has been received. Our team will reach out within 24 hours to confirm shipping details.'
                       : activeTab === 'quote'
-                        ? 'Your quote request has been submitted. A Lubrecision account specialist will contact you within one business day.'
+                        ? 'Your quote request has been submitted. A Lubecision account specialist will contact you within one business day.'
                         : 'Your message has been received. We\'ll get back to you within 24 hours.'}
                   </p>
                   <button
@@ -343,13 +343,13 @@ function ContactPageInner() {
                 </h3>
                 <div className="space-y-4">
                   <a
-                    href="mailto:info@lubrecision.com"
+                    href="mailto:info@lubecision.com"
                     className="flex items-center gap-3 text-sm text-slate-500 hover:text-gold-600 transition-colors"
                   >
                     <div className="w-9 h-9 rounded-lg bg-navy-950 flex items-center justify-center shrink-0">
                       <Mail size={14} className="text-gold-400" />
                     </div>
-                    info@lubrecision.com
+                    info@lubecision.com
                   </a>
                   <a
                     href="tel:+18005551234"

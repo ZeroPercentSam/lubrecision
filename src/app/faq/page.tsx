@@ -15,121 +15,121 @@ const faqs: FAQItem[] = [
   // Product
   {
     category: 'Product',
-    question: 'What is Lubrecision?',
+    question: 'What is Lubecision?',
     answer:
-      'Lubrecision is a precision-engineered anti-stick phospholipid solution designed for electrosurgical instruments. It is applied to electrode tips before a procedure to prevent eschar (burned tissue) buildup, reducing surgical pauses and optimizing OR time.',
+      'Lubecision is a precision-engineered anti-stick phospholipid solution designed for electrosurgical instruments. It is applied to electrode tips before a procedure to prevent eschar (burned tissue) buildup, reducing surgical pauses and optimizing OR time.',
   },
   {
     category: 'Product',
-    question: 'What is Lubrecision made of?',
+    question: 'What is Lubecision made of?',
     answer:
-      'Lubrecision is a non-toxic solution made from a biocompatible phospholipid — a naturally occurring fatty acid similar to what the human body produces. It is non-allergenic and designed to be safe for use in surgical environments.',
+      'Lubecision is a non-toxic solution made from a biocompatible phospholipid — a naturally occurring fatty acid similar to what the human body produces. It is non-allergenic and designed to be safe for use in surgical environments.',
   },
   {
     category: 'Product',
-    question: 'How does Lubrecision work?',
+    question: 'How does Lubecision work?',
     answer:
-      'Simply dip or apply the electrosurgical instrument tip into the Lubrecision solution using the included sterile foam pad before the procedure begins. The phospholipid formula creates an invisible molecular barrier on the electrode surface that prevents tissue from adhering, dramatically reducing eschar buildup throughout the case.',
+      'Simply dip or apply the electrosurgical instrument tip into the Lubecision solution using the included sterile foam pad before the procedure begins. The phospholipid formula creates an invisible molecular barrier on the electrode surface that prevents tissue from adhering, dramatically reducing eschar buildup throughout the case.',
   },
   {
     category: 'Product',
-    question: 'What comes in each Lubrecision kit?',
+    question: 'What comes in each Lubecision kit?',
     answer:
-      'Each unit includes a sterile 4mL bottle of Lubrecision solution and a sterile foam application pad. Units are individually packaged for single-patient use and come in boxes of 20.',
+      'Each unit includes a sterile 4mL bottle of Lubecision solution and a sterile foam application pad. Units are individually packaged for single-patient use and come in boxes of 20.',
   },
   // Usage
   {
     category: 'Usage',
-    question: 'What types of procedures can Lubrecision be used in?',
+    question: 'What types of procedures can Lubecision be used in?',
     answer:
-      'Lubrecision can be used in any procedure where electrosurgical devices are employed. This includes general surgery, ENT, OB/GYN, orthopedics, urology, plastic surgery, cardiothoracic, neurosurgery, dermatology, and pediatric surgery — among others.',
+      'Lubecision can be used in any procedure where electrosurgical devices are employed. This includes general surgery, ENT, OB/GYN, orthopedics, urology, plastic surgery, cardiothoracic, neurosurgery, dermatology, and pediatric surgery — among others.',
   },
   {
     category: 'Usage',
-    question: 'What types of devices is Lubrecision compatible with?',
+    question: 'What types of devices is Lubecision compatible with?',
     answer:
-      'Lubrecision is recommended for all standard electrosurgical devices including monopolar pencils, bipolar forceps, laparoscopic instruments, and robotic instruments. It is designed for use on uncoated instruments. As always, consult the device instructions for use prior to application.',
+      'Lubecision is recommended for all standard electrosurgical devices including monopolar pencils, bipolar forceps, laparoscopic instruments, and robotic instruments. It is designed for use on uncoated instruments. As always, consult the device instructions for use prior to application.',
   },
   {
     category: 'Usage',
-    question: 'Is Lubrecision single-use?',
+    question: 'Is Lubecision single-use?',
     answer:
-      'Yes. Each Lubrecision kit is sterile and designed for single-patient use. This ensures the highest level of sterility and compliance with perioperative best practices. Do not reuse or resterilize.',
+      'Yes. Each Lubecision kit is sterile and designed for single-patient use. This ensures the highest level of sterility and compliance with perioperative best practices. Do not reuse or resterilize.',
   },
   {
     category: 'Usage',
-    question: 'Does Lubrecision require any special training?',
+    question: 'Does Lubecision require any special training?',
     answer:
-      'No. Lubrecision is designed for intuitive use with zero learning curve. Simply apply the solution to the instrument tip using the included foam pad before the procedure. The entire application takes under 5 seconds.',
+      'No. Lubecision is designed for intuitive use with zero learning curve. Simply apply the solution to the instrument tip using the included foam pad before the procedure. The entire application takes under 5 seconds.',
   },
   // Safety & Compliance
   {
     category: 'Safety & Compliance',
-    question: 'Is Lubrecision safe?',
+    question: 'Is Lubecision safe?',
     answer:
-      'Yes. Lubrecision is made from a biocompatible phospholipid that is non-toxic and non-allergenic. It is similar to compounds naturally produced by the human body. The product is FDA registered and manufactured under strict quality controls.',
+      'Yes. Lubecision is made from a biocompatible phospholipid that is non-toxic and non-allergenic. It is similar to compounds naturally produced by the human body. The product is FDA registered and manufactured under strict quality controls.',
   },
   {
     category: 'Safety & Compliance',
-    question: 'Is Lubrecision compliant with AORN Guidelines?',
+    question: 'Is Lubecision compliant with AORN Guidelines?',
     answer:
-      'Yes. Lubrecision aligns with AORN Guideline 3.11.1 for Perioperative Practice, which states: "High-quality evidence supports the use of an anti-stick phospholipid solution to reduce surgical time." Using Lubrecision supports your facility\'s compliance with evidence-based perioperative standards.',
+      'Yes. Lubecision aligns with AORN Guideline 3.11.1 for Perioperative Practice, which states: "High-quality evidence supports the use of an anti-stick phospholipid solution to reduce surgical time." Using Lubecision supports your facility\'s compliance with evidence-based perioperative standards.',
   },
   {
     category: 'Safety & Compliance',
-    question: 'Is Lubrecision FDA registered?',
+    question: 'Is Lubecision FDA registered?',
     answer:
-      'Yes. Lubrecision is manufactured in an FDA-registered facility and complies with all applicable regulatory requirements for medical devices in its classification.',
+      'Yes. Lubecision is manufactured in an FDA-registered facility and complies with all applicable regulatory requirements for medical devices in its classification.',
   },
   // Robotic Surgery
   {
     category: 'Robotic Surgery',
-    question: 'Can Lubrecision be used with da Vinci® robotic surgical systems?',
+    question: 'Can Lubecision be used with da Vinci® robotic surgical systems?',
     answer:
-      'Yes. Lubrecision is fully compatible with all da Vinci® robotic surgical systems including the Si, Xi, SP, and Ion platforms. It is particularly beneficial for robotic surgery because da Vinci instruments lack anti-stick coatings, and cleaning instruments mid-procedure requires removing them from ports — a far more disruptive process than in open surgery.',
+      'Yes. Lubecision is fully compatible with all da Vinci® robotic surgical systems including the Si, Xi, SP, and Ion platforms. It is particularly beneficial for robotic surgery because da Vinci instruments lack anti-stick coatings, and cleaning instruments mid-procedure requires removing them from ports — a far more disruptive process than in open surgery.',
   },
   {
     category: 'Robotic Surgery',
-    question: 'How do I apply Lubrecision to robotic instruments?',
+    question: 'How do I apply Lubecision to robotic instruments?',
     answer:
-      'Apply Lubrecision to the electrosurgical instrument tips before docking the robotic arms. Simply dip or coat the instrument tips using the sterile foam applicator pad included in each kit. The application takes seconds and the phospholipid barrier will protect throughout the entire procedure.',
+      'Apply Lubecision to the electrosurgical instrument tips before docking the robotic arms. Simply dip or coat the instrument tips using the sterile foam applicator pad included in each kit. The application takes seconds and the phospholipid barrier will protect throughout the entire procedure.',
   },
   {
     category: 'Robotic Surgery',
     question: 'Why is anti-stick protection especially important for robotic surgery?',
     answer:
-      'In robotic surgery, the surgeon operates from a console and is physically separated from the patient. When eschar builds up on instrument tips, cleaning requires undocking and removing instruments from the ports — a process that can take several minutes and significantly disrupts surgical flow. Additionally, da Vinci instruments cost $600–$3,500 per procedure and eschar-related wear accelerates their degradation. Lubrecision eliminates these issues with a single pre-operative application.',
+      'In robotic surgery, the surgeon operates from a console and is physically separated from the patient. When eschar builds up on instrument tips, cleaning requires undocking and removing instruments from the ports — a process that can take several minutes and significantly disrupts surgical flow. Additionally, da Vinci instruments cost $600–$3,500 per procedure and eschar-related wear accelerates their degradation. Lubecision eliminates these issues with a single pre-operative application.',
   },
   {
     category: 'Robotic Surgery',
-    question: 'Does Lubrecision help with capacitive coupling concerns in robotic instruments?',
+    question: 'Does Lubecision help with capacitive coupling concerns in robotic instruments?',
     answer:
-      'Eschar buildup on instrument tips can create insulation that contributes to stray energy events and capacitive coupling — a known safety concern in robotic electrosurgery. By preventing eschar accumulation, Lubrecision helps maintain consistent current flow and reduces the conditions that contribute to these adverse events.',
+      'Eschar buildup on instrument tips can create insulation that contributes to stray energy events and capacitive coupling — a known safety concern in robotic electrosurgery. By preventing eschar accumulation, Lubecision helps maintain consistent current flow and reduces the conditions that contribute to these adverse events.',
   },
   // Ordering
   {
     category: 'Ordering',
-    question: 'How do I order Lubrecision?',
+    question: 'How do I order Lubecision?',
     answer:
-      'You can order Lubrecision directly through our sales team, through your Group Purchasing Organization (GPO), or through authorized distribution partners. Contact us at info@lubrecision.com or call 1-800-555-1234 for ordering details.',
+      'You can order Lubecision directly through our sales team, through your Group Purchasing Organization (GPO), or through authorized distribution partners. Contact us at info@lubecision.com or call 1-800-555-1234 for ordering details.',
   },
   {
     category: 'Ordering',
     question: 'Can I get a free sample before purchasing?',
     answer:
-      'Absolutely. We offer complimentary evaluation kits so your surgical team can experience Lubrecision\'s performance firsthand. Each evaluation kit contains a full box of 20 units. Request yours on our Contact page.',
+      'Absolutely. We offer complimentary evaluation kits so your surgical team can experience Lubecision\'s performance firsthand. Each evaluation kit contains a full box of 20 units. Request yours on our Contact page.',
   },
   {
     category: 'Ordering',
-    question: 'Is Lubrecision available through GPOs?',
+    question: 'Is Lubecision available through GPOs?',
     answer:
-      'Yes. Lubrecision is compatible with major Group Purchasing Organizations. Contact our procurement team for information about GPO contracts and pricing agreements available for your facility.',
+      'Yes. Lubecision is compatible with major Group Purchasing Organizations. Contact our procurement team for information about GPO contracts and pricing agreements available for your facility.',
   },
   {
     category: 'Ordering',
     question: 'What is the shelf life and storage requirement?',
     answer:
-      'Lubrecision should be stored at room temperature (15–30°C / 59–86°F). Please refer to the product labeling for specific shelf life information. Store in a clean, dry environment away from direct sunlight.',
+      'Lubecision should be stored at room temperature (15–30°C / 59–86°F). Please refer to the product labeling for specific shelf life information. Store in a clean, dry environment away from direct sunlight.',
   },
 ];
 
@@ -231,7 +231,7 @@ export default function FAQPage() {
               <span className="text-gradient font-normal">Questions</span>
             </h1>
             <p className="mt-4 text-lg text-slate-500 max-w-xl mx-auto">
-              Everything you need to know about Lubrecision — from product details
+              Everything you need to know about Lubecision — from product details
               to ordering and compliance.
             </p>
           </motion.div>

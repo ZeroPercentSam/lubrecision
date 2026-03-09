@@ -145,7 +145,7 @@ export default function SurgeonsPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.5 }}
           >
-            Lubrecision eliminates eschar buildup with a single pre-operative
+            Lubecision eliminates eschar buildup with a single pre-operative
             application, so you can maintain uninterrupted focus from first
             incision to close.
           </motion.p>
@@ -284,7 +284,7 @@ export default function SurgeonsPage() {
             </span>
             <h2 className="mt-4 text-3xl md:text-4xl lg:text-5xl font-light tracking-tight text-navy-900">
               What Changes with{' '}
-              <span className="text-gradient font-normal">Lubrecision</span>
+              <span className="text-gradient font-normal">Lubecision</span>
             </h2>
           </motion.div>
 
@@ -299,7 +299,7 @@ export default function SurgeonsPage() {
               transition={{ duration: 0.5 }}
             >
               <h3 className="text-xs font-semibold tracking-[0.15em] uppercase text-red-400 mb-6">
-                Without Lubrecision
+                Without Lubecision
               </h3>
               <div className="space-y-3">
                 {[
@@ -346,11 +346,11 @@ export default function SurgeonsPage() {
               <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-gold-100/60 to-transparent rounded-bl-full" />
 
               <h3 className="relative text-xs font-semibold tracking-[0.15em] uppercase text-gold-600 mb-6">
-                With Lubrecision
+                With Lubecision
               </h3>
               <div className="relative space-y-3">
                 {[
-                  { step: 'Apply Lubrecision pre-operatively', highlight: true },
+                  { step: 'Apply Lubecision pre-operatively', highlight: true },
                   { step: 'Begin procedure', highlight: false },
                   { step: 'Continuous, uninterrupted electrosurgical flow', highlight: true },
                 ].map((item, i) => (
@@ -579,7 +579,7 @@ export default function SurgeonsPage() {
               </div>
             </motion.div>
 
-            {/* Right — How Lubrecision Solves It */}
+            {/* Right — How Lubecision Solves It */}
             <div className="space-y-6">
               <motion.div
                 className="rounded-2xl border border-gold-200 bg-gradient-to-br from-gold-50/60 to-white p-8 relative overflow-hidden"
@@ -590,7 +590,7 @@ export default function SurgeonsPage() {
               >
                 <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-gold-100/60 to-transparent rounded-bl-full" />
                 <h3 className="relative text-sm font-semibold tracking-wider uppercase text-gold-600 mb-5">
-                  The Lubrecision Advantage
+                  The Lubecision Advantage
                 </h3>
                 <div className="relative space-y-4">
                   {[
@@ -772,21 +772,21 @@ export default function SurgeonsPage() {
             {[
               {
                 quote:
-                  'I used to stop five or six times per case to clean my tip. With Lubrecision, I cannot remember the last time I had to pause for eschar. The workflow difference is immediate and obvious.',
+                  'I used to stop five or six times per case to clean my tip. With Lubecision, I cannot remember the last time I had to pause for eschar. The workflow difference is immediate and obvious.',
                 name: 'Dr. Sarah M.',
                 specialty: 'General Surgery',
                 institution: 'Regional Medical Center',
               },
               {
                 quote:
-                  'In ENT procedures where precision is everything, consistent energy delivery matters. Lubrecision keeps the electrode performing the way it should from start to finish. My team noticed the difference on the first case.',
+                  'In ENT procedures where precision is everything, consistent energy delivery matters. Lubecision keeps the electrode performing the way it should from start to finish. My team noticed the difference on the first case.',
                 name: 'Dr. James T.',
                 specialty: 'Otolaryngology',
                 institution: 'University Hospital',
               },
               {
                 quote:
-                  'We evaluated Lubrecision across 30 cases in our department. Case times came down, the scrub nurses had fewer hand-backs, and I could maintain my operative focus. It has become standard in our prep.',
+                  'We evaluated Lubecision across 30 cases in our department. Case times came down, the scrub nurses had fewer hand-backs, and I could maintain my operative focus. It has become standard in our prep.',
                 name: 'Dr. Priya K.',
                 specialty: 'OB/GYN',
                 institution: 'Academic Health System',
@@ -861,7 +861,7 @@ export default function SurgeonsPage() {
                 Get Started
               </span>
               <h2 className="mt-4 text-3xl md:text-4xl lg:text-5xl font-light tracking-tight text-navy-900">
-                Try Lubrecision in
+                Try Lubecision in
               </h2>
               <p className="text-3xl md:text-4xl lg:text-5xl font-light tracking-tight text-gradient-gold">
                 Your Next Case

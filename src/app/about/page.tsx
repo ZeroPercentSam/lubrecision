@@ -121,7 +121,7 @@ export default function AboutPage() {
       initials: 'DK',
       name: 'David Kim',
       title: 'Director of R&D',
-      bio: 'PhD in biomedical engineering with a specialization in biocompatible surface coatings. Oversees formulation development, quality control processes, and ongoing product innovation at Lubrecision.',
+      bio: 'PhD in biomedical engineering with a specialization in biocompatible surface coatings. Oversees formulation development, quality control processes, and ongoing product innovation at Lubecision.',
       gradientFrom: 'from-navy-600',
       gradientTo: 'to-navy-800',
     },
@@ -129,7 +129,7 @@ export default function AboutPage() {
       initials: 'LP',
       name: 'Laura Patel',
       title: 'VP of Operations',
-      bio: 'Brings a decade of cGMP manufacturing leadership to Lubrecision. Ensures every unit that leaves our facility meets the exacting standards that surgical teams expect and patients deserve.',
+      bio: 'Brings a decade of cGMP manufacturing leadership to Lubecision. Ensures every unit that leaves our facility meets the exacting standards that surgical teams expect and patients deserve.',
       gradientFrom: 'from-gold-500',
       gradientTo: 'to-gold-700',
     },
@@ -273,7 +273,7 @@ export default function AboutPage() {
                 Our Origin
               </span>
               <h2 className="mt-4 text-3xl md:text-4xl lg:text-[2.75rem] font-light tracking-tight text-navy-900 leading-tight">
-                Why Lubrecision{' '}
+                Why Lubecision{' '}
                 <span className="text-gradient font-normal">Exists</span>
               </h2>
 
@@ -296,12 +296,12 @@ export default function AboutPage() {
                   the product — it was in the focus.
                 </p>
                 <p>
-                  That&apos;s why Lubrecision was founded: to be a company dedicated
+                  That&apos;s why Lubecision was founded: to be a company dedicated
                   solely to solving this one critical challenge. We assembled a team of
                   biomedical engineers, perioperative clinicians, and manufacturing
                   experts with one mandate — engineer the most effective anti-stick
                   solution on the market, then prove it with data. The result is
-                  Lubrecision: a precision-engineered phospholipid solution from a team
+                  Lubecision: a precision-engineered phospholipid solution from a team
                   that cares about nothing else.
                 </p>
               </div>
@@ -664,7 +664,7 @@ export default function AboutPage() {
 
               <div className="mt-8 space-y-5 text-slate-600 leading-relaxed">
                 <p>
-                  Every unit of Lubrecision is manufactured under rigorous quality
+                  Every unit of Lubecision is manufactured under rigorous quality
                   control standards designed for the demands of the modern operating
                   room. Our facilities adhere to current Good Manufacturing Practices
                   (cGMP) and are registered with the FDA, ensuring full regulatory
@@ -736,7 +736,7 @@ export default function AboutPage() {
                 Partner with Us
               </h2>
               <p className="mt-5 text-lg text-slate-500 max-w-xl mx-auto leading-relaxed">
-                Join the growing network of healthcare facilities that trust Lubrecision
+                Join the growing network of healthcare facilities that trust Lubecision
                 to optimize their electrosurgical workflows. Whether you&apos;re a
                 surgeon, a materials manager, or a GPO representative, we&apos;d love to
                 start the conversation.

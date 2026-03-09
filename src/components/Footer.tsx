@@ -18,7 +18,7 @@ const footerLinks = {
     { label: 'ROI Calculator', href: '/procurement#roi' },
   ],
   Company: [
-    { label: 'About Lubrecision', href: '/about' },
+    { label: 'About Lubecision', href: '/about' },
     { label: 'FAQ', href: '/faq' },
     { label: 'Contact Us', href: '/contact' },
     { label: 'Request a Sample', href: '/contact?type=sample' },
@@ -48,7 +48,7 @@ export function Footer() {
                 Ready to optimize your OR?
               </h2>
               <p className="mt-3 text-slate-400 text-lg max-w-xl">
-                Join the growing number of surgical teams switching to Lubrecision.
+                Join the growing number of surgical teams switching to Lubecision.
                 Request a free sample or speak with our clinical specialists.
               </p>
             </div>
@@ -77,7 +77,7 @@ export function Footer() {
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 lg:gap-12">
           {/* Brand Column */}
           <div className="col-span-2">
-            <Link href="/" className="inline-flex items-center gap-0.5" aria-label="Lubrecision home">
+            <Link href="/" className="inline-flex items-center gap-0.5" aria-label="Lubecision home">
               <span className="text-xl font-semibold tracking-[0.18em] text-white">
                 LUBRE
               </span>
@@ -93,11 +93,11 @@ export function Footer() {
             {/* Contact info */}
             <div className="mt-6 flex flex-col gap-2.5">
               <a
-                href="mailto:info@lubrecision.com"
+                href="mailto:info@lubecision.com"
                 className="inline-flex items-center gap-2.5 text-sm text-slate-400 hover:text-gold-400 transition-colors"
               >
                 <Mail size={14} className="text-gold-600" />
-                info@lubrecision.com
+                info@lubecision.com
               </a>
               <a
                 href="tel:+18005551234"
@@ -140,7 +140,7 @@ export function Footer() {
       <div className="relative border-t border-white/5">
         <div className="mx-auto max-w-7xl px-6 lg:px-8 py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-xs text-slate-500">
-            &copy; {new Date().getFullYear()} Lubrecision. All rights reserved.
+            &copy; {new Date().getFullYear()} Lubecision. All rights reserved.
           </p>
           <div className="flex items-center gap-6">
             <Link

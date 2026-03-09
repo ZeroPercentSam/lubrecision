@@ -217,7 +217,7 @@ export default function Home() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.55 }}
           >
-            Lubrecision is a precision-engineered phospholipid anti-stick solution
+            Lubecision is a precision-engineered phospholipid anti-stick solution
             that eliminates eschar buildup, reduces surgical pauses, and optimizes
             every electrosurgical procedure.
           </motion.p>
@@ -417,7 +417,7 @@ export default function Home() {
                 </span>
               </h2>
               <p className="mt-5 text-lg text-slate-500 leading-relaxed">
-                Lubrecision utilizes an advanced biocompatible phospholipid
+                Lubecision utilizes an advanced biocompatible phospholipid
                 formulation — similar to compounds the human body produces
                 naturally — to create a protective barrier on electrosurgical
                 instrument tips.
@@ -493,7 +493,7 @@ export default function Home() {
                       {/* Label area */}
                       <div className="absolute top-10 left-2 right-2 h-16 rounded-md bg-gradient-to-b from-gold-400/20 to-gold-500/10 border border-gold-500/20 flex items-center justify-center">
                         <span className="text-[8px] tracking-[0.2em] text-gold-400 font-semibold uppercase">
-                          Lubrecision
+                          Lubecision
                         </span>
                       </div>
                     </div>
@@ -578,7 +578,7 @@ export default function Home() {
             <p className="mt-5 text-lg text-slate-500 leading-relaxed">
               With over 2.7 million robotic surgeries performed annually and growing
               17% year-over-year, da Vinci® systems are transforming the OR — but
-              their instruments lack anti-stick coatings. Lubrecision fills this
+              their instruments lack anti-stick coatings. Lubecision fills this
               critical gap.
             </p>
           </motion.div>
@@ -734,7 +734,7 @@ export default function Home() {
             <h2 className="mt-4 text-3xl md:text-4xl lg:text-5xl font-light tracking-tight text-white">
               Traditional Approach{' '}
               <span className="text-slate-500">vs.</span>{' '}
-              <span className="text-gradient-gold font-normal">Lubrecision</span>
+              <span className="text-gradient-gold font-normal">Lubecision</span>
             </h2>
           </motion.div>
 
@@ -767,7 +767,7 @@ export default function Home() {
               </div>
             </motion.div>
 
-            {/* With Lubrecision Card */}
+            {/* With Lubecision Card */}
             <motion.div
               className="rounded-2xl border border-gold-500/30 bg-gold-500/5 p-8"
               initial={{ opacity: 0, x: 20 }}
@@ -778,7 +778,7 @@ export default function Home() {
               <div className="flex items-center gap-2.5 mb-6">
                 <CheckCircle2 size={20} className="text-gold-400" />
                 <h3 className="text-sm font-semibold tracking-wider text-gold-400 uppercase">
-                  With Lubrecision
+                  With Lubecision
                 </h3>
               </div>
               <div className="space-y-4">
@@ -1007,7 +1007,7 @@ export default function Home() {
                       Administration
                     </h3>
                     <p className="mt-3 text-slate-500 leading-relaxed max-w-sm">
-                      Quantify the ROI. See how Lubrecision reduces per-case costs,
+                      Quantify the ROI. See how Lubecision reduces per-case costs,
                       extends instrument life, and improves OR throughput.
                     </p>
                     <div className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-navy-900 tracking-wide group-hover:text-gold-600 transition-colors">
@@ -1050,7 +1050,7 @@ export default function Home() {
                 Request Your Free Evaluation Kit.
               </p>
               <p className="mt-5 text-lg text-slate-500 max-w-xl mx-auto">
-                See why surgical teams are switching to Lubrecision. We&apos;ll send you
+                See why surgical teams are switching to Lubecision. We&apos;ll send you
                 a complimentary evaluation kit so you can experience the
                 performance firsthand.
               </p>

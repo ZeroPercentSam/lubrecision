@@ -137,7 +137,7 @@ export default function ProcurementPage() {
               transition={{ duration: 0.55, delay: 0.1 }}
             >
               The Business Case for{' '}
-              <span className="text-gradient font-normal">Lubrecision</span>
+              <span className="text-gradient font-normal">Lubecision</span>
             </motion.h1>
 
             <motion.p
@@ -351,7 +351,7 @@ export default function ProcurementPage() {
             </h2>
             <p className="mt-5 text-lg text-slate-500 leading-relaxed">
               Adjust the inputs below to match your facility. See exactly how
-              much Lubrecision can save your organization.
+              much Lubecision can save your organization.
             </p>
           </motion.div>
 
@@ -626,7 +626,7 @@ export default function ProcurementPage() {
             </h2>
             <p className="mt-5 text-lg text-slate-400 leading-relaxed">
               da Vinci® robotic surgery is the fastest-growing segment in
-              electrosurgery. If your facility has robotic ORs, Lubrecision
+              electrosurgery. If your facility has robotic ORs, Lubecision
               delivers outsized ROI by protecting high-cost instruments and
               eliminating costly workflow interruptions.
             </p>
@@ -689,7 +689,7 @@ export default function ProcurementPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
               <div>
                 <h3 className="text-lg font-semibold text-white tracking-tight">
-                  Why Lubrecision Is Essential for Robotic Programs
+                  Why Lubecision Is Essential for Robotic Programs
                 </h3>
                 <p className="mt-3 text-sm text-slate-400 leading-relaxed">
                   Robotic instruments lack anti-stick coatings. When eschar
@@ -699,7 +699,7 @@ export default function ProcurementPage() {
                   instrument degradation, and higher per-case costs.
                 </p>
                 <p className="mt-3 text-sm text-slate-400 leading-relaxed">
-                  Lubrecision eliminates this problem with a single
+                  Lubecision eliminates this problem with a single
                   pre-operative application, protecting your highest-cost
                   instruments and keeping your robotic ORs running at peak
                   efficiency.
@@ -767,7 +767,7 @@ export default function ProcurementPage() {
               {
                 icon: BadgeCheck,
                 title: 'FDA Registered',
-                desc: 'Lubrecision is manufactured in an FDA-registered facility and meets all applicable regulatory requirements for medical device classification.',
+                desc: 'Lubecision is manufactured in an FDA-registered facility and meets all applicable regulatory requirements for medical device classification.',
               },
               {
                 icon: FileText,
@@ -969,7 +969,7 @@ export default function ProcurementPage() {
                 LBR-4ML-20
               </span>
               <span className="text-sm text-slate-600">
-                Lubrecision Anti-Stick Solution with Sterile Applicator Pad
+                Lubecision Anti-Stick Solution with Sterile Applicator Pad
               </span>
               <span className="text-sm text-slate-600">20 units / box</span>
               <span className="text-sm text-slate-600">
@@ -1002,7 +1002,7 @@ export default function ProcurementPage() {
               </h4>
               <ul className="space-y-2">
                 {[
-                  'Direct — order through Lubrecision sales',
+                  'Direct — order through Lubecision sales',
                   'GPO — compatible with major group purchasing organizations',
                   'Distribution — available through select distribution partners',
                 ].map((ch) => (
@@ -1117,10 +1117,10 @@ export default function ProcurementPage() {
               <div className="flex items-center gap-2 text-sm text-slate-500">
                 <Mail size={15} className="text-gold-500" />
                 <a
-                  href="mailto:procurement@lubrecision.com"
+                  href="mailto:procurement@lubecision.com"
                   className="font-semibold text-navy-900 hover:text-gold-600 transition-colors"
                 >
-                  procurement@lubrecision.com
+                  procurement@lubecision.com
                 </a>
               </div>
             </motion.div>

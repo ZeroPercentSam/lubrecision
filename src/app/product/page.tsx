@@ -84,7 +84,7 @@ export default function ProductPage() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.55, delay: 0.18 }}
               >
-                Lubrecision
+                Lubecision
                 <br />
                 <span className="text-gradient font-normal">
                   Anti-Stick Solution
@@ -169,7 +169,7 @@ export default function ProductPage() {
                       <div className="absolute top-12 left-3 right-3 bottom-6 rounded-lg bg-gradient-to-b from-white/[0.09] to-white/[0.03] border border-white/[0.08] flex flex-col items-center justify-center gap-2 p-3">
                         <div className="w-6 h-px bg-gold-500/60" />
                         <span className="text-[9px] tracking-[0.25em] text-gold-400 font-semibold uppercase text-center leading-tight">
-                          Lubrecision
+                          Lubecision
                         </span>
                         <span className="text-[6.5px] tracking-[0.15em] text-white/40 uppercase">
                           Anti-Stick Solution
@@ -258,7 +258,7 @@ export default function ProductPage() {
               <span className="text-gradient font-normal">Zero Complexity.</span>
             </h2>
             <p className="mt-4 text-lg text-slate-500 max-w-2xl mx-auto">
-              Lubrecision integrates seamlessly into any electrosurgical workflow
+              Lubecision integrates seamlessly into any electrosurgical workflow
               — no special training, no setup time, no disruption.
             </p>
           </motion.div>
@@ -275,7 +275,7 @@ export default function ProductPage() {
                 {
                   num: '01',
                   title: 'Apply',
-                  desc: 'Dip the electrosurgical instrument tip into the Lubrecision solution using the sterile applicator pad. Takes under 5 seconds.',
+                  desc: 'Dip the electrosurgical instrument tip into the Lubecision solution using the sterile applicator pad. Takes under 5 seconds.',
                   icon: Droplets,
                 },
                 {
@@ -358,7 +358,7 @@ export default function ProductPage() {
               {
                 icon: Timer,
                 title: 'Optimizes Procedure Time',
-                desc: 'By virtually eliminating hand-backs for tip cleaning, Lubrecision helps maintain uninterrupted surgical flow — potentially saving 10–40 minutes of OR time per case.',
+                desc: 'By virtually eliminating hand-backs for tip cleaning, Lubecision helps maintain uninterrupted surgical flow — potentially saving 10–40 minutes of OR time per case.',
               },
               {
                 icon: FlaskConical,
@@ -434,7 +434,7 @@ export default function ProductPage() {
             transition={{ duration: 0.5 }}
           >
             {[
-              { label: 'Product Name', value: 'Lubrecision Anti-Stick Solution' },
+              { label: 'Product Name', value: 'Lubecision Anti-Stick Solution' },
               {
                 label: 'Format',
                 value: 'Sterile solution bottle with foam applicator pad',
@@ -514,7 +514,7 @@ export default function ProductPage() {
               <span className="text-gradient font-normal">da Vinci® Systems</span>
             </h2>
             <p className="mt-4 text-lg text-slate-500 max-w-2xl mx-auto">
-              With over 2.7 million da Vinci procedures annually, Lubrecision
+              With over 2.7 million da Vinci procedures annually, Lubecision
               addresses the unique challenges of robotic electrosurgery where
               instruments cannot be easily cleaned mid-procedure.
             </p>
@@ -533,15 +533,15 @@ export default function ProductPage() {
               {[
                 {
                   title: 'Pre-Dock Application',
-                  desc: 'Apply Lubrecision to all robotic instrument tips before docking. The phospholipid barrier protects throughout the entire case — no interruptions needed.',
+                  desc: 'Apply Lubecision to all robotic instrument tips before docking. The phospholipid barrier protects throughout the entire case — no interruptions needed.',
                 },
                 {
                   title: 'Instrument Preservation',
-                  desc: 'da Vinci instruments cost $600–$3,500 per procedure. By reducing eschar buildup and abrasive cleaning, Lubrecision helps extend instrument life and protect your investment.',
+                  desc: 'da Vinci instruments cost $600–$3,500 per procedure. By reducing eschar buildup and abrasive cleaning, Lubecision helps extend instrument life and protect your investment.',
                 },
                 {
                   title: 'Uninterrupted Workflow',
-                  desc: 'Robotic surgeons operate from the console, making instrument cleaning especially disruptive. Lubrecision eliminates these pauses, maintaining continuous surgical flow.',
+                  desc: 'Robotic surgeons operate from the console, making instrument cleaning especially disruptive. Lubecision eliminates these pauses, maintaining continuous surgical flow.',
                 },
               ].map((item, i) => (
                 <motion.div
@@ -612,7 +612,7 @@ export default function ProductPage() {
             </span>
             <h2 className="mt-4 text-3xl md:text-4xl font-light tracking-tight text-white">
               Why Teams Are Switching to{' '}
-              <span className="text-gradient-gold font-normal">Lubrecision</span>
+              <span className="text-gradient-gold font-normal">Lubecision</span>
             </h2>
           </motion.div>
 
@@ -650,7 +650,7 @@ export default function ProductPage() {
               </ul>
             </motion.div>
 
-            {/* Lubrecision Card */}
+            {/* Lubecision Card */}
             <motion.div
               className="rounded-2xl border border-gold-500/20 bg-gold-500/[0.04] p-8 md:p-10 relative overflow-hidden"
               initial={{ opacity: 0, x: 24 }}
@@ -662,7 +662,7 @@ export default function ProductPage() {
               <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-gold-500/10 to-transparent rounded-bl-full" />
 
               <h3 className="text-xs font-semibold tracking-[0.15em] uppercase text-gold-400 mb-6">
-                Lubrecision
+                Lubecision
               </h3>
               <ul className="space-y-4">
                 {[
@@ -704,7 +704,7 @@ export default function ProductPage() {
             </h2>
             <p className="mt-5 text-lg text-slate-500 max-w-xl mx-auto">
               Request a complimentary evaluation kit or speak with our clinical
-              team about integrating Lubrecision into your OR workflow.
+              team about integrating Lubecision into your OR workflow.
             </p>
           </motion.div>
 

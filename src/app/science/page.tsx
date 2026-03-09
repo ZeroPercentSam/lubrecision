@@ -174,7 +174,7 @@ export default function SciencePage() {
               transition={{ duration: 0.55, delay: 0.18 }}
             >
               The Science Behind{' '}
-              <span className="text-gradient font-normal">Lubrecision</span>
+              <span className="text-gradient font-normal">Lubecision</span>
             </motion.h1>
 
             <motion.p
@@ -185,7 +185,7 @@ export default function SciencePage() {
             >
               Every claim we make is grounded in published clinical research,
               recognized guideline compliance, and rigorous performance testing.
-              Explore the evidence that makes Lubrecision the trusted choice for
+              Explore the evidence that makes Lubecision the trusted choice for
               surgical teams worldwide.
             </motion.p>
 
@@ -234,7 +234,7 @@ export default function SciencePage() {
               <span className="text-gradient font-normal">Works</span>
             </h2>
             <p className="mt-4 text-lg text-slate-500 max-w-2xl mx-auto">
-              Lubrecision harnesses the power of naturally occurring
+              Lubecision harnesses the power of naturally occurring
               phospholipids to create a molecular-level barrier between
               electrosurgical instruments and tissue.
             </p>
@@ -518,7 +518,7 @@ export default function SciencePage() {
             <p className="mt-4 text-lg text-slate-500 max-w-2xl mx-auto">
               Robotic surgery introduces unique electrosurgical challenges that
               make anti-stick protection especially impactful. The clinical and
-              safety evidence supports Lubrecision across all robotic platforms.
+              safety evidence supports Lubecision across all robotic platforms.
             </p>
           </motion.div>
 
@@ -548,11 +548,11 @@ export default function SciencePage() {
               </p>
               <div className="mt-5 p-4 rounded-xl bg-gold-50/60 border border-gold-200/60">
                 <p className="text-[10px] font-semibold tracking-wider uppercase text-gold-600 mb-1.5">
-                  Lubrecision&apos;s Role
+                  Lubecision&apos;s Role
                 </p>
                 <p className="text-sm text-slate-600 leading-relaxed">
                   By preventing eschar accumulation on instrument tips,
-                  Lubrecision helps maintain consistent current flow and reduces
+                  Lubecision helps maintain consistent current flow and reduces
                   the conditions that contribute to capacitive coupling and
                   stray energy events during robotic procedures.
                 </p>
@@ -743,7 +743,7 @@ export default function SciencePage() {
             transition={{ duration: 0.5, delay: 0.15 }}
           >
             <h3 className="text-sm font-semibold tracking-wider uppercase text-gold-400 mb-6">
-              How Lubrecision Aligns with AORN Guidelines
+              How Lubecision Aligns with AORN Guidelines
             </h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {[
@@ -880,7 +880,7 @@ export default function SciencePage() {
               </span>
             </h2>
             <p className="mt-4 text-lg text-slate-500 max-w-2xl mx-auto">
-              Lubrecision is engineered to meet the highest standards of patient
+              Lubecision is engineered to meet the highest standards of patient
               safety and regulatory compliance.
             </p>
           </motion.div>

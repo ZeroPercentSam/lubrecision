@@ -10,13 +10,13 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://lubrecision.com"),
+  metadataBase: new URL("https://lubecision.com"),
   title: {
-    default: "Lubrecision | Advanced Anti-Stick Solution for Electrosurgery",
-    template: "%s | Lubrecision",
+    default: "Lubecision | Advanced Anti-Stick Solution for Electrosurgery",
+    template: "%s | Lubecision",
   },
   description:
-    "Lubrecision is a next-generation anti-stick phospholipid solution engineered to eliminate eschar buildup on electrosurgical instruments. Reduce OR time, improve outcomes, and optimize every procedure.",
+    "Lubecision is a next-generation anti-stick phospholipid solution engineered to eliminate eschar buildup on electrosurgical instruments. Reduce OR time, improve outcomes, and optimize every procedure.",
   keywords: [
     "anti-stick solution",
     "electrosurgical",
@@ -28,14 +28,14 @@ export const metadata: Metadata = {
     "cautery tip cleaner",
     "AORN guidelines",
     "surgical anti-stick",
-    "Lubrecision",
+    "Lubecision",
   ],
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://lubrecision.com",
-    siteName: "Lubrecision",
-    title: "Lubrecision | Advanced Anti-Stick Solution for Electrosurgery",
+    url: "https://lubecision.com",
+    siteName: "Lubecision",
+    title: "Lubecision | Advanced Anti-Stick Solution for Electrosurgery",
     description:
       "Next-generation anti-stick phospholipid solution engineered to eliminate eschar buildup. Trusted by surgical teams nationwide.",
     images: [
@@ -43,13 +43,13 @@ export const metadata: Metadata = {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Lubrecision Anti-Stick Solution",
+        alt: "Lubecision Anti-Stick Solution",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Lubrecision | Advanced Anti-Stick Solution for Electrosurgery",
+    title: "Lubecision | Advanced Anti-Stick Solution for Electrosurgery",
     description:
       "Next-generation anti-stick phospholipid solution engineered to eliminate eschar buildup.",
   },
@@ -69,21 +69,21 @@ export const metadata: Metadata = {
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'MedicalDevice',
-  name: 'Lubrecision Anti-Stick Solution',
+  name: 'Lubecision Anti-Stick Solution',
   description:
     'Next-generation anti-stick phospholipid solution engineered to eliminate eschar buildup on electrosurgical instruments.',
   manufacturer: {
     '@type': 'Organization',
-    name: 'Lubrecision',
-    url: 'https://lubrecision.com',
+    name: 'Lubecision',
+    url: 'https://lubecision.com',
     contactPoint: {
       '@type': 'ContactPoint',
       telephone: '+1-800-555-1234',
       contactType: 'sales',
-      email: 'info@lubrecision.com',
+      email: 'info@lubecision.com',
     },
   },
-  url: 'https://lubrecision.com/product',
+  url: 'https://lubecision.com/product',
   category: 'Electrosurgical Accessories',
 };
 

@@ -28,10 +28,18 @@ const faqJsonLd = {
     },
     {
       '@type': 'Question',
-      name: 'Is Lubecision compliant with AORN Guidelines?',
+      name: 'Is Lubecision aligned with AORN Guidelines?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Yes. Lubecision aligns with AORN Guideline 3.11.1 for Perioperative Practice, which supports the use of an anti-stick phospholipid solution to reduce surgical time.',
+        text: 'AORN Perioperative Practice Guidelines recognize anti-stick lubricants as part of electrosurgical safety and instrument-care best practice. Lubecision is designed to support facilities’ alignment with those guidelines.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Is Lubecision FDA cleared?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Lubecision is currently in the FDA 510(k) submission process via a predicate-based pathway. Anticipated clearance Q4 2026. Evaluation samples are available to qualified surgical teams pending clearance.',
       },
     },
     {
@@ -39,7 +47,7 @@ const faqJsonLd = {
       name: 'Is Lubecision safe?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Yes. Lubecision is made from a biocompatible phospholipid that is non-toxic and non-allergenic. The product is FDA registered and manufactured under strict quality controls.',
+        text: 'Lubecision is made from a biocompatible phospholipid that is non-toxic and non-allergenic — similar to compounds naturally produced by the human body. It is manufactured under cGMP and ISO 13485 standards.',
       },
     },
     {

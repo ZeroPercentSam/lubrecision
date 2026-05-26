@@ -19,7 +19,6 @@ import {
   MapPin,
   ArrowRight,
   ChevronRight,
-  Users,
   Building2,
   Heart,
   TrendingUp,
@@ -102,34 +101,66 @@ export default function AboutPage() {
 
   const teamMembers = [
     {
-      initials: 'JM',
-      name: 'James Mitchell',
-      title: 'CEO & Co-Founder',
-      bio: 'Over 15 years of experience in medical device commercialization. Previously led product strategy at a leading surgical device company. Passionate about bringing focused, surgeon-driven innovation to the OR.',
+      initials: 'KG',
+      name: 'Kelley Geiger',
+      title: 'Co-Founder & CEO',
+      bio: 'Decades of category leadership in sterile single-use surgical lubricants. Brings deep technical and commercial expertise to every aspect of Lubecision’s product, manufacturing, and customer strategy.',
       gradientFrom: 'from-navy-700',
       gradientTo: 'to-navy-900',
     },
     {
-      initials: 'SR',
-      name: 'Sarah Reynolds',
-      title: 'VP of Clinical Affairs',
-      bio: 'Former perioperative nurse and clinical researcher with deep expertise in electrosurgical safety protocols. Leads our clinical evidence program and maintains relationships with key healthcare institutions.',
+      initials: 'CW',
+      name: 'Clint Wright',
+      title: 'Co-Founder & COO',
+      bio: 'Leads day-to-day operations, commercial strategy, and sales execution. Architect of Lubecision’s lean, direct-engagement model with surgical teams and procurement leaders.',
       gradientFrom: 'from-gold-600',
       gradientTo: 'to-gold-800',
     },
     {
-      initials: 'DK',
-      name: 'David Kim',
-      title: 'Director of R&D',
-      bio: 'PhD in biomedical engineering with a specialization in biocompatible surface coatings. Oversees formulation development, quality control processes, and ongoing product innovation at Lubecision.',
+      initials: 'PH',
+      name: 'Peter Hoffman-Brim',
+      title: 'Regulatory & Government Affairs',
+      bio: 'Washington, D.C.-based regulatory advisor managing Lubecision’s 510(k) submission, FDA channel engagement, and policy environment.',
       gradientFrom: 'from-navy-600',
       gradientTo: 'to-navy-800',
     },
     {
-      initials: 'LP',
-      name: 'Laura Patel',
-      title: 'VP of Operations',
-      bio: 'Brings a decade of cGMP manufacturing leadership to Lubecision. Ensures every unit that leaves our facility meets the exacting standards that surgical teams expect and patients deserve.',
+      initials: 'LG',
+      name: 'Luke Garner',
+      title: 'Operations & Distribution',
+      bio: 'Coordinates manufacturing-partner readiness, inventory planning, and field-sales support. Ensures every commercial commitment is operationally backed.',
+      gradientFrom: 'from-gold-500',
+      gradientTo: 'to-gold-700',
+    },
+    {
+      initials: 'PP',
+      name: 'Paul Paiani',
+      title: 'International Markets',
+      bio: 'Leads Lubecision’s international expansion — Brazil (ANVISA), LATAM, EU (MDR), and the Middle East — with deep ties to leading hospital systems across each region.',
+      gradientFrom: 'from-navy-700',
+      gradientTo: 'to-navy-900',
+    },
+    {
+      initials: 'JC',
+      name: 'Jason Caraway',
+      title: 'Sales & Distribution',
+      bio: 'Drives U.S. sales and distribution. Built career on long-standing relationships across the IDN and ambulatory surgery center procurement landscape.',
+      gradientFrom: 'from-gold-600',
+      gradientTo: 'to-gold-800',
+    },
+    {
+      initials: 'JW',
+      name: 'Joellen Wright',
+      title: 'Finance & Operations',
+      bio: 'Manages accounting, payroll, and back-office finance. Maintains the operational discipline that lets Lubecision invest in product, evidence, and customer support.',
+      gradientFrom: 'from-navy-600',
+      gradientTo: 'to-navy-800',
+    },
+    {
+      initials: 'SO',
+      name: 'Samuel Ovington',
+      title: 'Technology & Data',
+      bio: 'Leads Lubecision’s technology and data infrastructure — analytics, customer intelligence, and digital tooling that supports commercial decisions.',
       gradientFrom: 'from-gold-500',
       gradientTo: 'to-gold-700',
     },
@@ -138,8 +169,8 @@ export default function AboutPage() {
   const qualityBadges = [
     {
       icon: ShieldCheck,
-      label: 'FDA Registered',
-      description: 'Fully registered with the U.S. Food and Drug Administration',
+      label: '510(k) Pending',
+      description: 'FDA 510(k) submission in progress. Anticipated clearance Q4 2026.',
     },
     {
       icon: Factory,
@@ -148,8 +179,8 @@ export default function AboutPage() {
     },
     {
       icon: Award,
-      label: 'ISO Standards',
-      description: 'Manufactured in compliance with international quality standards',
+      label: 'ISO 13485',
+      description: 'Manufactured in compliance with the international medical-device quality standard',
     },
     {
       icon: MapPin,
@@ -495,21 +526,21 @@ export default function AboutPage() {
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 mt-14">
             {[
               {
-                value: 50000,
+                value: 6000,
                 suffix: '+',
-                label: 'Procedures Supported',
-                icon: TrendingUp,
-              },
-              {
-                value: 200,
-                suffix: '+',
-                label: 'Healthcare Facilities',
+                label: 'da Vinci Systems Worldwide',
                 icon: Building2,
               },
               {
-                value: 98,
+                value: 17,
                 suffix: '%',
-                label: 'Satisfaction Rate',
+                label: 'Annual Robotic-Surgery Growth',
+                icon: TrendingUp,
+              },
+              {
+                value: 4,
+                suffix: 'mL',
+                label: 'Per Application',
                 icon: Heart,
               },
               {
@@ -545,14 +576,14 @@ export default function AboutPage() {
           </div>
 
           <motion.p
-            className="text-center mt-12 text-slate-300 text-xs"
+            className="text-center mt-12 text-slate-400 text-xs max-w-2xl mx-auto"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.3 }}
           >
-            * All statistics are representative placeholders and will be updated
-            with verified figures.
+            Category context: da Vinci installed base and procedure-growth figures
+            per Intuitive Surgical 2024 annual reporting.
           </motion.p>
         </div>
       </section>
@@ -629,15 +660,6 @@ export default function AboutPage() {
             ))}
           </div>
 
-          <motion.p
-            className="text-center mt-10 text-slate-500 text-xs"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-          >
-            * Team profiles are representative placeholders.
-          </motion.p>
         </div>
       </section>
 
@@ -782,9 +804,8 @@ export default function AboutPage() {
               transition={{ duration: 0.5, delay: 0.35 }}
             >
               {[
-                { icon: Users, label: '200+ Facilities' },
-                { icon: ShieldCheck, label: 'FDA Registered' },
-                { icon: Award, label: 'cGMP Compliant' },
+                { icon: ShieldCheck, label: '510(k) Pending' },
+                { icon: Award, label: 'cGMP & ISO 13485' },
                 { icon: MapPin, label: 'US-Based' },
               ].map((badge) => (
                 <div

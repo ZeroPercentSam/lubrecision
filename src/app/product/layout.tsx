@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Product — Anti-Stick Solution for Electrosurgery',
   description:
-    'Lubecision is a precision-engineered phospholipid anti-stick solution that eliminates eschar buildup on electrosurgical instruments. Sterile, single-use, biocompatible, AORN compliant.',
+    'Lubecision is a precision-engineered phospholipid anti-stick solution that eliminates eschar buildup on electrosurgical instruments. Sterile, single-use, biocompatible. 510(k) submission pending FDA clearance.',
   openGraph: {
     title: 'Lubecision Anti-Stick Solution',
     description:

@@ -109,7 +109,7 @@ export default function ProductPage() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.45, delay: 0.38 }}
               >
-                {['4mL Sterile', 'Single-Use', 'Biocompatible', 'Ready-to-Apply'].map(
+                {['510(k) Pending', '4mL Sterile', 'Single-Use', 'Biocompatible'].map(
                   (pill) => (
                     <span
                       key={pill}
@@ -362,8 +362,8 @@ export default function ProductPage() {
               },
               {
                 icon: FlaskConical,
-                title: 'AORN Guideline Compliant',
-                desc: 'Aligns with AORN Guideline 3.11.1, which states that "high-quality evidence supports the use of an anti-stick phospholipid solution to reduce surgical time."',
+                title: 'AORN Aligned',
+                desc: 'Designed to support facilities’ alignment with AORN Perioperative Practice Guidelines, which recognize anti-stick lubricants as part of electrosurgical safety best practice.',
               },
               {
                 icon: HeartPulse,
@@ -456,7 +456,7 @@ export default function ProductPage() {
               },
               {
                 label: 'Regulatory',
-                value: 'FDA registered · Compliant with AORN Guideline 3.11.1',
+                value: '510(k) submission pending · Aligned with AORN perioperative practice guidelines',
               },
             ].map((row, i) => (
               <div

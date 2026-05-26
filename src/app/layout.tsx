@@ -71,20 +71,20 @@ const jsonLd = {
   '@type': 'MedicalDevice',
   name: 'Lubecision Anti-Stick Solution',
   description:
-    'Next-generation anti-stick phospholipid solution engineered to eliminate eschar buildup on electrosurgical instruments.',
+    'Next-generation anti-stick phospholipid solution engineered to eliminate eschar buildup on electrosurgical instruments. 510(k) submission pending FDA clearance.',
   manufacturer: {
     '@type': 'Organization',
     name: 'Lubecision',
     url: 'https://lubecision.com',
     contactPoint: {
       '@type': 'ContactPoint',
-      telephone: '+1-800-555-1234',
       contactType: 'sales',
       email: 'info@lubecision.com',
     },
   },
   url: 'https://lubecision.com/product',
   category: 'Electrosurgical Accessories',
+  regulatoryStatus: 'Pending FDA 510(k) Clearance',
 };
 
 export default function RootLayout({

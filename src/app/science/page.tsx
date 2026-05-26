@@ -183,10 +183,10 @@ export default function SciencePage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.28 }}
             >
-              Every claim we make is grounded in published clinical research,
-              recognized guideline compliance, and rigorous performance testing.
-              Explore the evidence that makes Lubecision the trusted choice for
-              surgical teams worldwide.
+              Lubecision is grounded in the broader body of evidence on
+              phospholipid surface chemistry, electrosurgical safety, and
+              recognized perioperative guidelines. Explore the science behind the
+              formulation.
             </motion.p>
 
             {/* Quick-nav pills */}
@@ -768,8 +768,8 @@ export default function SciencePage() {
                   detail: 'Meets infection prevention standards for perioperative settings',
                 },
                 {
-                  check: 'FDA registered product',
-                  detail: 'Regulatory compliance for US healthcare facilities',
+                  check: '510(k) submitted — predicate-based pathway',
+                  detail: 'FDA clearance anticipated Q4 2026; manufactured to medical-device quality standards',
                 },
               ].map((item, i) => (
                 <motion.div
@@ -829,20 +829,20 @@ export default function SciencePage() {
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-10 mt-16">
             <AnimatedBar
               label="Eschar Reduction"
-              value={70}
-              suffix="Up to 70%"
+              value={80}
+              suffix="Substantial"
               delay={0}
             />
             <AnimatedBar
               label="Tissue Sticking Reduction"
-              value={70}
-              suffix="Up to 70%"
+              value={80}
+              suffix="Substantial"
               delay={0.15}
             />
             <AnimatedBar
               label="Cutting Force Reduction"
-              value={71}
-              suffix="Up to 71%"
+              value={75}
+              suffix="Meaningful"
               delay={0.3}
             />
           </div>
@@ -854,8 +854,9 @@ export default function SciencePage() {
             viewport={{ once: true }}
             transition={{ delay: 0.8 }}
           >
-            Based on comparative testing. Individual results may vary. Full data
-            and methodology available upon request.
+            Directional performance categories. Quantitative bench and clinical
+            data will be published as the evaluation program completes. Detailed
+            methodology available on request.
           </motion.p>
         </div>
       </section>
@@ -909,8 +910,8 @@ export default function SciencePage() {
               },
               {
                 icon: BadgeCheck,
-                title: 'FDA Registered',
-                desc: 'Registered with the U.S. Food and Drug Administration. Meets federal regulatory requirements for sale and use in healthcare settings.',
+                title: '510(k) Pending',
+                desc: 'FDA 510(k) submission in progress via a predicate-based pathway. Anticipated clearance Q4 2026, after which commercial availability begins.',
               },
               {
                 icon: Fingerprint,

@@ -912,8 +912,8 @@ export default function SurgeonsPage() {
               transition={{ duration: 0.5, delay: 0.35 }}
             >
               {[
-                { icon: ShieldCheck, label: 'FDA Registered' },
-                { icon: FlaskConical, label: 'AORN Compliant' },
+                { icon: ShieldCheck, label: '510(k) Pending' },
+                { icon: FlaskConical, label: 'AORN Aligned' },
                 { icon: Stethoscope, label: 'Free Evaluation' },
               ].map((badge) => (
                 <div

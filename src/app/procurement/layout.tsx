@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'For Procurement — ROI Analysis & Cost Savings',
     description:
-      'Calculate OR cost savings with Lubecision. FDA registered, AORN compliant, GPO compatible. Request volume pricing and free evaluation kits.',
+      'Calculate OR cost savings with Lubecision. 510(k) pending, AORN aligned, GPO compatible. Request volume pricing and free evaluation kits.',
   },
 };
 

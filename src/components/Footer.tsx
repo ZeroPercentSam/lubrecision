@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { ArrowUpRight, Mail, Phone, MapPin } from 'lucide-react';
+import { ArrowUpRight, Mail, MapPin } from 'lucide-react';
 
 const footerLinks = {
   Product: [
@@ -21,13 +21,10 @@ const footerLinks = {
     { label: 'About Lubecision', href: '/about' },
     { label: 'FAQ', href: '/faq' },
     { label: 'Contact Us', href: '/contact' },
-    { label: 'Request a Sample', href: '/contact?type=sample' },
+    { label: 'Request Evaluation Kit', href: '/contact?type=sample' },
   ],
   Resources: [
     { label: 'AORN Guidelines', href: '/science#aorn' },
-    { label: 'Safety Data Sheet', href: '#' },
-    { label: 'Instructions for Use', href: '#' },
-    { label: 'Product Literature', href: '#' },
   ],
 };
 
@@ -79,7 +76,7 @@ export function Footer() {
           <div className="col-span-2">
             <Link href="/" className="inline-flex items-center gap-0.5" aria-label="Lubecision home">
               <span className="text-xl font-semibold tracking-[0.18em] text-white">
-                LUBRE
+                LUBE
               </span>
               <span className="text-xl font-semibold tracking-[0.18em] text-gold-500">
                 CISION
@@ -98,13 +95,6 @@ export function Footer() {
               >
                 <Mail size={14} className="text-gold-600" />
                 info@lubecision.com
-              </a>
-              <a
-                href="tel:+18005551234"
-                className="inline-flex items-center gap-2.5 text-sm text-slate-400 hover:text-gold-400 transition-colors"
-              >
-                <Phone size={14} className="text-gold-600" />
-                1-800-555-1234
               </a>
               <span className="inline-flex items-center gap-2.5 text-sm text-slate-400">
                 <MapPin size={14} className="text-gold-600" />
@@ -136,32 +126,22 @@ export function Footer() {
         </div>
       </div>
 
+      {/* Regulatory Notice */}
+      <div className="relative border-t border-white/5">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8 py-5">
+          <p className="text-xs text-slate-500 leading-relaxed text-center sm:text-left">
+            Lubecision is a 510(k)-submitted Class II medical device. Pending FDA
+            clearance. Product availability subject to clearance.
+          </p>
+        </div>
+      </div>
+
       {/* Bottom Bar */}
       <div className="relative border-t border-white/5">
         <div className="mx-auto max-w-7xl px-6 lg:px-8 py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-xs text-slate-500">
             &copy; {new Date().getFullYear()} Lubecision. All rights reserved.
           </p>
-          <div className="flex items-center gap-6">
-            <Link
-              href="#"
-              className="text-xs text-slate-500 hover:text-slate-300 transition-colors"
-            >
-              Privacy Policy
-            </Link>
-            <Link
-              href="#"
-              className="text-xs text-slate-500 hover:text-slate-300 transition-colors"
-            >
-              Terms of Use
-            </Link>
-            <Link
-              href="#"
-              className="text-xs text-slate-500 hover:text-slate-300 transition-colors"
-            >
-              Regulatory
-            </Link>
-          </div>
         </div>
       </div>
     </footer>

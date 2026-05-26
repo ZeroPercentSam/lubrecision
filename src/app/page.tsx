@@ -258,7 +258,7 @@ export default function Home() {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 1.0 }}
           >
-            {['FDA Registered', 'AORN Compliant', 'Sterile Single-Use'].map(
+            {['510(k) Pending', 'AORN Aligned', 'Sterile Single-Use'].map(
               (badge) => (
                 <div
                   key={badge}
@@ -438,8 +438,8 @@ export default function Home() {
                   },
                   {
                     icon: FlaskConical,
-                    title: 'AORN Compliant',
-                    desc: 'Aligns with AORN Guideline 3.11.1 for perioperative best practice.',
+                    title: 'AORN Aligned',
+                    desc: 'Designed to support alignment with AORN Perioperative Practice Guidelines on electrosurgical safety.',
                   },
                   {
                     icon: HeartPulse,
@@ -843,8 +843,9 @@ export default function Home() {
                 </svg>
 
                 <blockquote className="text-xl md:text-2xl text-white font-light leading-relaxed">
-                  High-quality evidence supports the use of an anti-stick
-                  phospholipid solution to reduce surgical time.
+                  AORN Perioperative Practice Guidelines recognize anti-stick
+                  lubricants as part of electrosurgical safety and instrument-care
+                  best practice.
                 </blockquote>
                 <div className="mt-6 flex items-center gap-3">
                   <div className="w-px h-8 bg-gold-500/40" />
@@ -853,7 +854,7 @@ export default function Home() {
                       AORN Guidelines for Perioperative Practice
                     </p>
                     <p className="text-xs text-slate-400 mt-0.5">
-                      Recommendation 3.11.1 — Electrosurgical Safety
+                      Electrosurgical Safety
                     </p>
                   </div>
                 </div>
@@ -865,14 +866,14 @@ export default function Home() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16">
             {[
               {
-                value: 50000,
+                value: 6000,
                 suffix: '+',
-                label: 'Procedures Supported',
+                label: 'da Vinci Systems Worldwide',
                 prefix: '',
               },
-              { value: 98, suffix: '%', label: 'Satisfaction Rate', prefix: '' },
-              { value: 200, suffix: '+', label: 'Facilities Nationwide', prefix: '' },
+              { value: 17, suffix: '%', label: 'Annual Robotic-Surgery Growth', prefix: '' },
               { value: 4, suffix: 'mL', label: 'Per Application', prefix: '' },
+              { value: 1, suffix: '', label: 'Singular Focus', prefix: '' },
             ].map((stat, i) => (
               <motion.div
                 key={stat.label}
@@ -895,36 +896,10 @@ export default function Home() {
             ))}
           </div>
 
-          {/* Partner Logos Placeholder */}
-          <motion.div
-            className="mt-16 pt-12 border-t border-slate-100"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <p className="text-center text-xs font-semibold tracking-[0.2em] uppercase text-navy-900/60 mb-8">
-              Trusted by Leading Healthcare Institutions
-            </p>
-            <div className="flex flex-wrap items-center justify-center gap-6 md:gap-8">
-              {[
-                'Regional Medical Center',
-                'University Hospital',
-                'Surgical Associates',
-                'National Health System',
-                'Premier Surgery Group',
-              ].map((name) => (
-                <div
-                  key={name}
-                  className="flex items-center justify-center h-12 px-6 rounded-lg border border-slate-200 bg-slate-50"
-                >
-                  <span className="text-xs font-semibold text-navy-900/50 tracking-wide whitespace-nowrap">
-                    {name}
-                  </span>
-                </div>
-              ))}
-            </div>
-          </motion.div>
+          <p className="mt-10 text-center text-xs text-slate-400">
+            da Vinci installed base and procedure-growth figures per Intuitive
+            Surgical 2024 annual reporting.
+          </p>
         </div>
       </section>
 
@@ -1096,7 +1071,7 @@ export default function Home() {
                 { icon: ShieldCheck, label: 'Sterile' },
                 { icon: FlaskConical, label: 'Single-Use' },
                 { icon: HeartPulse, label: 'Biocompatible' },
-                { icon: CheckCircle2, label: 'AORN Compliant' },
+                { icon: CheckCircle2, label: 'AORN Aligned' },
               ].map((badge) => (
                 <div
                   key={badge.label}

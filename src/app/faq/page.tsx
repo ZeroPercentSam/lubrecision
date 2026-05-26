@@ -65,21 +65,33 @@ const faqs: FAQItem[] = [
   // Safety & Compliance
   {
     category: 'Safety & Compliance',
+    question: 'Is Lubecision FDA cleared?',
+    answer:
+      'Lubecision is currently in the FDA 510(k) submission process via a predicate-based pathway. We anticipate clearance in Q4 2026, after which commercial availability begins. Evaluation samples are available to qualified surgical teams pending clearance.',
+  },
+  {
+    category: 'Safety & Compliance',
+    question: 'When will Lubecision be commercially available?',
+    answer:
+      'Commercial availability begins after FDA 510(k) clearance, anticipated Q4 2026. We are currently accepting evaluation-kit requests and procurement discussions in advance of launch so surgical teams and value-analysis committees can complete review when the product becomes orderable.',
+  },
+  {
+    category: 'Safety & Compliance',
     question: 'Is Lubecision safe?',
     answer:
-      'Yes. Lubecision is made from a biocompatible phospholipid that is non-toxic and non-allergenic. It is similar to compounds naturally produced by the human body. The product is FDA registered and manufactured under strict quality controls.',
+      'Lubecision is made from a biocompatible phospholipid that is non-toxic and non-allergenic — similar to compounds naturally produced by the human body. It is manufactured under cGMP and ISO 13485 standards in a regulated facility.',
   },
   {
     category: 'Safety & Compliance',
-    question: 'Is Lubecision compliant with AORN Guidelines?',
+    question: 'Is Lubecision aligned with AORN Guidelines?',
     answer:
-      'Yes. Lubecision aligns with AORN Guideline 3.11.1 for Perioperative Practice, which states: "High-quality evidence supports the use of an anti-stick phospholipid solution to reduce surgical time." Using Lubecision supports your facility\'s compliance with evidence-based perioperative standards.',
+      'Yes. AORN Perioperative Practice Guidelines recognize anti-stick lubricants as part of electrosurgical safety and instrument-care best practice. Lubecision is designed to support facilities’ alignment with those guidelines.',
   },
   {
     category: 'Safety & Compliance',
-    question: 'Is Lubecision FDA registered?',
+    question: 'Who manufactures Lubecision?',
     answer:
-      'Yes. Lubecision is manufactured in an FDA-registered facility and complies with all applicable regulatory requirements for medical devices in its classification.',
+      'Lubecision is manufactured under cGMP (current Good Manufacturing Practice) and ISO 13485 quality-management standards at a regulated medical-device facility. Lot traceability and standard medical-device documentation accompany every unit.',
   },
   // Robotic Surgery
   {
@@ -111,7 +123,7 @@ const faqs: FAQItem[] = [
     category: 'Ordering',
     question: 'How do I order Lubecision?',
     answer:
-      'You can order Lubecision directly through our sales team, through your Group Purchasing Organization (GPO), or through authorized distribution partners. Contact us at info@lubecision.com or call 1-800-555-1234 for ordering details.',
+      'Lubecision is currently in the FDA 510(k) submission process and is not yet commercially available. Evaluation kits are available to qualified surgical teams pending clearance. Contact us at info@lubecision.com or procurement@lubecision.com to register interest, request an evaluation kit, or discuss GPO and distribution alignment ahead of launch.',
   },
   {
     category: 'Ordering',

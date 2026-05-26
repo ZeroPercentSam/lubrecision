@@ -6,9 +6,7 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import {
   Mail,
-  Phone,
   MapPin,
-  ArrowRight,
   FlaskConical,
   FileText,
   MessageSquare,
@@ -352,13 +350,13 @@ function ContactPageInner() {
                     info@lubecision.com
                   </a>
                   <a
-                    href="tel:+18005551234"
+                    href="mailto:procurement@lubecision.com"
                     className="flex items-center gap-3 text-sm text-slate-500 hover:text-gold-600 transition-colors"
                   >
                     <div className="w-9 h-9 rounded-lg bg-navy-950 flex items-center justify-center shrink-0">
-                      <Phone size={14} className="text-gold-400" />
+                      <Mail size={14} className="text-gold-400" />
                     </div>
-                    1-800-555-1234
+                    procurement@lubecision.com
                   </a>
                   <div className="flex items-center gap-3 text-sm text-slate-500">
                     <div className="w-9 h-9 rounded-lg bg-navy-950 flex items-center justify-center shrink-0">

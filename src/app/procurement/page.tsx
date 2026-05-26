@@ -22,7 +22,6 @@ import {
   Handshake,
   HeadphonesIcon,
   Building2,
-  Phone,
   Mail,
   Download,
   Sliders,
@@ -130,6 +129,17 @@ export default function ProcurementPage() {
           </motion.nav>
 
           <div className="max-w-3xl">
+            <motion.div
+              className="inline-flex items-center gap-2 mb-6 px-3.5 py-1.5 rounded-full border border-gold-200 bg-gold-50/60"
+              initial={{ opacity: 0, y: 14 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.45, delay: 0.05 }}
+            >
+              <span className="text-[11px] font-semibold tracking-[0.14em] uppercase text-gold-700">
+                510(k) Pending · Now Accepting Evaluation Requests
+              </span>
+            </motion.div>
+
             <motion.h1
               className="text-4xl md:text-5xl lg:text-[3.4rem] font-light tracking-tight text-navy-900 leading-[1.12]"
               initial={{ opacity: 0, y: 24 }}
@@ -147,7 +157,8 @@ export default function ProcurementPage() {
               transition={{ duration: 0.5, delay: 0.2 }}
             >
               Quantifiable cost savings. Compliance documentation. Streamlined
-              procurement.
+              procurement. Commercial availability begins after FDA 510(k)
+              clearance — anticipated Q4 2026.
             </motion.p>
 
             {/* CTAs */}
@@ -638,22 +649,22 @@ export default function ProcurementPage() {
               {
                 stat: '2.7M+',
                 label: 'da Vinci Procedures in 2024',
-                desc: 'Growing 17% year-over-year — the fastest-growing surgical platform.',
+                desc: 'Growing ~17% year-over-year (Intuitive Surgical 2024 annual reporting).',
               },
               {
                 stat: '$600–$3.5K',
                 label: 'Instrument Cost Per Case',
-                desc: 'Robotic instruments cost significantly more than traditional electrosurgical tools.',
+                desc: 'Robotic instruments cost materially more than traditional electrosurgical tools (Intuitive instrument catalog).',
               },
               {
                 stat: '$0.5–2.5M',
                 label: 'System Capital Cost',
-                desc: 'Plus $190K+ in annual service contracts per da Vinci system.',
+                desc: 'Plus $190K+ in annual service contracts per da Vinci system (Intuitive 10-K filings).',
               },
               {
                 stat: '17.1%',
                 label: 'Market CAGR',
-                desc: 'Robotic surgery market projected to reach $7.28B by 2032.',
+                desc: 'Robotic surgery market projected to reach $7.28B by 2032 (industry analyst consensus).',
               },
             ].map((card, i) => (
               <motion.div
@@ -677,6 +688,11 @@ export default function ProcurementPage() {
               </motion.div>
             ))}
           </div>
+
+          <p className="mt-4 text-xs text-slate-500 text-center">
+            Market figures sourced from public Intuitive Surgical financial
+            disclosures and published industry analyst reports.
+          </p>
 
           {/* ROI Argument */}
           <motion.div
@@ -761,13 +777,13 @@ export default function ProcurementPage() {
             {[
               {
                 icon: ShieldCheck,
-                title: 'AORN Guideline 3.11.1 Compliant',
-                desc: 'Fully aligned with AORN perioperative recommendations for electrosurgical anti-stick solutions. Documentation provided for your compliance records.',
+                title: 'AORN Aligned',
+                desc: 'Designed to support alignment with AORN Perioperative Practice Guidelines on electrosurgical safety. Documentation provided for your value-analysis committee records.',
               },
               {
                 icon: BadgeCheck,
-                title: 'FDA Registered',
-                desc: 'Lubecision is manufactured in an FDA-registered facility and meets all applicable regulatory requirements for medical device classification.',
+                title: '510(k) Pending',
+                desc: 'Lubecision is in active FDA 510(k) submission via a predicate-based pathway. Manufactured under cGMP and ISO 13485 quality standards. Anticipated clearance Q4 2026.',
               },
               {
                 icon: FileText,
@@ -1107,15 +1123,8 @@ export default function ProcurementPage() {
               transition={{ duration: 0.5, delay: 0.3 }}
             >
               <div className="flex items-center gap-2 text-sm text-slate-500">
-                <Phone size={15} className="text-gold-500" />
-                <span>Procurement Inquiries: </span>
-                <span className="font-semibold text-navy-900">
-                  (800) 555-0199
-                </span>
-              </div>
-              <div className="hidden sm:block w-px h-4 bg-slate-200" />
-              <div className="flex items-center gap-2 text-sm text-slate-500">
                 <Mail size={15} className="text-gold-500" />
+                <span>Procurement Inquiries: </span>
                 <a
                   href="mailto:procurement@lubecision.com"
                   className="font-semibold text-navy-900 hover:text-gold-600 transition-colors"

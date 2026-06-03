@@ -15,12 +15,16 @@ import {
   Wrench,
   RotateCcw,
   ShieldCheck,
-  Star,
-  Quote,
   Stethoscope,
   FlaskConical,
   CheckCircle2,
 } from 'lucide-react';
+import {
+  FDA_STATUS_SHORT,
+  FDA_STATUS_LINE,
+  AORN_NOTE,
+  TRADEMARK_NOTICE,
+} from '@/lib/compliance';
 
 /* ─── Shared animation preset ─── */
 const reveal = {
@@ -145,9 +149,9 @@ export default function SurgeonsPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.5 }}
           >
-            Lubecision eliminates eschar buildup with a single pre-operative
-            application, so you can maintain uninterrupted focus from first
-            incision to close.
+            Lubecision is a phospholipid anti-stick solution in development,
+            designed to address eschar buildup on electrosurgical instrument
+            tips so surgical teams can stay focused on the procedure.
           </motion.p>
 
           {/* CTA */}
@@ -161,7 +165,7 @@ export default function SurgeonsPage() {
               href="/contact?type=evaluation"
               className="group inline-flex items-center gap-2.5 px-8 py-4 text-sm font-semibold tracking-wide rounded-full bg-gold-500 text-navy-950 hover:bg-gold-400 transition-all duration-300 hover:shadow-lg hover:shadow-gold-500/25"
             >
-              Request Your Evaluation Kit
+              Register Your Interest
               <ArrowRight
                 size={16}
                 className="transition-transform group-hover:translate-x-0.5"
@@ -198,7 +202,7 @@ export default function SurgeonsPage() {
               You are mid-procedure, focused, in rhythm. Then the tip sticks.
               Eschar builds. You pause, hand back the instrument, wait for it to
               be cleaned, reposition, and re-establish your plane. It happens
-              again. And again. It is the most preventable disruption in
+              again. And again. It is among the more avoidable disruptions in
               electrosurgery — and it compounds with every case.
             </p>
           </motion.div>
@@ -225,7 +229,7 @@ export default function SurgeonsPage() {
               {
                 icon: Clock,
                 title: 'Extended Case Times',
-                desc: 'Each hand-back costs 30 to 90 seconds. Across 5 to 12 cleaning pauses per case, you are adding 10 to 40 minutes of non-operative time. Multiply that across your weekly caseload, and the cumulative delay is substantial.',
+                desc: 'Every hand-back to clean an electrode tip adds non-operative time to the case. Repeated across a procedure and a weekly caseload, those interruptions can compound into meaningful cumulative delay.',
                 color: 'text-orange-500',
                 bg: 'bg-orange-50',
                 border: 'border-orange-100',
@@ -309,7 +313,7 @@ export default function SurgeonsPage() {
                   { step: 'Hand back for cleaning', muted: true },
                   { step: 'Reposition and re-orient', muted: true },
                   { step: 'Resume cutting', muted: false },
-                  { step: 'Repeat cycle 5\u201312 times', muted: true },
+                  { step: 'Repeat the cycle through the case', muted: true },
                 ].map((item, i) => (
                   <motion.div
                     key={item.step}
@@ -352,7 +356,7 @@ export default function SurgeonsPage() {
                 {[
                   { step: 'Apply Lubecision pre-operatively', highlight: true },
                   { step: 'Begin procedure', highlight: false },
-                  { step: 'Continuous, uninterrupted electrosurgical flow', highlight: true },
+                  { step: 'Designed to support uninterrupted electrosurgical flow', highlight: true },
                 ].map((item, i) => (
                   <motion.div
                     key={item.step}
@@ -381,7 +385,7 @@ export default function SurgeonsPage() {
                 <div className="flex items-center gap-3 mb-3">
                   <Zap size={16} className="text-gold-400" />
                   <span className="text-xs font-semibold tracking-wider uppercase text-gold-400">
-                    Uninterrupted Performance
+                    Intended Workflow
                   </span>
                 </div>
                 <div className="flex items-center gap-2">
@@ -400,15 +404,15 @@ export default function SurgeonsPage() {
                   </span>
                 </div>
                 <p className="text-[11px] text-slate-400 mt-2">
-                  Consistent current flow from start to finish — no cleaning
-                  pauses, no workflow interruptions.
+                  Designed to support consistent current flow across the case,
+                  with the goal of reducing cleaning-related pauses.
                 </p>
               </motion.div>
 
               <div className="relative mt-6 pt-5 border-t border-gold-200/60">
                 <p className="text-xs text-slate-500 leading-relaxed">
-                  A streamlined workflow. One application. Continuous operative
-                  flow. Your full attention stays on the patient.
+                  A streamlined workflow concept: one pre-operative application,
+                  intended to help your team keep its attention on the patient.
                 </p>
               </div>
             </motion.div>
@@ -429,45 +433,50 @@ export default function SurgeonsPage() {
             viewport={{ once: true, margin: '-80px' }}
           >
             <span className="text-xs font-semibold tracking-[0.2em] uppercase text-gold-600">
-              Clinical Impact
+              How It Is Designed to Work
             </span>
             <h2 className="mt-4 text-3xl md:text-4xl lg:text-5xl font-light tracking-tight text-navy-900">
-              Clinical{' '}
-              <span className="text-gradient font-normal">Advantages</span>
+              Intended{' '}
+              <span className="text-gradient font-normal">Benefits</span>
             </h2>
+            <p className="mt-5 text-base text-slate-500 leading-relaxed">
+              The following describe the mechanistic benefits Lubecision is being
+              developed to provide. They are design goals for an investigational
+              device, not demonstrated clinical outcomes.
+            </p>
           </motion.div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-14">
             {[
               {
                 icon: HandMetal,
-                title: 'Fewer Hand-Backs for Tip Cleaning',
-                desc: 'Dramatically reduce the number of times you pause to hand back instruments for eschar removal. Maintain your operative rhythm throughout the case.',
+                title: 'Designed to Reduce Tip-Cleaning Hand-Backs',
+                desc: 'By targeting eschar adhesion on the electrode tip, Lubecision is intended to help reduce how often instruments are handed back for cleaning, supporting a steadier operative rhythm.',
               },
               {
                 icon: Zap,
-                title: 'Consistent Current Flow Throughout',
-                desc: 'Without eschar insulating the electrode, impedance remains stable. Your energy delivery stays predictable from the first application to the last.',
+                title: 'Aimed at More Consistent Current Flow',
+                desc: 'The anti-stick mechanism is intended to limit eschar insulation on the electrode, with the goal of keeping impedance and energy delivery more predictable across the case.',
               },
               {
                 icon: Activity,
-                title: 'Reduced Need for Increased Power',
-                desc: 'When tips stay clean, you can operate at your preferred settings. No compensatory power increases that change tissue effect profiles.',
+                title: 'Intended to Limit Compensatory Power Increases',
+                desc: 'When tips stay cleaner, the aim is to let you work closer to your preferred settings, reducing the need for compensatory power increases that can change tissue effect.',
               },
               {
                 icon: ThermometerSun,
-                title: 'Lower Risk of Thermal Spread',
-                desc: 'Stable impedance means controlled energy delivery. Reduced need for higher power settings decreases the risk of unintended lateral thermal injury to adjacent tissue.',
+                title: 'Designed with Thermal Spread in Mind',
+                desc: 'By supporting more stable impedance and reducing the need for higher power settings, Lubecision is being developed to help address the risk of unintended lateral thermal effects on adjacent tissue.',
               },
               {
                 icon: Wrench,
-                title: 'Preserved Instrument Integrity',
-                desc: 'Eliminating repeated abrasive scrubbing extends electrode tip life. Less mechanical degradation means more consistent performance throughout each instrument cycle.',
+                title: 'Intended to Help Preserve Instrument Integrity',
+                desc: 'Reducing repeated abrasive scrubbing is intended to help protect electrode tips, with the goal of more consistent performance across each instrument cycle.',
               },
               {
                 icon: RotateCcw,
-                title: 'Faster Case Turnover',
-                desc: 'Shorter operative times and fewer cleaning-related delays contribute to improved OR throughput, allowing your team to start the next case on schedule.',
+                title: 'Aimed at Smoother Case Turnover',
+                desc: 'By targeting cleaning-related delays, Lubecision is being developed to support OR workflow and help teams keep cases on schedule.',
               },
             ].map((card, i) => (
               <motion.div
@@ -520,17 +529,18 @@ export default function SurgeonsPage() {
             viewport={{ once: true, margin: '-80px' }}
           >
             <span className="text-xs font-semibold tracking-[0.2em] uppercase text-gold-600">
-              da Vinci® Compatible
+              Designed for the da Vinci&reg; OR
             </span>
             <h2 className="mt-4 text-3xl md:text-4xl lg:text-5xl font-light tracking-tight text-navy-900">
               Built for the{' '}
               <span className="text-gradient font-normal">Robotic OR</span>
             </h2>
             <p className="mt-5 text-lg text-slate-500 leading-relaxed">
-              Robotic surgery introduces unique workflow constraints that make
-              anti-stick protection not just beneficial — but essential. When
-              you are operating from the console, instrument cleaning pauses
-              are exponentially more disruptive.
+              Robotic surgery introduces workflow constraints that make
+              anti-stick protection especially relevant. When you are operating
+              from the console, instrument cleaning pauses can be particularly
+              disruptive. Lubecision is designed for use with da Vinci&reg;
+              robotic instruments.
             </p>
           </motion.div>
 
@@ -554,11 +564,11 @@ export default function SurgeonsPage() {
                   },
                   {
                     title: 'Complex Instrument Design',
-                    desc: 'da Vinci instruments feature intricate articulating wrist mechanisms and multi-jointed tips. These complex geometries create more surface area for tissue adhesion and make cleaning more difficult than with standard electrosurgical devices.',
+                    desc: 'da Vinci® instruments feature intricate articulating wrist mechanisms and multi-jointed tips. These geometries create more surface area for tissue adhesion and can make cleaning more involved than with standard electrosurgical devices.',
                   },
                   {
-                    title: 'High-Cost Instruments at Risk',
-                    desc: 'At $600–$3,500 per procedure, da Vinci instruments represent a significant investment. Eschar buildup and repeated abrasive cleaning accelerate wear, particularly on the precision articulation mechanisms that define robotic surgery.',
+                    title: 'High-Value Instruments',
+                    desc: 'da Vinci® instruments represent a significant investment. Eschar buildup and repeated abrasive cleaning can contribute to wear, particularly on the precision articulation mechanisms that define robotic surgery.',
                   },
                 ].map((item, i) => (
                   <motion.div
@@ -590,15 +600,15 @@ export default function SurgeonsPage() {
               >
                 <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-gold-100/60 to-transparent rounded-bl-full" />
                 <h3 className="relative text-sm font-semibold tracking-wider uppercase text-gold-600 mb-5">
-                  The Lubecision Advantage
+                  How Lubecision Is Designed to Help
                 </h3>
                 <div className="relative space-y-4">
                   {[
-                    'Apply pre-operatively to all robotic instrument tips before docking',
-                    'Maintain continuous electrosurgical performance throughout the entire case',
-                    'Eliminate the need to undock and clean instruments mid-procedure',
-                    'Preserve instrument articulation and precision mechanisms',
-                    'Reduce capacitive coupling risk from eschar insulation buildup',
+                    'Applied pre-operatively to robotic instrument tips before docking',
+                    'Designed to support continuous electrosurgical performance through the case',
+                    'Intended to reduce the need to undock and clean instruments mid-procedure',
+                    'Developed to help preserve instrument articulation and precision mechanisms',
+                    'Designed to address capacitive coupling risk from eschar insulation buildup',
                   ].map((item, i) => (
                     <motion.div
                       key={item}
@@ -615,7 +625,7 @@ export default function SurgeonsPage() {
                 </div>
               </motion.div>
 
-              {/* Testimonial */}
+              {/* Mechanistic framing — robotic context */}
               <motion.div
                 className="rounded-2xl border border-slate-100 bg-white p-6"
                 initial={{ opacity: 0, y: 12 }}
@@ -623,31 +633,27 @@ export default function SurgeonsPage() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.25 }}
               >
-                <Quote size={20} className="text-gold-200 mb-3" />
-                <p className="text-sm text-slate-600 leading-relaxed italic">
-                  &ldquo;We use the product for our robotically assisted laparoscopic
-                  cases. It reduces tissue sticking to the tips and greatly reduces
-                  charring of the cautery tips. Very time beneficial since we do not
-                  have to stop and remove instruments to continually clean
-                  them.&rdquo;
-                </p>
-                <p className="mt-3 text-xs font-semibold text-navy-900">
-                  Robotic Surgery Clinical Team
-                </p>
-                <p className="text-[11px] text-slate-400">
-                  Robotically Assisted Laparoscopic Cases
+                <p className="text-sm text-slate-600 leading-relaxed">
+                  In robotically assisted laparoscopic cases, Lubecision&rsquo;s
+                  phospholipid anti-stick mechanism is intended to reduce tissue
+                  sticking and charring at the instrument tip, with the goal of
+                  limiting how often instruments must be removed for cleaning.
+                  These are design objectives for an investigational device, not
+                  demonstrated results.
                 </p>
               </motion.div>
             </div>
           </div>
 
-          {/* Robotic surgery stats */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-12">
+          {/* Robotic surgery market context */}
+          <p className="text-center mt-12 text-xs font-semibold tracking-[0.15em] uppercase text-slate-400">
+            Robotic Surgery Market Context
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-5">
             {[
-              { stat: '2.7M+', label: 'Robotic Procedures in 2024' },
-              { stat: '17%', label: 'Annual Growth Rate' },
-              { stat: '7,500+', label: 'da Vinci Systems Worldwide' },
-              { stat: '$600–$3.5K', label: 'Instrument Cost Per Case' },
+              { stat: '2.7M+', label: 'da Vinci® procedures performed in 2024' },
+              { stat: '17%', label: 'Reported annual robotic-procedure growth' },
+              { stat: '7,500+', label: 'da Vinci® systems installed worldwide' },
             ].map((item, i) => (
               <motion.div
                 key={item.label}
@@ -662,6 +668,14 @@ export default function SurgeonsPage() {
               </motion.div>
             ))}
           </div>
+          <p className="text-center mt-4 text-[11px] text-slate-400 max-w-2xl mx-auto leading-relaxed">
+            Figures describe the broader robotic-surgery market and are provided
+            for context only. They do not represent Lubecision&rsquo;s
+            performance, adoption, or results.
+          </p>
+          <p className="text-center mt-3 text-[11px] text-slate-400 max-w-2xl mx-auto leading-relaxed">
+            {TRADEMARK_NOTICE}
+          </p>
         </div>
       </section>
 
@@ -748,101 +762,6 @@ export default function SurgeonsPage() {
       </section>
 
       {/* ═══════════════════════════════════════════
-          SECTION 6 — TESTIMONIAL PLACEHOLDER
-          ═══════════════════════════════════════════ */}
-      <section className="relative bg-white section-padding">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <motion.div
-            className="text-center max-w-3xl mx-auto mb-14"
-            variants={reveal}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: '-80px' }}
-          >
-            <span className="text-xs font-semibold tracking-[0.2em] uppercase text-gold-600">
-              Surgeon Feedback
-            </span>
-            <h2 className="mt-4 text-3xl md:text-4xl lg:text-5xl font-light tracking-tight text-navy-900">
-              What Surgeons Are{' '}
-              <span className="text-gradient font-normal">Saying</span>
-            </h2>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {[
-              {
-                quote:
-                  'I used to stop five or six times per case to clean my tip. With Lubecision, I cannot remember the last time I had to pause for eschar. The workflow difference is immediate and obvious.',
-                name: 'Dr. Sarah M.',
-                specialty: 'General Surgery',
-                institution: 'Regional Medical Center',
-              },
-              {
-                quote:
-                  'In ENT procedures where precision is everything, consistent energy delivery matters. Lubecision keeps the electrode performing the way it should from start to finish. My team noticed the difference on the first case.',
-                name: 'Dr. James T.',
-                specialty: 'Otolaryngology',
-                institution: 'University Hospital',
-              },
-              {
-                quote:
-                  'We evaluated Lubecision across 30 cases in our department. Case times came down, the scrub nurses had fewer hand-backs, and I could maintain my operative focus. It has become standard in our prep.',
-                name: 'Dr. Priya K.',
-                specialty: 'OB/GYN',
-                institution: 'Academic Health System',
-              },
-            ].map((testimonial, i) => (
-              <motion.div
-                key={testimonial.name}
-                className="relative rounded-2xl border border-slate-100 bg-white p-8 hover:shadow-lg hover:shadow-slate-100/80 transition-shadow duration-500"
-                variants={reveal}
-                custom={i}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, margin: '-30px' }}
-              >
-                {/* Quote Icon */}
-                <Quote size={24} className="text-gold-200 mb-4" />
-
-                {/* Stars */}
-                <div className="flex items-center gap-1 mb-4">
-                  {[...Array(5)].map((_, j) => (
-                    <Star
-                      key={j}
-                      size={14}
-                      className="text-gold-400 fill-gold-400"
-                    />
-                  ))}
-                </div>
-
-                {/* Quote Text */}
-                <p className="text-sm text-slate-600 leading-relaxed italic">
-                  &ldquo;{testimonial.quote}&rdquo;
-                </p>
-
-                {/* Attribution */}
-                <div className="mt-6 pt-5 border-t border-slate-100">
-                  <p className="text-sm font-semibold text-navy-900">
-                    {testimonial.name}
-                  </p>
-                  <p className="text-xs text-slate-400 mt-0.5">
-                    {testimonial.specialty} &middot; {testimonial.institution}
-                  </p>
-                </div>
-
-                {/* Placeholder badge */}
-                <div className="absolute top-4 right-4">
-                  <span className="text-[9px] font-medium tracking-wider uppercase text-slate-300 bg-slate-50 px-2 py-1 rounded">
-                    Placeholder
-                  </span>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ═══════════════════════════════════════════
           SECTION 7 — FINAL CTA
           ═══════════════════════════════════════════ */}
       <section className="relative overflow-hidden">
@@ -861,15 +780,20 @@ export default function SurgeonsPage() {
                 Get Started
               </span>
               <h2 className="mt-4 text-3xl md:text-4xl lg:text-5xl font-light tracking-tight text-navy-900">
-                Try Lubecision in
+                Follow Lubecision
               </h2>
               <p className="text-3xl md:text-4xl lg:text-5xl font-light tracking-tight text-gradient-gold">
-                Your Next Case
+                as It Develops
               </p>
               <p className="mt-5 text-lg text-slate-500 max-w-xl mx-auto">
-                We provide complimentary evaluation kits so you can experience
-                the difference firsthand. See what uninterrupted electrosurgical
-                flow feels like in your own OR.
+                Register your interest to stay informed about Lubecision and
+                future evaluation opportunities as the program advances.
+              </p>
+              <p className="mt-6 text-xs text-slate-400 max-w-xl mx-auto leading-relaxed">
+                {FDA_STATUS_LINE}
+              </p>
+              <p className="mt-3 text-xs text-slate-400 max-w-xl mx-auto leading-relaxed">
+                {AORN_NOTE}
               </p>
             </motion.div>
 
@@ -885,7 +809,7 @@ export default function SurgeonsPage() {
                 href="/contact?type=evaluation"
                 className="group inline-flex items-center gap-2.5 px-8 py-4 text-sm font-semibold tracking-wide rounded-full bg-gold-500 text-navy-950 hover:bg-gold-400 transition-all duration-300 hover:shadow-lg hover:shadow-gold-500/25"
               >
-                Request Evaluation Kit
+                Register Your Interest
                 <ArrowRight
                   size={16}
                   className="transition-transform group-hover:translate-x-0.5"
@@ -912,9 +836,9 @@ export default function SurgeonsPage() {
               transition={{ duration: 0.5, delay: 0.35 }}
             >
               {[
-                { icon: ShieldCheck, label: '510(k) Pending' },
-                { icon: FlaskConical, label: 'AORN Aligned' },
-                { icon: Stethoscope, label: 'Free Evaluation' },
+                { icon: ShieldCheck, label: FDA_STATUS_SHORT },
+                { icon: FlaskConical, label: 'Designed with AORN guidance in mind' },
+                { icon: Stethoscope, label: 'Evaluation interest welcome' },
               ].map((badge) => (
                 <div
                   key={badge.label}

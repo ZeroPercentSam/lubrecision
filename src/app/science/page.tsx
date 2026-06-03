@@ -1,8 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { motion, useInView } from 'framer-motion';
-import { useRef } from 'react';
+import { motion } from 'framer-motion';
 import {
   ArrowRight,
   ShieldCheck,
@@ -25,6 +24,12 @@ import {
   Download,
   AlertTriangle,
 } from 'lucide-react';
+import {
+  FDA_STATUS_SHORT,
+  FDA_STATUS_LINE,
+  AORN_NOTE,
+  STUDY_CLASS_DISCLAIMER,
+} from '@/lib/compliance';
 
 /* ─── Shared animation presets ─── */
 const ease = [0.25, 0.1, 0.25, 1] as const;
@@ -37,89 +42,6 @@ const reveal = {
     transition: { duration: 0.55, delay: i * 0.1, ease },
   }),
 };
-
-/* ─── Animated Progress Bar Component ─── */
-function AnimatedBar({
-  label,
-  value,
-  suffix,
-  delay = 0,
-}: {
-  label: string;
-  value: number;
-  suffix: string;
-  delay?: number;
-}) {
-  const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, margin: '-60px' });
-
-  return (
-    <motion.div
-      ref={ref}
-      className="text-center"
-      initial={{ opacity: 0, y: 24 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-40px' }}
-      transition={{ duration: 0.5, delay }}
-    >
-      {/* Circular progress */}
-      <div className="relative w-40 h-40 mx-auto mb-6">
-        <svg className="w-full h-full -rotate-90" viewBox="0 0 120 120">
-          {/* Track */}
-          <circle
-            cx="60"
-            cy="60"
-            r="52"
-            fill="none"
-            stroke="rgba(255,255,255,0.06)"
-            strokeWidth="8"
-          />
-          {/* Progress */}
-          <motion.circle
-            cx="60"
-            cy="60"
-            r="52"
-            fill="none"
-            stroke="url(#goldGradient)"
-            strokeWidth="8"
-            strokeLinecap="round"
-            strokeDasharray={`${2 * Math.PI * 52}`}
-            initial={{ strokeDashoffset: 2 * Math.PI * 52 }}
-            animate={
-              isInView
-                ? {
-                    strokeDashoffset:
-                      2 * Math.PI * 52 * (1 - value / 100),
-                  }
-                : {}
-            }
-            transition={{ duration: 1.4, delay: delay + 0.3, ease: [0.25, 0.1, 0.25, 1] }}
-          />
-          <defs>
-            <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="#C49634" />
-              <stop offset="100%" stopColor="#D4A843" />
-            </linearGradient>
-          </defs>
-        </svg>
-        {/* Center text */}
-        <div className="absolute inset-0 flex flex-col items-center justify-center">
-          <motion.span
-            className="text-3xl font-light text-white tracking-tight"
-            initial={{ opacity: 0 }}
-            animate={isInView ? { opacity: 1 } : {}}
-            transition={{ duration: 0.5, delay: delay + 0.6 }}
-          >
-            {suffix}
-          </motion.span>
-        </div>
-      </div>
-      <h4 className="text-sm font-semibold text-white tracking-wide">
-        {label}
-      </h4>
-    </motion.div>
-  );
-}
 
 /* ════════════════════════════════════════
    SCIENCE & TECHNOLOGY PAGE
@@ -163,7 +85,7 @@ export default function SciencePage() {
             >
               <Microscope size={13} className="text-gold-500" />
               <span className="text-[11px] font-semibold tracking-[0.14em] uppercase text-gold-700">
-                Evidence-Based Science
+                Science &amp; Mechanism
               </span>
             </motion.div>
 
@@ -198,9 +120,8 @@ export default function SciencePage() {
             >
               {[
                 { label: 'Mechanism', href: '#mechanism' },
-                { label: 'Clinical Evidence', href: '#evidence' },
-                { label: 'AORN Guidelines', href: '#aorn' },
-                { label: 'Performance Data', href: '#data' },
+                { label: 'Published Science', href: '#evidence' },
+                { label: 'AORN Guidance', href: '#aorn' },
                 { label: 'Safety Profile', href: '#safety' },
               ].map((nav) => (
                 <Link
@@ -234,9 +155,9 @@ export default function SciencePage() {
               <span className="text-gradient font-normal">Works</span>
             </h2>
             <p className="mt-4 text-lg text-slate-500 max-w-2xl mx-auto">
-              Lubecision harnesses the power of naturally occurring
-              phospholipids to create a molecular-level barrier between
-              electrosurgical instruments and tissue.
+              Lubecision is formulated around naturally occurring
+              phospholipids, which are intended to form a molecular-level
+              barrier between electrosurgical instruments and tissue.
             </p>
           </motion.div>
 
@@ -281,7 +202,7 @@ export default function SciencePage() {
                   Phospholipid Coating
                 </p>
                 <p className="text-[11px] text-slate-400 mt-1">
-                  Molecular barrier applied
+                  Intended molecular barrier
                 </p>
               </div>
 
@@ -304,7 +225,7 @@ export default function SciencePage() {
                   Tissue Separation
                 </p>
                 <p className="text-[11px] text-slate-400 mt-1">
-                  Adhesion prevented
+                  Hypothesized mechanism
                 </p>
               </div>
             </div>
@@ -321,17 +242,17 @@ export default function SciencePage() {
               {
                 icon: Atom,
                 title: 'Naturally Occurring Compound',
-                desc: 'Phospholipids are fatty acids found naturally in every cell membrane of the human body. Our formula leverages this biocompatibility to create a safe, effective coating that the body recognizes as non-foreign.',
+                desc: 'Phospholipids are fatty acids found naturally in the cell membranes of the human body. The formulation is built around this phospholipid chemistry, which is being developed as the basis for the intended anti-stick coating.',
               },
               {
                 icon: Layers,
                 title: 'Molecular-Level Barrier',
-                desc: 'The phospholipid molecules self-assemble into an ultra-thin, uniform layer on the electrode surface. This nanoscale coating prevents carbonized tissue from bonding to the metal without affecting electrical conductivity.',
+                desc: 'Phospholipid molecules are intended to form an ultra-thin, uniform layer on the electrode surface. The proposed mechanism is that this coating limits carbonized tissue from bonding to the metal while preserving electrical conductivity.',
               },
               {
                 icon: FlaskConical,
-                title: 'Sustained Protection',
-                desc: 'Unlike saline or wax-based alternatives, the phospholipid barrier maintains its protective properties throughout the procedure — especially critical in robotic surgery (da Vinci®) where instrument cleaning requires removal from ports.',
+                title: 'Designed for Sustained Use',
+                desc: 'The phospholipid barrier is designed to remain present through the course of a procedure — a consideration in robotic surgery (da Vinci®), where instrument cleaning can require removal from ports.',
               },
             ].map((point, i) => (
               <motion.div
@@ -375,12 +296,13 @@ export default function SciencePage() {
             <h2 className="mt-4 text-3xl md:text-4xl font-light tracking-tight text-navy-900">
               Published{' '}
               <span className="text-gradient font-normal">
-                Clinical Evidence
+                Science
               </span>
             </h2>
             <p className="mt-4 text-lg text-slate-500 max-w-2xl mx-auto">
-              Our efficacy claims are backed by peer-reviewed, published
-              research in respected medical journals.
+              Our approach is grounded in published science on the anti-stick
+              phospholipid product class. Lubecision itself has not yet been
+              independently studied.
             </p>
           </motion.div>
 
@@ -410,7 +332,7 @@ export default function SciencePage() {
                     Authors
                   </span>
                   <span className="text-sm text-slate-600">
-                    Jeffrey C. Baker, MD
+                    Baker JC, Ramadan HH
                   </span>
                 </div>
                 <div className="flex items-start gap-2">
@@ -423,9 +345,19 @@ export default function SciencePage() {
                 </div>
                 <div className="flex items-start gap-2">
                   <span className="text-[10px] font-semibold tracking-wider uppercase text-slate-400 shrink-0 pt-0.5 w-16">
-                    Year
+                    Citation
                   </span>
-                  <span className="text-sm text-slate-600">2012</span>
+                  <span className="text-sm text-slate-600">
+                    2012;91(1):E20-3 ·{' '}
+                    <a
+                      href="https://pubmed.ncbi.nlm.nih.gov/22278874/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-gold-600 underline underline-offset-2 hover:text-gold-700"
+                    >
+                      PubMed
+                    </a>
+                  </span>
                 </div>
               </div>
 
@@ -434,66 +366,68 @@ export default function SciencePage() {
                   Key Finding
                 </p>
                 <p className="text-sm text-slate-300 leading-relaxed">
-                  The anti-stick phospholipid solution significantly reduced
-                  instrument hand-backs for tip cleaning during pediatric
-                  electrocautery adenoidectomy, supporting improved surgical
-                  workflow.
+                  The authors reported that an anti-stick phospholipid solution
+                  reduced instrument hand-backs for tip cleaning during
+                  pediatric electrocautery adenoidectomy.
                 </p>
               </div>
+
+              <p className="mt-5 text-xs text-slate-500 leading-relaxed">
+                {STUDY_CLASS_DISCLAIMER}
+              </p>
             </motion.div>
 
-            {/* Coming soon studies */}
-            {[
-              {
-                title:
-                  'Comparative Efficacy of Anti-Stick Coatings in Electrosurgical Procedures',
-                journal: 'Journal of Surgical Research',
-                status: 'Manuscript in Preparation',
-              },
-              {
-                title:
-                  'Impact of Phospholipid Anti-Stick Solution on Operative Time in General Surgery',
-                journal: 'American Journal of Surgery',
-                status: 'Study Underway',
-              },
-            ].map((study, i) => (
-              <motion.div
-                key={study.title}
-                className="relative rounded-2xl border border-slate-100 bg-white p-8 flex flex-col"
-                variants={reveal}
-                custom={i + 1}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, margin: '-30px' }}
-              >
-                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-slate-200 text-slate-400 text-[10px] font-bold tracking-wider uppercase mb-5 self-start">
-                  <CircleDot size={11} />
-                  {study.status}
-                </div>
+            {/* Research areas we are pursuing */}
+            <motion.div
+              className="lg:col-span-2 relative rounded-2xl border border-slate-100 bg-white p-8 flex flex-col"
+              variants={reveal}
+              custom={1}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: '-30px' }}
+            >
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-slate-200 text-slate-400 text-[10px] font-bold tracking-wider uppercase mb-5 self-start">
+                <CircleDot size={11} />
+                Research Roadmap
+              </div>
 
-                <h3 className="text-base font-semibold text-navy-900 leading-snug">
-                  {study.title}
-                </h3>
+              <h3 className="text-base font-semibold text-navy-900 leading-snug">
+                Research areas we are pursuing
+              </h3>
+              <p className="mt-3 text-sm text-slate-500 leading-relaxed">
+                As the program develops, we intend to investigate the following
+                topics. These are planned areas of inquiry, not completed or
+                published studies.
+              </p>
 
-                <div className="mt-4 flex items-start gap-2">
-                  <span className="text-[10px] font-semibold tracking-wider uppercase text-slate-400 shrink-0 pt-0.5 w-16">
-                    Target
-                  </span>
-                  <span className="text-sm text-slate-500 italic">
-                    {study.journal}
-                  </span>
-                </div>
+              <ul className="mt-5 grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-3">
+                {[
+                  'Anti-stick phospholipid behavior on electrosurgical instrument tips',
+                  'Eschar accumulation and instrument cleaning workflow',
+                  'Applications in robotically assisted laparoscopic procedures',
+                  'Biocompatibility and materials characterization',
+                ].map((topic) => (
+                  <li key={topic} className="flex items-start gap-2.5">
+                    <CheckCircle2
+                      size={15}
+                      className="text-gold-500 mt-0.5 shrink-0"
+                    />
+                    <span className="text-sm text-slate-600 leading-snug">
+                      {topic}
+                    </span>
+                  </li>
+                ))}
+              </ul>
 
-                <div className="mt-auto pt-6">
-                  <div className="p-4 rounded-xl bg-slate-50 border border-slate-100">
-                    <p className="text-xs text-slate-400 leading-relaxed text-center">
-                      Additional study details will be published here upon
-                      completion and peer review.
-                    </p>
-                  </div>
+              <div className="mt-auto pt-6">
+                <div className="p-4 rounded-xl bg-slate-50 border border-slate-100">
+                  <p className="text-xs text-slate-400 leading-relaxed text-center">
+                    Study details will be published here as work is completed
+                    and peer-reviewed.
+                  </p>
                 </div>
-              </motion.div>
-            ))}
+              </div>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -512,13 +446,14 @@ export default function SciencePage() {
               Robotic Surgery
             </span>
             <h2 className="mt-4 text-3xl md:text-4xl font-light tracking-tight text-navy-900">
-              Evidence for{' '}
+              Considerations for{' '}
               <span className="text-gradient font-normal">da Vinci® Applications</span>
             </h2>
             <p className="mt-4 text-lg text-slate-500 max-w-2xl mx-auto">
-              Robotic surgery introduces unique electrosurgical challenges that
-              make anti-stick protection especially impactful. The clinical and
-              safety evidence supports Lubecision across all robotic platforms.
+              Robotic surgery introduces electrosurgical challenges where
+              instrument access and cleaning are constrained. Lubecision is
+              being developed with these robotic workflow considerations in
+              mind.
             </p>
           </motion.div>
 
@@ -531,30 +466,29 @@ export default function SciencePage() {
               viewport={{ once: true, margin: '-40px' }}
               transition={{ duration: 0.5 }}
             >
-              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-red-50 text-red-500 text-[10px] font-bold tracking-wider uppercase mb-5">
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-100 text-slate-500 text-[10px] font-bold tracking-wider uppercase mb-5">
                 <AlertTriangle size={11} />
-                Safety Concern
+                Clinical Context
               </div>
               <h3 className="text-lg font-semibold text-navy-900 leading-snug">
-                Electrosurgical Injury Reports in Robotic Surgery
+                Electrosurgical Energy in Robotic Surgery
               </h3>
               <p className="mt-4 text-sm text-slate-500 leading-relaxed">
-                FDA MAUDE database analysis identified electrosurgical injury
-                reports associated with robotic surgical instruments, including
-                cases linked to micro-cracks in instrument tips and capacitive
-                coupling events. Eschar insulation on instrument surfaces is a
-                contributing factor to stray energy events in robotic
-                procedures.
+                The published literature and FDA public reporting databases
+                discuss electrosurgical energy events associated with robotic
+                surgical instruments, including factors such as micro-cracks in
+                instrument insulation and capacitive coupling. Eschar build-up
+                on instrument surfaces is one factor discussed in this context.
               </p>
               <div className="mt-5 p-4 rounded-xl bg-gold-50/60 border border-gold-200/60">
                 <p className="text-[10px] font-semibold tracking-wider uppercase text-gold-600 mb-1.5">
-                  Lubecision&apos;s Role
+                  Proposed Mechanism
                 </p>
                 <p className="text-sm text-slate-600 leading-relaxed">
-                  By preventing eschar accumulation on instrument tips,
-                  Lubecision helps maintain consistent current flow and reduces
-                  the conditions that contribute to capacitive coupling and
-                  stray energy events during robotic procedures.
+                  Lubecision is designed to limit eschar accumulation on
+                  instrument tips. The hypothesis under investigation is whether
+                  reducing eschar build-up could help maintain more consistent
+                  instrument condition during robotic procedures.
                 </p>
               </div>
             </motion.div>
@@ -569,27 +503,29 @@ export default function SciencePage() {
             >
               <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-gold-500 text-navy-950 text-[10px] font-bold tracking-wider uppercase mb-5">
                 <BookOpen size={11} />
-                Clinical Feedback
+                Workflow Rationale
               </div>
               <h3 className="text-lg font-semibold text-navy-900 leading-snug">
-                Robotic Surgery Workflow Impact
+                Robotic Surgery Workflow
               </h3>
               <p className="mt-4 text-sm text-slate-500 leading-relaxed">
-                Clinical teams using anti-stick phospholipid solutions in
-                robotically assisted laparoscopic cases report significant
-                reductions in tissue sticking and cautery tip charring — key
-                factors that necessitate instrument removal and cleaning during
-                robotic procedures.
+                Tissue sticking and cautery tip charring are among the factors
+                that can necessitate instrument removal and cleaning during
+                robotically assisted laparoscopic cases. An anti-stick
+                phospholipid approach is intended to address these factors; its
+                effect on robotic workflow is a question we plan to evaluate.
               </p>
-              <blockquote className="mt-5 p-4 rounded-xl bg-navy-950">
-                <p className="text-sm text-slate-300 leading-relaxed italic">
-                  &ldquo;Very time beneficial since we do not have to stop and
-                  remove instruments and continually clean them.&rdquo;
+              <div className="mt-5 p-4 rounded-xl bg-navy-950">
+                <p className="text-[10px] font-semibold tracking-wider uppercase text-gold-400 mb-1.5">
+                  Why It Could Matter
                 </p>
-                <p className="mt-2 text-xs text-gold-400 font-medium">
-                  — Robotic Surgery Clinical Team
+                <p className="text-sm text-slate-300 leading-relaxed">
+                  In robotic procedures, removing and cleaning instruments
+                  interrupts the case. Reducing the need for tip cleaning is a
+                  hypothesized workflow benefit that has not yet been
+                  established for Lubecision.
                 </p>
-              </blockquote>
+              </div>
             </motion.div>
           </div>
 
@@ -645,12 +581,15 @@ export default function SciencePage() {
             viewport={{ once: true, margin: '-80px' }}
           >
             <span className="text-xs font-semibold tracking-[0.2em] uppercase text-gold-500">
-              Guideline Compliance
+              Guideline Context
             </span>
             <h2 className="mt-4 text-3xl md:text-4xl font-light tracking-tight text-white">
-              AORN Guideline{' '}
-              <span className="text-gradient-gold font-normal">Compliance</span>
+              AORN Surgical-Energy{' '}
+              <span className="text-gradient-gold font-normal">Guidance</span>
             </h2>
+            <p className="mt-4 text-sm text-slate-400 max-w-2xl mx-auto">
+              {AORN_NOTE}
+            </p>
           </motion.div>
 
           {/* Featured quote block */}
@@ -672,7 +611,7 @@ export default function SciencePage() {
                 </div>
                 <div>
                   <p className="text-xs font-bold tracking-wider uppercase text-gold-400">
-                    AORN Guideline 3.11.1
+                    AORN Surgical-Energy-Safety Guidance
                   </p>
                   <p className="text-[11px] text-slate-400">
                     Guidelines for Perioperative Practice
@@ -680,13 +619,14 @@ export default function SciencePage() {
                 </div>
               </div>
 
-              <blockquote className="text-xl md:text-2xl font-light text-white leading-relaxed tracking-tight">
-                &ldquo;High quality evidence supports the use of an anti-stick
-                phospholipid solution to reduce surgical time.&rdquo;
-              </blockquote>
+              <p className="text-xl md:text-2xl font-light text-white leading-relaxed tracking-tight">
+                AORN publishes guidelines for the safe use of surgical energy
+                devices in the perioperative setting &mdash; the context in which an
+                anti-stick solution like Lubecision is intended to be used.
+              </p>
 
               <p className="mt-4 text-sm text-gold-400/80">
-                &mdash; Association of periOperative Registered Nurses (AORN)
+                {AORN_NOTE}
               </p>
             </div>
           </motion.div>
@@ -725,11 +665,11 @@ export default function SciencePage() {
                 Why This Matters
               </h3>
               <p className="text-sm text-slate-400 leading-relaxed">
-                AORN guideline compliance is a critical factor in hospital
-                procurement decisions. When AORN recommends a specific solution
-                based on high-quality evidence, it gives surgical teams and
-                purchasing committees the clinical justification to adopt
-                products that demonstrably improve outcomes and efficiency.
+                AORN guidance is one of the references hospitals consult in
+                perioperative decision-making. AORN publishes evidence-based
+                guidance on surgical-energy safety and product categories;
+                it is an advisory body and does not endorse or approve specific
+                products, including Lubecision.
               </p>
             </motion.div>
           </div>
@@ -743,33 +683,33 @@ export default function SciencePage() {
             transition={{ duration: 0.5, delay: 0.15 }}
           >
             <h3 className="text-sm font-semibold tracking-wider uppercase text-gold-400 mb-6">
-              How Lubecision Aligns with AORN Guidelines
+              How Lubecision Is Designed Around AORN Guidance
             </h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {[
                 {
                   check: 'Phospholipid-based anti-stick solution',
-                  detail: 'Matches the specific solution type referenced in AORN 3.11.1',
+                  detail: 'The product category discussed in AORN surgical-energy-safety guidance',
                 },
                 {
-                  check: 'Demonstrated surgical time reduction',
-                  detail: 'Published evidence supporting reduced hand-backs and delays',
+                  check: 'Grounded in published science',
+                  detail: 'Informed by published research on the anti-stick phospholipid product class',
                 },
                 {
-                  check: 'High-quality evidence base',
-                  detail: 'Peer-reviewed studies in respected medical journals',
+                  check: 'Workflow-focused intent',
+                  detail: 'Designed to address tip cleaning and instrument hand-backs',
                 },
                 {
-                  check: 'Biocompatible formulation',
-                  detail: 'Naturally occurring phospholipid, non-toxic, non-allergenic',
+                  check: 'Phospholipid-based formulation',
+                  detail: 'Built around naturally occurring phospholipids; biocompatibility to be established in testing',
                 },
                 {
-                  check: 'Sterile, single-use format',
-                  detail: 'Meets infection prevention standards for perioperative settings',
+                  check: 'Intended sterile, single-use format',
+                  detail: 'Designed for perioperative infection-prevention requirements',
                 },
                 {
-                  check: '510(k) submitted — predicate-based pathway',
-                  detail: 'FDA clearance anticipated Q4 2026; manufactured to medical-device quality standards',
+                  check: FDA_STATUS_SHORT,
+                  detail: FDA_STATUS_LINE,
                 },
               ].map((item, i) => (
                 <motion.div
@@ -800,67 +740,6 @@ export default function SciencePage() {
         </div>
       </section>
 
-      {/* ═══════════ SECTION 5 — DATA VISUALIZATIONS ═══════════ */}
-      <section id="data" className="relative bg-navy-900 section-padding overflow-hidden">
-        {/* Radial gradient bg */}
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(212,168,67,0.04)_0%,_transparent_70%)]" />
-
-        <div className="relative mx-auto max-w-5xl px-6 lg:px-8">
-          <motion.div
-            className="text-center"
-            variants={reveal}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: '-80px' }}
-          >
-            <span className="text-xs font-semibold tracking-[0.2em] uppercase text-gold-500">
-              Results That Matter
-            </span>
-            <h2 className="mt-4 text-3xl md:text-4xl font-light tracking-tight text-white">
-              Performance{' '}
-              <span className="text-gradient-gold font-normal">Data</span>
-            </h2>
-            <p className="mt-4 text-base text-slate-400 max-w-xl mx-auto">
-              Comparative testing demonstrates significant improvements across
-              key surgical performance metrics.
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-10 mt-16">
-            <AnimatedBar
-              label="Eschar Reduction"
-              value={80}
-              suffix="Substantial"
-              delay={0}
-            />
-            <AnimatedBar
-              label="Tissue Sticking Reduction"
-              value={80}
-              suffix="Substantial"
-              delay={0.15}
-            />
-            <AnimatedBar
-              label="Cutting Force Reduction"
-              value={75}
-              suffix="Meaningful"
-              delay={0.3}
-            />
-          </div>
-
-          <motion.p
-            className="mt-12 text-center text-xs text-slate-500 max-w-lg mx-auto"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.8 }}
-          >
-            Directional performance categories. Quantitative bench and clinical
-            data will be published as the evaluation program completes. Detailed
-            methodology available on request.
-          </motion.p>
-        </div>
-      </section>
-
       {/* ═══════════ SECTION 6 — SAFETY PROFILE ═══════════ */}
       <section id="safety" className="relative bg-slate-50 section-padding">
         <div className="mx-auto max-w-6xl px-6 lg:px-8">
@@ -881,8 +760,10 @@ export default function SciencePage() {
               </span>
             </h2>
             <p className="mt-4 text-lg text-slate-500 max-w-2xl mx-auto">
-              Lubecision is engineered to meet the highest standards of patient
-              safety and regulatory compliance.
+              Lubecision is being developed to meet medical-device safety and
+              regulatory requirements. Safety and biocompatibility
+              characteristics will be established through testing and reflected
+              in future labeling.
             </p>
           </motion.div>
 
@@ -890,33 +771,33 @@ export default function SciencePage() {
             {[
               {
                 icon: Ban,
-                title: 'Non-Toxic',
-                desc: 'The phospholipid formula contains no harmful chemicals, toxins, or irritants. Safe for incidental tissue contact during surgical procedures.',
+                title: 'Phospholipid-Based',
+                desc: 'The formulation is built around phospholipid chemistry rather than wax or harsh chemical agents. A full safety profile will be established through testing and reflected in labeling.',
               },
               {
                 icon: Leaf,
-                title: 'Non-Allergenic',
-                desc: 'Formulated to minimize allergenic potential. Suitable for use in patients with common sensitivities and allergy concerns.',
+                title: 'Allergenicity Under Study',
+                desc: 'The formulation is being developed with allergenic potential in mind. Sensitivity and tolerability characteristics will be characterized during development.',
               },
               {
                 icon: HeartPulse,
-                title: 'Biocompatible',
-                desc: 'Made from naturally occurring fatty acids (phospholipids) similar to compounds the human body produces. Recognized as non-foreign by biological systems.',
+                title: 'Biocompatibility Focus',
+                desc: 'Built around naturally occurring fatty acids (phospholipids) similar to compounds found in the body. Biocompatibility is intended to be demonstrated through standard medical-device testing.',
               },
               {
                 icon: Sparkles,
-                title: 'Sterile',
-                desc: 'Each unit is individually sealed and sterilized to meet stringent perioperative infection prevention standards.',
+                title: 'Intended Sterile',
+                desc: 'Designed to be individually sealed and sterilized to meet perioperative infection-prevention requirements.',
               },
               {
                 icon: BadgeCheck,
-                title: '510(k) Pending',
-                desc: 'FDA 510(k) submission in progress via a predicate-based pathway. Anticipated clearance Q4 2026, after which commercial availability begins.',
+                title: FDA_STATUS_SHORT,
+                desc: FDA_STATUS_LINE,
               },
               {
                 icon: Fingerprint,
-                title: 'Single-Use',
-                desc: 'Designed for single-patient use to eliminate cross-contamination risk. Disposed of after each procedure per standard OR protocols.',
+                title: 'Single-Use Design',
+                desc: 'Designed for single-patient use to reduce cross-contamination risk, intended for disposal after each procedure per standard OR protocols.',
               },
             ].map((attr, i) => (
               <motion.div
@@ -956,11 +837,11 @@ export default function SciencePage() {
           >
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-light tracking-tight text-navy-900">
               Want to Review the{' '}
-              <span className="text-gradient-gold font-normal">Evidence</span>?
+              <span className="text-gradient-gold font-normal">Science</span>?
             </h2>
             <p className="mt-5 text-lg text-slate-500 max-w-xl mx-auto">
-              Download our clinical summary or request a complimentary sample to
-              experience the science firsthand.
+              Request our science summary or get in touch to learn more about
+              Lubecision&apos;s development.
             </p>
           </motion.div>
 
@@ -971,15 +852,18 @@ export default function SciencePage() {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.15 }}
           >
-            <button className="group inline-flex items-center gap-2 px-8 py-4 text-sm font-semibold tracking-wide rounded-full border-2 border-navy-200 text-navy-900 hover:bg-navy-50 transition-all duration-300">
-              <Download size={15} />
-              Download Clinical Summary
-            </button>
             <Link
-              href="/contact?type=sample"
+              href="/contact"
+              className="group inline-flex items-center gap-2 px-8 py-4 text-sm font-semibold tracking-wide rounded-full border-2 border-navy-200 text-navy-900 hover:bg-navy-50 transition-all duration-300"
+            >
+              <Download size={15} />
+              Request Science Summary
+            </Link>
+            <Link
+              href="/contact"
               className="group inline-flex items-center gap-2 px-8 py-4 text-sm font-semibold tracking-wide rounded-full bg-gold-500 text-navy-950 hover:bg-gold-400 transition-all duration-300 hover:shadow-lg hover:shadow-gold-500/20"
             >
-              Request a Sample
+              Get in Touch
               <ArrowRight
                 size={15}
                 className="transition-transform group-hover:translate-x-0.5"

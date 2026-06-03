@@ -1,8 +1,8 @@
 'use client';
 
 import Link from 'next/link';
-import { motion } from 'framer-motion';
 import { ArrowUpRight, Mail, MapPin } from 'lucide-react';
+import { REGULATORY_NOTICE } from '@/lib/compliance';
 
 const footerLinks = {
   Product: [
@@ -14,17 +14,21 @@ const footerLinks = {
   Solutions: [
     { label: 'For Surgeons', href: '/surgeons' },
     { label: 'For Procurement', href: '/procurement' },
-    { label: 'Clinical Evidence', href: '/science#evidence' },
-    { label: 'ROI Calculator', href: '/procurement#roi' },
+    { label: 'The Science', href: '/science#evidence' },
+    { label: 'AORN Guidance', href: '/science#aorn' },
   ],
   Company: [
     { label: 'About Lubecision', href: '/about' },
     { label: 'FAQ', href: '/faq' },
     { label: 'Contact Us', href: '/contact' },
-    { label: 'Request Evaluation Kit', href: '/contact?type=sample' },
+    { label: 'Request Information', href: '/contact' },
   ],
-  Resources: [
-    { label: 'AORN Guidelines', href: '/science#aorn' },
+  Legal: [
+    { label: 'Privacy Policy', href: '/legal/privacy' },
+    { label: 'Cookie Policy', href: '/legal/cookies' },
+    { label: 'Terms of Service', href: '/legal/terms' },
+    { label: 'Accessibility', href: '/legal/accessibility' },
+    { label: 'Disclaimers', href: '/legal/disclaimer' },
   ],
 };
 
@@ -42,26 +46,27 @@ export function Footer() {
           <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8">
             <div>
               <h2 className="text-3xl lg:text-4xl font-light tracking-tight text-white">
-                Ready to optimize your OR?
+                Following our path to FDA clearance?
               </h2>
               <p className="mt-3 text-slate-400 text-lg max-w-xl">
-                Join the growing number of surgical teams switching to Lubecision.
-                Request a free sample or speak with our clinical specialists.
+                Request information about Lubecision, the underlying science, and our
+                regulatory progress. We&rsquo;ll keep you updated as our 510(k) review
+                advances.
               </p>
             </div>
             <div className="flex flex-col sm:flex-row gap-3">
               <Link
-                href="/contact?type=sample"
-                className="inline-flex items-center justify-center gap-2 px-7 py-3.5 text-sm font-semibold tracking-wide rounded-full border border-gold-500 text-gold-400 hover:bg-gold-500/10 transition-all duration-300"
+                href="/contact"
+                className="inline-flex items-center justify-center gap-2 px-7 py-3.5 text-sm font-semibold tracking-wide rounded-full bg-gold-500 text-navy-950 hover:bg-gold-400 transition-all duration-300"
               >
-                Request Free Sample
+                Request Information
                 <ArrowUpRight size={16} />
               </Link>
               <Link
-                href="/contact?type=quote"
-                className="inline-flex items-center justify-center gap-2 px-7 py-3.5 text-sm font-semibold tracking-wide rounded-full bg-gold-500 text-navy-950 hover:bg-gold-400 transition-all duration-300"
+                href="/science"
+                className="inline-flex items-center justify-center gap-2 px-7 py-3.5 text-sm font-semibold tracking-wide rounded-full border border-gold-500 text-gold-400 hover:bg-gold-500/10 transition-all duration-300"
               >
-                Get a Quote
+                Explore the Science
                 <ArrowUpRight size={16} />
               </Link>
             </div>
@@ -83,8 +88,8 @@ export function Footer() {
               </span>
             </Link>
             <p className="mt-4 text-sm text-slate-400 max-w-xs leading-relaxed">
-              Next-generation anti-stick phospholipid solution engineered for
-              precision electrosurgery. Reducing eschar, optimizing outcomes.
+              An investigational single-use phospholipid anti-stick solution in
+              development for electrosurgical and robotic instrument tips.
             </p>
 
             {/* Contact info */}
@@ -120,6 +125,19 @@ export function Footer() {
                     </Link>
                   </li>
                 ))}
+                {title === 'Legal' && (
+                  <li>
+                    <button
+                      type="button"
+                      onClick={() =>
+                        window.dispatchEvent(new Event('open-cookie-preferences'))
+                      }
+                      className="text-sm text-slate-400 hover:text-white transition-colors duration-200"
+                    >
+                      Cookie Preferences
+                    </button>
+                  </li>
+                )}
               </ul>
             </div>
           ))}
@@ -130,8 +148,11 @@ export function Footer() {
       <div className="relative border-t border-white/5">
         <div className="mx-auto max-w-7xl px-6 lg:px-8 py-5">
           <p className="text-xs text-slate-500 leading-relaxed text-center sm:text-left">
-            Lubecision is a 510(k)-submitted Class II medical device. Pending FDA
-            clearance. Product availability subject to clearance.
+            {REGULATORY_NOTICE}{' '}
+            <Link href="/legal/disclaimer" className="text-slate-400 underline hover:text-gold-400">
+              Read full disclaimers
+            </Link>
+            .
           </p>
         </div>
       </div>
@@ -141,6 +162,10 @@ export function Footer() {
         <div className="mx-auto max-w-7xl px-6 lg:px-8 py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-xs text-slate-500">
             &copy; {new Date().getFullYear()} Lubecision. All rights reserved.
+          </p>
+          <p className="text-xs text-slate-500">
+            da Vinci&reg; is a trademark of Intuitive Surgical, Inc. Lubecision is not
+            affiliated with Intuitive Surgical.
           </p>
         </div>
       </div>

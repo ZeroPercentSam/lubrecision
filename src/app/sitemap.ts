@@ -53,5 +53,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'yearly',
       priority: 0.7,
     },
+    ...[
+      'privacy',
+      'cookies',
+      'terms',
+      'accessibility',
+      'disclaimer',
+    ].map((slug) => ({
+      url: `${baseUrl}/legal/${slug}`,
+      lastModified,
+      changeFrequency: 'yearly' as const,
+      priority: 0.3,
+    })),
   ];
 }

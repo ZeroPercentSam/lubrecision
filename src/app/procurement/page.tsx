@@ -1,16 +1,10 @@
 'use client';
 
-import { useRef, useEffect, useState } from 'react';
 import Link from 'next/link';
-import { motion, useInView, useMotionValue, animate } from 'framer-motion';
+import { motion } from 'framer-motion';
 import {
   ArrowRight,
   ChevronRight,
-  DollarSign,
-  Clock,
-  TrendingDown,
-  AlertTriangle,
-  Calculator,
   ShieldCheck,
   FileCheck,
   FileText,
@@ -21,12 +15,15 @@ import {
   Send,
   Handshake,
   HeadphonesIcon,
-  Building2,
   Mail,
-  Download,
-  Sliders,
   CheckCircle2,
 } from 'lucide-react';
+import {
+  FDA_STATUS_SHORT,
+  FDA_STATUS_LINE,
+  MANUFACTURING_INTENT,
+  AORN_NOTE,
+} from '@/lib/compliance';
 
 /* ─── Shared animation preset ─── */
 const reveal = {
@@ -38,67 +35,10 @@ const reveal = {
   }),
 };
 
-/* ─────────────── Animated Counter ─────────────── */
-function Counter({
-  from = 0,
-  to,
-  duration = 2,
-  prefix = '',
-  suffix = '',
-  decimals = 0,
-}: {
-  from?: number;
-  to: number;
-  duration?: number;
-  prefix?: string;
-  suffix?: string;
-  decimals?: number;
-}) {
-  const nodeRef = useRef<HTMLSpanElement>(null);
-  const inView = useInView(nodeRef, { once: true, margin: '-50px' });
-  const motionVal = useMotionValue(from);
-
-  useEffect(() => {
-    if (!inView) return;
-    const controls = animate(motionVal, to, {
-      duration,
-      ease: 'easeOut',
-      onUpdate: (v) => {
-        if (nodeRef.current) {
-          nodeRef.current.textContent = prefix + v.toFixed(decimals) + suffix;
-        }
-      },
-    });
-    return controls.stop;
-  }, [inView, motionVal, to, duration, prefix, suffix, decimals]);
-
-  return (
-    <span ref={nodeRef}>
-      {prefix}
-      {from.toFixed(decimals)}
-      {suffix}
-    </span>
-  );
-}
-
 /* ════════════════════════════════════════
    PROCUREMENT PAGE
    ════════════════════════════════════════ */
 export default function ProcurementPage() {
-  /* ── ROI Calculator State ── */
-  const [numORs, setNumORs] = useState(10);
-  const [casesPerOR, setCasesPerOR] = useState(4);
-  const [operatingDays, setOperatingDays] = useState(250);
-  const [pausesSaved, setPausesSaved] = useState(6);
-  const [costPerMinute, setCostPerMinute] = useState(45);
-  const [timeSavedPerPause, setTimeSavedPerPause] = useState(2.5);
-
-  /* ── Derived Calculations ── */
-  const annualCases = numORs * casesPerOR * operatingDays;
-  const totalMinutesSaved = annualCases * pausesSaved * timeSavedPerPause;
-  const totalHoursSaved = totalMinutesSaved / 60;
-  const annualSavings = totalMinutesSaved * costPerMinute;
-
   return (
     <>
       {/* ═══════════ SECTION 1 — PAGE HERO ═══════════ */}
@@ -136,7 +76,7 @@ export default function ProcurementPage() {
               transition={{ duration: 0.45, delay: 0.05 }}
             >
               <span className="text-[11px] font-semibold tracking-[0.14em] uppercase text-gold-700">
-                510(k) Pending · Now Accepting Evaluation Requests
+                {FDA_STATUS_SHORT}
               </span>
             </motion.div>
 
@@ -146,7 +86,7 @@ export default function ProcurementPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.55, delay: 0.1 }}
             >
-              The Business Case for{' '}
+              Evaluation &amp; Evidence Information for{' '}
               <span className="text-gradient font-normal">Lubecision</span>
             </motion.h1>
 
@@ -156,9 +96,8 @@ export default function ProcurementPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
             >
-              Quantifiable cost savings. Compliance documentation. Streamlined
-              procurement. Commercial availability begins after FDA 510(k)
-              clearance — anticipated Q4 2026.
+              Information for value-analysis and procurement teams evaluating
+              Lubecision. {FDA_STATUS_LINE}
             </motion.p>
 
             {/* CTAs */}
@@ -169,30 +108,30 @@ export default function ProcurementPage() {
               transition={{ duration: 0.45, delay: 0.32 }}
             >
               <Link
-                href="/contact?type=quote"
+                href="/contact"
                 className="group inline-flex items-center gap-2 px-7 py-3.5 text-sm font-semibold tracking-wide rounded-full bg-gold-500 text-navy-950 hover:bg-gold-400 transition-all duration-300 hover:shadow-lg hover:shadow-gold-500/20"
               >
-                Request a Quote
+                Request Information
                 <ArrowRight
                   size={15}
                   className="transition-transform group-hover:translate-x-0.5"
                 />
               </Link>
               <Link
-                href="#cost-analysis"
+                href="#documentation"
                 className="inline-flex items-center gap-2 px-7 py-3.5 text-sm font-semibold tracking-wide rounded-full border border-slate-200 text-navy-900 hover:border-navy-200 hover:bg-navy-50/40 transition-all duration-300"
               >
-                <Download size={15} />
-                Download Cost Analysis
+                <FileText size={15} />
+                Documentation Overview
               </Link>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* ═══════════ SECTION 2 — THE COST PROBLEM ═══════════ */}
+      {/* ═══════════ SECTION 2 — OPERATIONAL CONTEXT ═══════════ */}
       <section
-        id="cost-analysis"
+        id="operational-context"
         className="relative bg-navy-950 section-padding overflow-hidden"
       >
         {/* Subtle grid */}
@@ -205,409 +144,42 @@ export default function ProcurementPage() {
           }}
         />
 
-        <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
+        <div className="relative mx-auto max-w-3xl px-6 lg:px-8">
           {/* Header */}
           <motion.div
-            className="text-center max-w-3xl mx-auto"
+            className="text-center"
             variants={reveal}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: '-80px' }}
           >
             <span className="text-xs font-semibold tracking-[0.2em] uppercase text-gold-500">
-              Cost Analysis
+              Operational Context
             </span>
             <h2 className="mt-4 text-3xl md:text-4xl lg:text-5xl font-light tracking-tight text-white">
-              The True Cost of Eschar{' '}
+              A Known Concern in the{' '}
               <span className="text-gradient-gold font-normal">
-                in Your OR
+                Operating Room
               </span>
             </h2>
-            <p className="mt-5 text-lg text-slate-400 leading-relaxed">
-              Every surgical pause to clean eschar directly drains your
-              operating budget. Here is the financial breakdown your CFO needs to
-              see.
+            <p className="mt-6 text-lg text-slate-400 leading-relaxed">
+              Operating room time and the consumption of single-use disposables
+              are well-recognized operational concerns for perioperative and
+              value-analysis teams. Eschar accumulation on electrosurgical
+              instrument tips, and the interruptions associated with cleaning
+              them, are part of that broader picture. Lubecision is being
+              developed as an investigational anti-stick solution intended to be
+              studied in this context.
             </p>
-          </motion.div>
-
-          {/* Financial Breakdown Cards */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mt-14">
-            {[
-              {
-                icon: DollarSign,
-                stat: '$36-62',
-                label: 'Per OR Minute',
-                desc: 'Published cost per minute of OR time.',
-                cite: 'JAMA Surgery',
-              },
-              {
-                icon: Clock,
-                stat: '5-12',
-                label: 'Pauses Per Case',
-                desc: 'Average surgical pauses per electrosurgical procedure to clean eschar.',
-                cite: 'Perioperative data',
-              },
-              {
-                icon: AlertTriangle,
-                stat: '2-3 min',
-                label: 'Per Pause',
-                desc: 'Average time lost per hand-back for tip cleaning and eschar removal.',
-                cite: 'OR workflow analysis',
-              },
-              {
-                icon: TrendingDown,
-                stat: '$360-2,232',
-                label: 'Wasted Per Case',
-                desc: 'Estimated cost per case in wasted OR time due to eschar-related pauses.',
-                cite: 'Calculated impact',
-              },
-            ].map((card, i) => (
-              <motion.div
-                key={card.label}
-                className="relative rounded-2xl border border-white/[0.06] bg-white/[0.03] p-7 group hover:border-gold-500/20 transition-all duration-500"
-                variants={reveal}
-                custom={i}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, margin: '-30px' }}
-              >
-                {/* Hover accent */}
-                <div className="absolute top-0 left-0 right-0 h-[2px] rounded-t-2xl bg-gradient-to-r from-transparent via-gold-400 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-                <div className="w-10 h-10 rounded-xl bg-gold-500/10 flex items-center justify-center mb-4">
-                  <card.icon size={20} className="text-gold-400" />
-                </div>
-                <div className="text-3xl font-semibold text-white">
-                  {card.stat}
-                </div>
-                <div className="mt-1 text-sm font-semibold text-gold-400 tracking-wide">
-                  {card.label}
-                </div>
-                <p className="mt-2 text-sm text-slate-400 leading-relaxed">
-                  {card.desc}
-                </p>
-                <p className="mt-3 text-[10px] text-slate-500 uppercase tracking-wider">
-                  Source: {card.cite}
-                </p>
-              </motion.div>
-            ))}
-          </div>
-
-          {/* Annual Impact — BIG number */}
-          <motion.div
-            className="mt-14 rounded-2xl border border-gold-500/20 bg-gold-500/[0.04] p-10 md:p-14 text-center relative overflow-hidden"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-60px' }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
-            {/* Corner glow */}
-            <div className="absolute top-0 right-0 w-48 h-48 bg-gradient-to-bl from-gold-500/10 to-transparent rounded-bl-full" />
-            <div className="absolute bottom-0 left-0 w-32 h-32 bg-gradient-to-tr from-gold-500/5 to-transparent rounded-tr-full" />
-
-            <div className="relative">
-              <p className="text-xs font-semibold tracking-[0.2em] uppercase text-gold-500 mb-4">
-                Annual Impact for a 10-OR Facility
-              </p>
-              <div className="text-5xl md:text-6xl lg:text-7xl font-light text-white tracking-tight">
-                <span className="text-gradient-gold font-normal">
-                  <Counter
-                    from={0}
-                    to={1.3}
-                    prefix="$"
-                    suffix="M"
-                    decimals={1}
-                    duration={2.5}
-                  />
-                  –
-                  <Counter
-                    from={0}
-                    to={8}
-                    prefix="$"
-                    suffix="M+"
-                    decimals={0}
-                    duration={2.5}
-                  />
-                </span>
-              </div>
-              <p className="mt-4 text-lg text-slate-300 font-light">
-                in preventable OR costs every year
-              </p>
-              <p className="mt-2 text-sm text-slate-500">
-                Based on published OR cost data and perioperative workflow
-                analyses
-              </p>
-            </div>
+            <p className="mt-5 text-sm text-slate-500 leading-relaxed">
+              {FDA_STATUS_LINE} Any performance characteristics remain under
+              evaluation and are not established claims.
+            </p>
           </motion.div>
         </div>
       </section>
 
-      {/* ═══════════ SECTION 3 — ROI CALCULATOR ═══════════ */}
-      <section id="roi" className="relative bg-white section-padding">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          {/* Header */}
-          <motion.div
-            className="text-center max-w-3xl mx-auto"
-            variants={reveal}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: '-80px' }}
-          >
-            <span className="text-xs font-semibold tracking-[0.2em] uppercase text-gold-600">
-              ROI Calculator
-            </span>
-            <h2 className="mt-4 text-3xl md:text-4xl lg:text-5xl font-light tracking-tight text-navy-900">
-              Calculate{' '}
-              <span className="text-gradient font-normal">Your Savings</span>
-            </h2>
-            <p className="mt-5 text-lg text-slate-500 leading-relaxed">
-              Adjust the inputs below to match your facility. See exactly how
-              much Lubecision can save your organization.
-            </p>
-          </motion.div>
-
-          {/* Calculator */}
-          <motion.div
-            className="mt-14 grid grid-cols-1 lg:grid-cols-[1fr,400px] gap-8 lg:gap-12"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-40px' }}
-            transition={{ duration: 0.6 }}
-          >
-            {/* Left — Inputs */}
-            <div className="rounded-2xl border border-slate-200 bg-slate-50/50 p-8 md:p-10">
-              <div className="flex items-center gap-3 mb-8">
-                <div className="w-10 h-10 rounded-xl bg-navy-950 flex items-center justify-center">
-                  <Sliders size={18} className="text-gold-400" />
-                </div>
-                <h3 className="text-lg font-semibold text-navy-900 tracking-tight">
-                  Your Facility Parameters
-                </h3>
-              </div>
-
-              <div className="space-y-8">
-                {/* Number of ORs */}
-                <div>
-                  <div className="flex justify-between items-baseline mb-3">
-                    <label className="text-sm font-medium text-navy-900">
-                      Number of ORs
-                    </label>
-                    <span className="text-sm font-semibold text-navy-900 tabular-nums">
-                      {numORs}
-                    </span>
-                  </div>
-                  <input
-                    type="range"
-                    min={1}
-                    max={50}
-                    step={1}
-                    value={numORs}
-                    onChange={(e) => setNumORs(Number(e.target.value))}
-                    className="w-full h-2 rounded-full bg-slate-200 appearance-none cursor-pointer accent-gold-500 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-5 [&::-webkit-slider-thumb]:h-5 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-gold-500 [&::-webkit-slider-thumb]:shadow-md [&::-webkit-slider-thumb]:shadow-gold-500/25 [&::-webkit-slider-thumb]:cursor-pointer"
-                  />
-                  <div className="flex justify-between text-[10px] text-slate-400 mt-1">
-                    <span>1</span>
-                    <span>50</span>
-                  </div>
-                </div>
-
-                {/* Cases per OR per day */}
-                <div>
-                  <div className="flex justify-between items-baseline mb-3">
-                    <label className="text-sm font-medium text-navy-900">
-                      Electrosurgical Cases per OR / Day
-                    </label>
-                    <span className="text-sm font-semibold text-navy-900 tabular-nums">
-                      {casesPerOR}
-                    </span>
-                  </div>
-                  <input
-                    type="range"
-                    min={1}
-                    max={12}
-                    step={1}
-                    value={casesPerOR}
-                    onChange={(e) => setCasesPerOR(Number(e.target.value))}
-                    className="w-full h-2 rounded-full bg-slate-200 appearance-none cursor-pointer accent-gold-500 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-5 [&::-webkit-slider-thumb]:h-5 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-gold-500 [&::-webkit-slider-thumb]:shadow-md [&::-webkit-slider-thumb]:shadow-gold-500/25 [&::-webkit-slider-thumb]:cursor-pointer"
-                  />
-                  <div className="flex justify-between text-[10px] text-slate-400 mt-1">
-                    <span>1</span>
-                    <span>12</span>
-                  </div>
-                </div>
-
-                {/* Operating days per year */}
-                <div>
-                  <div className="flex justify-between items-baseline mb-3">
-                    <label className="text-sm font-medium text-navy-900">
-                      Operating Days per Year
-                    </label>
-                    <span className="text-sm font-semibold text-navy-900 tabular-nums">
-                      {operatingDays}
-                    </span>
-                  </div>
-                  <input
-                    type="range"
-                    min={100}
-                    max={365}
-                    step={5}
-                    value={operatingDays}
-                    onChange={(e) => setOperatingDays(Number(e.target.value))}
-                    className="w-full h-2 rounded-full bg-slate-200 appearance-none cursor-pointer accent-gold-500 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-5 [&::-webkit-slider-thumb]:h-5 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-gold-500 [&::-webkit-slider-thumb]:shadow-md [&::-webkit-slider-thumb]:shadow-gold-500/25 [&::-webkit-slider-thumb]:cursor-pointer"
-                  />
-                  <div className="flex justify-between text-[10px] text-slate-400 mt-1">
-                    <span>100</span>
-                    <span>365</span>
-                  </div>
-                </div>
-
-                {/* Pauses saved per case */}
-                <div>
-                  <div className="flex justify-between items-baseline mb-3">
-                    <label className="text-sm font-medium text-navy-900">
-                      Pauses Saved per Case
-                    </label>
-                    <span className="text-sm font-semibold text-navy-900 tabular-nums">
-                      {pausesSaved}
-                    </span>
-                  </div>
-                  <input
-                    type="range"
-                    min={1}
-                    max={12}
-                    step={1}
-                    value={pausesSaved}
-                    onChange={(e) => setPausesSaved(Number(e.target.value))}
-                    className="w-full h-2 rounded-full bg-slate-200 appearance-none cursor-pointer accent-gold-500 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-5 [&::-webkit-slider-thumb]:h-5 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-gold-500 [&::-webkit-slider-thumb]:shadow-md [&::-webkit-slider-thumb]:shadow-gold-500/25 [&::-webkit-slider-thumb]:cursor-pointer"
-                  />
-                  <div className="flex justify-between text-[10px] text-slate-400 mt-1">
-                    <span>1</span>
-                    <span>12</span>
-                  </div>
-                </div>
-
-                {/* Average OR cost per minute */}
-                <div>
-                  <div className="flex justify-between items-baseline mb-3">
-                    <label className="text-sm font-medium text-navy-900">
-                      OR Cost per Minute
-                    </label>
-                    <span className="text-sm font-semibold text-navy-900 tabular-nums">
-                      ${costPerMinute}
-                    </span>
-                  </div>
-                  <input
-                    type="range"
-                    min={20}
-                    max={100}
-                    step={1}
-                    value={costPerMinute}
-                    onChange={(e) => setCostPerMinute(Number(e.target.value))}
-                    className="w-full h-2 rounded-full bg-slate-200 appearance-none cursor-pointer accent-gold-500 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-5 [&::-webkit-slider-thumb]:h-5 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-gold-500 [&::-webkit-slider-thumb]:shadow-md [&::-webkit-slider-thumb]:shadow-gold-500/25 [&::-webkit-slider-thumb]:cursor-pointer"
-                  />
-                  <div className="flex justify-between text-[10px] text-slate-400 mt-1">
-                    <span>$20</span>
-                    <span>$100</span>
-                  </div>
-                </div>
-
-                {/* Time saved per avoided pause */}
-                <div>
-                  <div className="flex justify-between items-baseline mb-3">
-                    <label className="text-sm font-medium text-navy-900">
-                      Time Saved per Avoided Pause (min)
-                    </label>
-                    <span className="text-sm font-semibold text-navy-900 tabular-nums">
-                      {timeSavedPerPause} min
-                    </span>
-                  </div>
-                  <input
-                    type="range"
-                    min={0.5}
-                    max={5}
-                    step={0.5}
-                    value={timeSavedPerPause}
-                    onChange={(e) =>
-                      setTimeSavedPerPause(Number(e.target.value))
-                    }
-                    className="w-full h-2 rounded-full bg-slate-200 appearance-none cursor-pointer accent-gold-500 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-5 [&::-webkit-slider-thumb]:h-5 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-gold-500 [&::-webkit-slider-thumb]:shadow-md [&::-webkit-slider-thumb]:shadow-gold-500/25 [&::-webkit-slider-thumb]:cursor-pointer"
-                  />
-                  <div className="flex justify-between text-[10px] text-slate-400 mt-1">
-                    <span>0.5 min</span>
-                    <span>5 min</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Right — Results */}
-            <div className="flex flex-col gap-5">
-              {/* Annual Cases */}
-              <div className="rounded-2xl border border-slate-200 bg-white p-6">
-                <p className="text-xs font-semibold tracking-[0.15em] uppercase text-slate-400 mb-2">
-                  Annual Cases
-                </p>
-                <p className="text-3xl font-light text-navy-900 tabular-nums">
-                  {annualCases.toLocaleString()}
-                </p>
-              </div>
-
-              {/* Total Time Saved */}
-              <div className="rounded-2xl border border-slate-200 bg-white p-6">
-                <p className="text-xs font-semibold tracking-[0.15em] uppercase text-slate-400 mb-2">
-                  Total Time Saved
-                </p>
-                <p className="text-3xl font-light text-navy-900 tabular-nums">
-                  {totalHoursSaved.toLocaleString(undefined, {
-                    maximumFractionDigits: 0,
-                  })}{' '}
-                  <span className="text-lg text-slate-400">hours / year</span>
-                </p>
-              </div>
-
-              {/* Annual Cost Savings — THE BIG ONE */}
-              <div className="flex-1 rounded-2xl border-2 border-gold-400/40 bg-gradient-to-br from-gold-50 via-white to-gold-50/30 p-8 relative overflow-hidden">
-                {/* Corner glow */}
-                <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-gold-200/30 to-transparent rounded-bl-full" />
-
-                <div className="relative">
-                  <div className="flex items-center gap-2 mb-3">
-                    <Calculator size={16} className="text-gold-600" />
-                    <p className="text-xs font-semibold tracking-[0.15em] uppercase text-gold-700">
-                      Estimated Annual Savings
-                    </p>
-                  </div>
-                  <p className="text-5xl md:text-6xl font-light tracking-tight text-navy-900 tabular-nums">
-                    <span className="text-gradient-gold font-normal">
-                      $
-                      {annualSavings.toLocaleString(undefined, {
-                        maximumFractionDigits: 0,
-                      })}
-                    </span>
-                  </p>
-                  <p className="mt-3 text-sm text-slate-500 leading-relaxed">
-                    Projected annual OR time savings by eliminating eschar-related
-                    surgical pauses across your facility.
-                  </p>
-
-                  <Link
-                    href="/contact?type=quote"
-                    className="group inline-flex items-center gap-2 mt-6 px-6 py-3 text-sm font-semibold tracking-wide rounded-full bg-gold-500 text-navy-950 hover:bg-gold-400 transition-all duration-300 hover:shadow-lg hover:shadow-gold-500/20"
-                  >
-                    Get Your Custom Analysis
-                    <ArrowRight
-                      size={14}
-                      className="transition-transform group-hover:translate-x-0.5"
-                    />
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* ═══════════ SECTION 3.5 — ROBOTIC SURGERY ROI ═══════════ */}
+      {/* ═══════════ SECTION 3.5 — ROBOTIC SURGERY MARKET CONTEXT ═══════════ */}
       <section className="relative bg-navy-950 section-padding overflow-hidden">
         <div
           className="absolute inset-0 opacity-[0.08]"
@@ -627,44 +199,34 @@ export default function ProcurementPage() {
             viewport={{ once: true, margin: '-80px' }}
           >
             <span className="text-xs font-semibold tracking-[0.2em] uppercase text-gold-500">
-              Robotic Surgery Market
+              Market Context
             </span>
             <h2 className="mt-4 text-3xl md:text-4xl lg:text-5xl font-light tracking-tight text-white">
-              The Growing Case for{' '}
+              The Robotic Surgery{' '}
               <span className="text-gradient-gold font-normal">
-                Robotic OR Investment
+                Landscape
               </span>
             </h2>
             <p className="mt-5 text-lg text-slate-400 leading-relaxed">
-              da Vinci® robotic surgery is the fastest-growing segment in
-              electrosurgery. If your facility has robotic ORs, Lubecision
-              delivers outsized ROI by protecting high-cost instruments and
-              eliminating costly workflow interruptions.
+              Robotic-assisted surgery is among the fastest-growing segments in
+              electrosurgery. The neutral market figures below provide general
+              context for teams evaluating the category in which Lubecision is
+              being developed.
             </p>
           </motion.div>
 
-          {/* Key Market Stats */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-5 mt-14">
+          {/* Neutral market context */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mt-14 max-w-3xl mx-auto">
             {[
               {
                 stat: '2.7M+',
-                label: 'da Vinci Procedures in 2024',
-                desc: 'Growing ~17% year-over-year (Intuitive Surgical 2024 annual reporting).',
-              },
-              {
-                stat: '$600–$3.5K',
-                label: 'Instrument Cost Per Case',
-                desc: 'Robotic instruments cost materially more than traditional electrosurgical tools (Intuitive instrument catalog).',
-              },
-              {
-                stat: '$0.5–2.5M',
-                label: 'System Capital Cost',
-                desc: 'Plus $190K+ in annual service contracts per da Vinci system (Intuitive 10-K filings).',
+                label: 'da Vinci® Procedures in 2024',
+                desc: 'Reported annual robotic-assisted procedure volume (Intuitive Surgical 2024 annual reporting).',
               },
               {
                 stat: '17.1%',
-                label: 'Market CAGR',
-                desc: 'Robotic surgery market projected to reach $7.28B by 2032 (industry analyst consensus).',
+                label: 'Reported Market CAGR',
+                desc: 'Robotic surgery market growth projected by published industry analyst consensus.',
               },
             ].map((card, i) => (
               <motion.div
@@ -689,59 +251,44 @@ export default function ProcurementPage() {
             ))}
           </div>
 
-          <p className="mt-4 text-xs text-slate-500 text-center">
-            Market figures sourced from public Intuitive Surgical financial
-            disclosures and published industry analyst reports.
+          <p className="mt-4 text-xs text-slate-500 text-center max-w-2xl mx-auto">
+            Market figures are general industry context sourced from public
+            Intuitive Surgical financial disclosures and published analyst
+            reports. They do not describe Lubecision or imply any product
+            outcome.
           </p>
 
-          {/* ROI Argument */}
+          {/* Mechanistic hypothesis */}
           <motion.div
-            className="mt-10 rounded-2xl border border-gold-500/20 bg-gold-500/[0.04] p-8 md:p-10"
+            className="mt-10 rounded-2xl border border-gold-500/20 bg-gold-500/[0.04] p-8 md:p-10 max-w-3xl mx-auto"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-60px' }}
             transition={{ duration: 0.55, delay: 0.2 }}
           >
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-              <div>
-                <h3 className="text-lg font-semibold text-white tracking-tight">
-                  Why Lubecision Is Essential for Robotic Programs
-                </h3>
-                <p className="mt-3 text-sm text-slate-400 leading-relaxed">
-                  Robotic instruments lack anti-stick coatings. When eschar
-                  builds up during procedures, surgeons must remove instruments
-                  from ports for cleaning — a process far more disruptive than
-                  in open surgery. This means more OR time wasted, faster
-                  instrument degradation, and higher per-case costs.
-                </p>
-                <p className="mt-3 text-sm text-slate-400 leading-relaxed">
-                  Lubecision eliminates this problem with a single
-                  pre-operative application, protecting your highest-cost
-                  instruments and keeping your robotic ORs running at peak
-                  efficiency.
-                </p>
-              </div>
-              <div className="space-y-3">
-                {[
-                  'Extends da Vinci instrument usable life',
-                  'Reduces per-case instrument replacement costs',
-                  'Eliminates instrument removal for cleaning',
-                  'Improves robotic OR throughput and scheduling',
-                  'Protects your $0.5–2.5M system investment',
-                ].map((item) => (
-                  <div key={item} className="flex items-start gap-3">
-                    <CheckCircle2 size={16} className="text-gold-400 mt-0.5 shrink-0" />
-                    <span className="text-sm text-gold-200/90 leading-relaxed">{item}</span>
-                  </div>
-                ))}
-              </div>
+            <h3 className="text-lg font-semibold text-white tracking-tight">
+              Mechanistic Rationale Under Investigation
+            </h3>
+            <p className="mt-3 text-sm text-slate-400 leading-relaxed">
+              In robotic procedures, eschar accumulation on instrument tips can
+              prompt removal of instruments from ports for cleaning. The working
+              hypothesis behind Lubecision is that a phospholipid anti-stick film
+              applied to instrument tips may reduce eschar adhesion. This is a
+              mechanistic hypothesis under evaluation, not an established benefit.
+            </p>
+            <div className="mt-5 flex items-start gap-3">
+              <CheckCircle2 size={16} className="text-gold-400 mt-0.5 shrink-0" />
+              <span className="text-sm text-gold-200/90 leading-relaxed">
+                Any effect on instrument handling, workflow, or outcomes remains
+                to be studied and is not claimed.
+              </span>
             </div>
           </motion.div>
         </div>
       </section>
 
       {/* ═══════════ SECTION 4 — COMPLIANCE & DOCUMENTATION ═══════════ */}
-      <section className="relative bg-slate-50 section-padding">
+      <section id="documentation" className="relative bg-slate-50 section-padding">
         {/* Dot grid */}
         <div
           className="absolute inset-0 opacity-[0.4]"
@@ -768,8 +315,8 @@ export default function ProcurementPage() {
               <span className="text-gradient font-normal">Made Simple</span>
             </h2>
             <p className="mt-4 text-lg text-slate-500 max-w-2xl mx-auto">
-              Every document your VAC committee needs — ready before your first
-              evaluation call.
+              An overview of the documentation intended to support value-analysis
+              and procurement review as development progresses.
             </p>
           </motion.div>
 
@@ -777,33 +324,33 @@ export default function ProcurementPage() {
             {[
               {
                 icon: ShieldCheck,
-                title: 'AORN Aligned',
-                desc: 'Designed to support alignment with AORN Perioperative Practice Guidelines on electrosurgical safety. Documentation provided for your value-analysis committee records.',
+                title: 'AORN Guidance',
+                desc: AORN_NOTE,
               },
               {
                 icon: BadgeCheck,
-                title: '510(k) Pending',
-                desc: 'Lubecision is in active FDA 510(k) submission via a predicate-based pathway. Manufactured under cGMP and ISO 13485 quality standards. Anticipated clearance Q4 2026.',
+                title: FDA_STATUS_SHORT,
+                desc: `${FDA_STATUS_LINE} ${MANUFACTURING_INTENT}`,
               },
               {
                 icon: FileText,
-                title: 'Safety Data Sheet Available',
-                desc: 'Complete SDS documentation available for your environmental health and safety team. Non-toxic, non-allergenic phospholipid formulation.',
+                title: 'Safety Data Sheet (Planned)',
+                desc: 'SDS documentation is intended to be made available for environmental health and safety review. Lubecision is based on a phospholipid formulation; safety characteristics are part of the development and evaluation process.',
               },
               {
                 icon: FileCheck,
-                title: 'Instructions for Use Documentation',
-                desc: 'Clear IFU documentation for clinical staff onboarding. Simple three-step application process requires no specialized training.',
+                title: 'Instructions for Use (Planned)',
+                desc: 'Instructions-for-use documentation is intended to support clinical staff onboarding, with a straightforward application process.',
               },
               {
                 icon: Package,
-                title: 'Sterile Single-Use Packaging',
-                desc: 'Individually sealed sterile kits ensure infection control compliance. Each kit contains solution bottle and applicator pad for single-patient use.',
+                title: 'Sterile Single-Use Packaging (Intended)',
+                desc: 'The product is intended to be supplied as individually sealed, sterile single-use kits containing a solution bottle and applicator pad for single-patient use.',
               },
               {
                 icon: ScanLine,
-                title: 'Lot Traceability',
-                desc: 'Full lot traceability on every unit for your supply chain and quality assurance documentation. Supports your facility recall management protocols.',
+                title: 'Lot Traceability (Intended)',
+                desc: 'Lot traceability is intended on every unit to support supply-chain and quality-assurance documentation and facility recall-management protocols.',
               },
             ].map((card, i) => (
               <motion.div
@@ -847,9 +394,9 @@ export default function ProcurementPage() {
               How It Works
             </span>
             <h2 className="mt-4 text-3xl md:text-4xl font-light tracking-tight text-navy-900">
-              Simple{' '}
+              The{' '}
               <span className="text-gradient font-normal">
-                Procurement Process
+                Evaluation Pathway
               </span>
             </h2>
           </motion.div>
@@ -866,26 +413,26 @@ export default function ProcurementPage() {
                 {
                   num: '01',
                   icon: Send,
-                  title: 'Request a Quote',
-                  desc: 'Contact us for volume pricing tailored to your facility size and case volume.',
+                  title: 'Request Information',
+                  desc: 'Reach out to receive development and evaluation information for your facility and value-analysis committee.',
                 },
                 {
                   num: '02',
                   icon: ClipboardList,
-                  title: 'Evaluate',
-                  desc: 'Free sample kits for clinical evaluation by your surgical teams and VAC committee.',
+                  title: 'Review Evidence',
+                  desc: 'Review the available documentation and the investigational basis for Lubecision as development progresses.',
                 },
                 {
                   num: '03',
                   icon: Handshake,
-                  title: 'Order',
-                  desc: 'Purchase direct or through your GPO. Flexible ordering channels to fit your workflow.',
+                  title: 'Stay Informed',
+                  desc: 'Be kept up to date on regulatory progress and the evaluation roadmap toward potential availability.',
                 },
                 {
                   num: '04',
                   icon: HeadphonesIcon,
-                  title: 'Support',
-                  desc: 'Dedicated account management and clinical support for seamless integration.',
+                  title: 'Clinical Dialogue',
+                  desc: 'Connect with the team for clinical and scientific questions as you assess the category.',
                 },
               ].map((step, i) => (
                 <motion.div
@@ -922,117 +469,6 @@ export default function ProcurementPage() {
             </div>
           </div>
 
-          {/* GPO Note */}
-          <motion.div
-            className="mt-14 flex items-center justify-center gap-3 px-6 py-4 rounded-full bg-navy-50/60 border border-navy-100 max-w-lg mx-auto"
-            initial={{ opacity: 0, y: 14 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.45, delay: 0.3 }}
-          >
-            <Building2 size={16} className="text-navy-600 shrink-0" />
-            <p className="text-sm text-navy-700 font-medium">
-              Compatible with major Group Purchasing Organizations
-            </p>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* ═══════════ SECTION 6 — PRODUCT ECONOMICS ═══════════ */}
-      <section className="relative bg-slate-50 section-padding">
-        <div className="mx-auto max-w-4xl px-6 lg:px-8">
-          <motion.div
-            className="text-center mb-12"
-            variants={reveal}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: '-80px' }}
-          >
-            <span className="text-xs font-semibold tracking-[0.2em] uppercase text-gold-600">
-              Purchasing Details
-            </span>
-            <h2 className="mt-4 text-3xl md:text-4xl font-light tracking-tight text-navy-900">
-              Product Details{' '}
-              <span className="text-gradient font-normal">for Purchasing</span>
-            </h2>
-          </motion.div>
-
-          {/* Product Table */}
-          <motion.div
-            className="rounded-2xl border border-slate-200 bg-white overflow-hidden shadow-sm"
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-40px' }}
-            transition={{ duration: 0.5 }}
-          >
-            {/* Table Header */}
-            <div className="grid grid-cols-[1fr,1.5fr,1fr,1fr] gap-4 px-6 sm:px-8 py-4 bg-navy-950">
-              {['Product Number', 'Description', 'Packaging', 'Format'].map(
-                (h) => (
-                  <span
-                    key={h}
-                    className="text-[10px] font-semibold tracking-[0.15em] uppercase text-gold-400"
-                  >
-                    {h}
-                  </span>
-                ),
-              )}
-            </div>
-
-            {/* Row */}
-            <div className="grid grid-cols-[1fr,1.5fr,1fr,1fr] gap-4 px-6 sm:px-8 py-5 border-b border-slate-100">
-              <span className="text-sm font-semibold text-navy-900">
-                LBR-4ML-20
-              </span>
-              <span className="text-sm text-slate-600">
-                Lubecision Anti-Stick Solution with Sterile Applicator Pad
-              </span>
-              <span className="text-sm text-slate-600">20 units / box</span>
-              <span className="text-sm text-slate-600">
-                4 mL bottle + foam pad
-              </span>
-            </div>
-          </motion.div>
-
-          {/* Volume / Ordering info */}
-          <motion.div
-            className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8"
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.15 }}
-          >
-            <div className="rounded-2xl border border-slate-200 bg-white p-6">
-              <h4 className="text-sm font-semibold text-navy-900 tracking-tight mb-3">
-                Volume Pricing
-              </h4>
-              <p className="text-sm text-slate-500 leading-relaxed">
-                Tiered pricing available for facilities ordering 10+ cases per
-                month. Contact our procurement team for a custom quote based on
-                your case volume.
-              </p>
-            </div>
-            <div className="rounded-2xl border border-slate-200 bg-white p-6">
-              <h4 className="text-sm font-semibold text-navy-900 tracking-tight mb-3">
-                Ordering Channels
-              </h4>
-              <ul className="space-y-2">
-                {[
-                  'Direct — order through Lubecision sales',
-                  'GPO — compatible with major group purchasing organizations',
-                  'Distribution — available through select distribution partners',
-                ].map((ch) => (
-                  <li key={ch} className="flex items-start gap-2">
-                    <ChevronRight
-                      size={14}
-                      className="text-gold-500 mt-0.5 shrink-0"
-                    />
-                    <span className="text-sm text-slate-500">{ch}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </motion.div>
         </div>
       </section>
 
@@ -1053,58 +489,40 @@ export default function ProcurementPage() {
                 Get Started
               </span>
               <h2 className="mt-4 text-3xl md:text-4xl lg:text-5xl font-light tracking-tight text-navy-900">
-                Ready to Optimize Your{' '}
+                Evaluating the{' '}
                 <span className="text-gradient-gold font-normal">
-                  OR Budget
+                  Category
                 </span>
                 ?
               </h2>
+              <p className="mt-5 text-lg text-slate-500 leading-relaxed max-w-xl mx-auto">
+                Request development and evaluation information for your
+                value-analysis and procurement review.
+              </p>
             </motion.div>
 
-            {/* Two paths */}
+            {/* Single path */}
             <motion.div
-              className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-12 max-w-2xl mx-auto"
+              className="mt-12 max-w-md mx-auto"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.15 }}
             >
-              {/* Request a Quote */}
-              <Link href="/contact?type=quote" className="group block">
+              <Link href="/contact" className="group block">
                 <div className="rounded-2xl bg-navy-950 p-8 text-center transition-all duration-500 hover:shadow-xl hover:shadow-navy-900/20">
                   <div className="w-12 h-12 rounded-xl bg-gold-500/10 flex items-center justify-center mx-auto mb-4">
-                    <DollarSign size={22} className="text-gold-400" />
+                    <FileText size={22} className="text-gold-400" />
                   </div>
                   <h3 className="text-lg font-semibold text-white tracking-tight">
-                    Request a Quote
+                    Request Information
                   </h3>
                   <p className="mt-2 text-sm text-slate-400 leading-relaxed">
-                    Volume pricing for facilities and health systems.
+                    Evaluation and evidence information for facilities and
+                    health systems.
                   </p>
                   <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-gold-400 group-hover:text-gold-300 transition-colors">
-                    Get Pricing
-                    <ArrowRight
-                      size={14}
-                      className="transition-transform group-hover:translate-x-0.5"
-                    />
-                  </span>
-                </div>
-              </Link>
-
-              {/* Request a Sample */}
-              <Link href="/contact?type=sample" className="group block">
-                <div className="rounded-2xl border border-slate-200 bg-white p-8 text-center transition-all duration-500 hover:shadow-xl hover:shadow-navy-900/5 hover:border-gold-200">
-                  <div className="w-12 h-12 rounded-xl bg-navy-950 flex items-center justify-center mx-auto mb-4">
-                    <Package size={22} className="text-gold-400" />
-                  </div>
-                  <h3 className="text-lg font-semibold text-navy-900 tracking-tight">
-                    Request a Sample
-                  </h3>
-                  <p className="mt-2 text-sm text-slate-500 leading-relaxed">
-                    Free evaluation kits for clinical assessment.
-                  </p>
-                  <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-navy-900 group-hover:text-gold-600 transition-colors">
-                    Start Evaluation
+                    Get in Touch
                     <ArrowRight
                       size={14}
                       className="transition-transform group-hover:translate-x-0.5"
@@ -1124,12 +542,12 @@ export default function ProcurementPage() {
             >
               <div className="flex items-center gap-2 text-sm text-slate-500">
                 <Mail size={15} className="text-gold-500" />
-                <span>Procurement Inquiries: </span>
+                <span>Inquiries: </span>
                 <a
-                  href="mailto:procurement@lubecision.com"
+                  href="mailto:info@lubecision.com"
                   className="font-semibold text-navy-900 hover:text-gold-600 transition-colors"
                 >
-                  procurement@lubecision.com
+                  info@lubecision.com
                 </a>
               </div>
             </motion.div>

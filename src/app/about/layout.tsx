@@ -3,11 +3,11 @@ import type { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'About Lubecision — Our Mission & Story',
   description:
-    'Lubecision is dedicated to surgical excellence through precision-engineered anti-stick solutions for electrosurgery. Learn about our mission, values, and unwavering commitment to solving eschar buildup — one critical problem, perfected.',
+    'Lubecision is a focused company developing an investigational single-use phospholipid anti-stick solution for electrosurgical and robotic instrument tips. Learn about our mission, our team, and our work toward FDA 510(k) clearance.',
   openGraph: {
     title: 'About Lubecision — Our Mission & Story',
     description:
-      'Dedicated to surgical excellence. One company, one mission: eliminating eschar buildup on electrosurgical instruments through precision-engineered solutions.',
+      'A focused company developing an investigational anti-stick solution for electrosurgical and robotic instrument tips. In development; pursuing FDA 510(k) clearance.',
   },
 };
 

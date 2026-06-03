@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
+import { CookieConsent } from "@/components/CookieConsent";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -12,18 +13,18 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL("https://lubecision.com"),
   title: {
-    default: "Lubecision | Advanced Anti-Stick Solution for Electrosurgery",
+    default: "Lubecision | Anti-Stick Solution for Electrosurgery & Robotic Surgery",
     template: "%s | Lubecision",
   },
   description:
-    "Lubecision is a next-generation anti-stick phospholipid solution engineered to eliminate eschar buildup on electrosurgical instruments. Reduce OR time, improve outcomes, and optimize every procedure.",
+    "Lubecision is an investigational single-use phospholipid anti-stick solution in development for electrosurgical and da Vinci robotic instrument tips. We are pursuing FDA 510(k) clearance; the device is not yet cleared or available for sale.",
   keywords: [
     "anti-stick solution",
     "electrosurgical",
-    "eschar prevention",
+    "eschar buildup",
     "surgical instrument lubricant",
     "phospholipid solution",
-    "operating room efficiency",
+    "operating room",
     "electrosurgery",
     "cautery tip cleaner",
     "AORN guidelines",
@@ -35,9 +36,9 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "https://lubecision.com",
     siteName: "Lubecision",
-    title: "Lubecision | Advanced Anti-Stick Solution for Electrosurgery",
+    title: "Lubecision | Anti-Stick Solution for Electrosurgery & Robotic Surgery",
     description:
-      "Next-generation anti-stick phospholipid solution engineered to eliminate eschar buildup. Trusted by surgical teams nationwide.",
+      "An investigational single-use phospholipid anti-stick solution in development for electrosurgical and robotic instrument tips. Pursuing FDA 510(k) clearance.",
     images: [
       {
         url: "/og-image.png",
@@ -49,9 +50,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Lubecision | Advanced Anti-Stick Solution for Electrosurgery",
+    title: "Lubecision | Anti-Stick Solution for Electrosurgery & Robotic Surgery",
     description:
-      "Next-generation anti-stick phospholipid solution engineered to eliminate eschar buildup.",
+      "An investigational single-use phospholipid anti-stick solution in development. Pursuing FDA 510(k) clearance; not yet cleared or available for sale.",
   },
   robots: {
     index: true,
@@ -71,20 +72,20 @@ const jsonLd = {
   '@type': 'MedicalDevice',
   name: 'Lubecision Anti-Stick Solution',
   description:
-    'Next-generation anti-stick phospholipid solution engineered to eliminate eschar buildup on electrosurgical instruments. 510(k) submission pending FDA clearance.',
+    'An investigational single-use phospholipid anti-stick solution in development for electrosurgical and robotic instrument tips. Not cleared or approved by the FDA; not available for sale.',
   manufacturer: {
     '@type': 'Organization',
     name: 'Lubecision',
     url: 'https://lubecision.com',
     contactPoint: {
       '@type': 'ContactPoint',
-      contactType: 'sales',
+      contactType: 'customer support',
       email: 'info@lubecision.com',
     },
   },
   url: 'https://lubecision.com/product',
   category: 'Electrosurgical Accessories',
-  regulatoryStatus: 'Pending FDA 510(k) Clearance',
+  regulatoryStatus: 'In development; not FDA cleared',
 };
 
 export default function RootLayout({
@@ -113,6 +114,7 @@ export default function RootLayout({
         <Navigation />
         <main id="main-content">{children}</main>
         <Footer />
+        <CookieConsent />
       </body>
     </html>
   );

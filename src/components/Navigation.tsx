@@ -119,27 +119,10 @@ export function Navigation() {
             })}
           </div>
 
-          {/* Desktop CTAs */}
+          {/* Desktop CTA */}
           <div className="hidden lg:flex items-center gap-3">
             <Link
-              href="/contact?type=sample"
-              className="relative px-5 py-2 text-[13px] font-semibold tracking-wide rounded-full border transition-all duration-300 hover:shadow-lg"
-              style={{
-                borderColor: '#D4A843',
-                color: isScrolled ? '#D4A843' : '#D4A843',
-                backgroundColor: 'transparent',
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = 'rgba(212,168,67,0.08)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = 'transparent';
-              }}
-            >
-              Request Sample
-            </Link>
-            <Link
-              href="/contact?type=quote"
+              href="/contact"
               className="relative px-5 py-2 text-[13px] font-semibold tracking-wide rounded-full transition-all duration-300 hover:shadow-lg hover:shadow-gold-500/20"
               style={{
                 backgroundColor: '#D4A843',
@@ -152,7 +135,7 @@ export function Navigation() {
                 e.currentTarget.style.backgroundColor = '#D4A843';
               }}
             >
-              Get a Quote
+              Request Information
             </Link>
           </div>
 
@@ -238,7 +221,7 @@ export function Navigation() {
                 })}
               </nav>
 
-              {/* Mobile CTAs */}
+              {/* Mobile CTA */}
               <motion.div
                 className="flex flex-col gap-3 mt-10 w-full max-w-xs"
                 initial={{ opacity: 0, y: 20 }}
@@ -247,16 +230,10 @@ export function Navigation() {
                 transition={{ duration: 0.3, delay: 0.35, ease: 'easeOut' }}
               >
                 <Link
-                  href="/contact?type=sample"
-                  className="flex items-center justify-center px-6 py-3.5 text-sm font-semibold tracking-wide rounded-full border border-gold-500 text-gold-600 hover:bg-gold-50 transition-colors duration-200"
-                >
-                  Request Sample
-                </Link>
-                <Link
-                  href="/contact?type=quote"
+                  href="/contact"
                   className="flex items-center justify-center px-6 py-3.5 text-sm font-semibold tracking-wide rounded-full bg-gold-500 text-navy-900 hover:bg-gold-400 transition-colors duration-200"
                 >
-                  Get a Quote
+                  Request Information
                 </Link>
               </motion.div>
 

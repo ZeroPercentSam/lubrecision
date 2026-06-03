@@ -1,9 +1,9 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Contact Us — Request a Sample or Quote',
+  title: 'Contact Us — Request Information',
   description:
-    'Request a free Lubecision evaluation kit, get a volume quote, or speak with our clinical team. We respond within 24 hours.',
+    'Request information about Lubecision, an investigational single-use anti-stick solution in development for electrosurgical and robotic instrument tips. We aim to respond within a few business days.',
 };
 
 export default function ContactLayout({

@@ -1,13 +1,13 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'For Surgeons — Optimize Your Electrosurgical Workflow',
+  title: 'For Surgeons — Electrosurgical & Robotic Workflow',
   description:
-    'Lubecision eliminates eschar buildup to deliver uninterrupted electrosurgical performance. Reduce case times by up to 40 minutes, maintain consistent current flow, and optimize your procedural workflow with a single pre-operative application.',
+    'Lubecision is an investigational single-use phospholipid anti-stick solution in development, designed to address eschar and tissue sticking on electrosurgical and robotic instrument tips. In development; pursuing FDA 510(k) clearance; not yet cleared or available for sale.',
   openGraph: {
-    title: 'For Surgeons — Optimize Your Electrosurgical Workflow',
+    title: 'For Surgeons — Electrosurgical & Robotic Workflow',
     description:
-      'Eliminate eschar buildup, reduce surgical pauses, and maintain uninterrupted procedural focus with Lubecision anti-stick solution.',
+      'An investigational phospholipid anti-stick solution in development, designed to address eschar and tissue sticking on instrument tips.',
   },
 };
 

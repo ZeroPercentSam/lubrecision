@@ -1,18 +1,15 @@
 'use client';
 
-import { useRef, useEffect, useState } from 'react';
+import { useRef, useState } from 'react';
 import Link from 'next/link';
 import {
   motion,
-  useInView,
   useScroll,
   useTransform,
-  useMotionValue,
-  animate,
 } from 'framer-motion';
+import { FDA_STATUS_SHORT, FDA_STATUS_LINE } from '@/lib/compliance';
 import {
   Clock,
-  DollarSign,
   AlertTriangle,
   Wrench,
   ShieldCheck,
@@ -21,55 +18,10 @@ import {
   HeartPulse,
   ArrowRight,
   CheckCircle2,
-  XCircle,
   Stethoscope,
   Building2,
   ChevronRight,
 } from 'lucide-react';
-
-/* ─────────────── Animated Counter ─────────────── */
-function Counter({
-  from = 0,
-  to,
-  duration = 2,
-  prefix = '',
-  suffix = '',
-  decimals = 0,
-}: {
-  from?: number;
-  to: number;
-  duration?: number;
-  prefix?: string;
-  suffix?: string;
-  decimals?: number;
-}) {
-  const nodeRef = useRef<HTMLSpanElement>(null);
-  const inView = useInView(nodeRef, { once: true, margin: '-50px' });
-  const motionVal = useMotionValue(from);
-
-  useEffect(() => {
-    if (!inView) return;
-    const controls = animate(motionVal, to, {
-      duration,
-      ease: 'easeOut',
-      onUpdate: (v) => {
-        if (nodeRef.current) {
-          nodeRef.current.textContent =
-            prefix + v.toFixed(decimals) + suffix;
-        }
-      },
-    });
-    return controls.stop;
-  }, [inView, motionVal, to, duration, prefix, suffix, decimals]);
-
-  return (
-    <span ref={nodeRef}>
-      {prefix}
-      {from.toFixed(decimals)}
-      {suffix}
-    </span>
-  );
-}
 
 /* ──────────── Floating Geometric Shapes ──────────── */
 function FloatingShapes() {
@@ -154,16 +106,6 @@ function FloatingShapes() {
   );
 }
 
-/* ──────────────── Comparison Data ──────────────── */
-const comparisonData = [
-  { label: 'Eschar Buildup', without: 'Rapid accumulation', withL: 'Dramatically reduced' },
-  { label: 'Surgical Pauses', without: '5–12 per case', withL: 'Near zero' },
-  { label: 'Procedure Time', without: 'Extended 10–40 min', withL: 'Optimized flow' },
-  { label: 'Instrument Wear', without: 'Accelerated degradation', withL: 'Preserved longevity' },
-  { label: 'Current Flow', without: 'Impeded by buildup', withL: 'Consistent performance' },
-  { label: 'AORN Compliance', without: 'Not addressed', withL: 'Guideline 3.11.1 aligned' },
-];
-
 /* ════════════════════════════════════════════════════
    HOME PAGE
    ════════════════════════════════════════════════════ */
@@ -201,13 +143,13 @@ export default function Home() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.35 }}
           >
-            Eschar Buildup Costs Your OR{' '}
+            Rethinking{' '}
             <span className="text-gradient-gold font-normal">
-              $2,400+
+              Eschar
             </span>{' '}
-            Per Case.
+            on Surgical Tips.
             <br />
-            <span className="text-white/90">We Engineered the Solution.</span>
+            <span className="text-white/90">A New Approach in Development.</span>
           </motion.h1>
 
           {/* Subheadline */}
@@ -217,9 +159,9 @@ export default function Home() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.55 }}
           >
-            Lubecision is a precision-engineered phospholipid anti-stick solution
-            that eliminates eschar buildup, reduces surgical pauses, and optimizes
-            every electrosurgical procedure.
+            Lubecision is a phospholipid anti-stick solution in development,
+            designed to address eschar buildup on electrosurgical and da Vinci&reg;
+            robotic instrument tips.
           </motion.p>
 
           {/* CTAs */}
@@ -230,10 +172,10 @@ export default function Home() {
             transition={{ duration: 0.6, delay: 0.7 }}
           >
             <Link
-              href="/contact?type=sample"
+              href="/contact"
               className="group inline-flex items-center gap-2.5 px-8 py-4 text-sm font-semibold tracking-wide rounded-full bg-gold-500 text-navy-950 hover:bg-gold-400 transition-all duration-300 hover:shadow-lg hover:shadow-gold-500/25"
             >
-              Request a Free Sample
+              Request Information
               <ArrowRight
                 size={16}
                 className="transition-transform group-hover:translate-x-0.5"
@@ -258,7 +200,7 @@ export default function Home() {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 1.0 }}
           >
-            {['510(k) Pending', 'AORN Aligned', 'Sterile Single-Use'].map(
+            {[FDA_STATUS_SHORT, 'AORN-Informed', 'Sterile Single-Use'].map(
               (badge) => (
                 <div
                   key={badge}
@@ -293,13 +235,14 @@ export default function Home() {
               The Problem
             </span>
             <h2 className="mt-4 text-3xl md:text-4xl lg:text-5xl font-light tracking-tight text-navy-900">
-              The Hidden Cost of{' '}
+              The Challenge of{' '}
               <span className="text-gradient font-normal">Eschar</span>
             </h2>
             <p className="mt-5 text-lg text-slate-500 leading-relaxed">
-              Every electrosurgical procedure faces the same challenge: eschar
-              buildup on electrode tips. The result is a cascade of costly
-              disruptions that affect your entire OR workflow.
+              Electrosurgical procedures share a common challenge: eschar —
+              charred tissue — can accumulate on electrode tips as they cut and
+              coagulate. Managing that buildup is a familiar part of perioperative
+              workflow.
             </p>
           </motion.div>
 
@@ -307,40 +250,40 @@ export default function Home() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mt-14">
             {[
               {
-                icon: DollarSign,
-                stat: '$36–62',
-                label: 'Cost Per OR Minute',
-                desc: 'Every surgical pause to clean eschar directly drains your operating budget.',
-                color: 'text-red-500',
-                bg: 'bg-red-50',
-                border: 'border-red-100',
-              },
-              {
                 icon: Clock,
-                stat: '5–12',
-                label: 'Pauses Per Procedure',
-                desc: 'Repeated hand-backs to scrub tips disrupt surgical flow and extend case time.',
+                stat: 'OR Time',
+                label: 'Workflow Interruptions',
+                desc: 'Pausing to clean or swap eschar-laden tips can interrupt surgical flow.',
                 color: 'text-amber-600',
                 bg: 'bg-amber-50',
                 border: 'border-amber-100',
               },
               {
                 icon: AlertTriangle,
-                stat: '↑ Risk',
-                label: 'Complication Potential',
-                desc: 'Eschar buildup increases impedance, requiring higher power and risking thermal injury.',
+                stat: 'Impedance',
+                label: 'Electrosurgical Performance',
+                desc: 'Charred tissue on a tip can raise impedance, affecting consistent energy delivery.',
                 color: 'text-orange-500',
                 bg: 'bg-orange-50',
                 border: 'border-orange-100',
               },
               {
                 icon: Wrench,
-                stat: '3–5×',
-                label: 'Faster Tip Degradation',
-                desc: 'Repeated scrubbing and charring accelerates instrument wear and replacement costs.',
+                stat: 'Tip Wear',
+                label: 'Instrument Care',
+                desc: 'Repeated scrubbing and charring is associated with wear on instrument tips.',
                 color: 'text-slate-600',
                 bg: 'bg-slate-50',
                 border: 'border-slate-200',
+              },
+              {
+                icon: ShieldCheck,
+                stat: 'Anti-Stick',
+                label: 'The Opportunity',
+                desc: 'An anti-stick approach aims to keep tips cleaner through a procedure.',
+                color: 'text-navy-700',
+                bg: 'bg-navy-50',
+                border: 'border-navy-100',
               },
             ].map((card, i) => (
               <motion.div
@@ -369,17 +312,6 @@ export default function Home() {
             ))}
           </div>
 
-          {/* Anchoring line */}
-          <motion.p
-            className="text-center mt-12 text-slate-400 text-sm"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-          >
-            Based on published data from JAMA Surgery, AORN, and perioperative
-            cost analyses.
-          </motion.p>
         </div>
       </section>
 
@@ -410,17 +342,18 @@ export default function Home() {
                 The Solution
               </span>
               <h2 className="mt-4 text-3xl md:text-4xl lg:text-[2.75rem] font-light tracking-tight text-navy-900 leading-tight">
-                Precision-Engineered
+                A Phospholipid
                 <br />
                 <span className="text-gradient font-normal">
-                  Anti-Stick Technology
+                  Anti-Stick Approach
                 </span>
               </h2>
               <p className="mt-5 text-lg text-slate-500 leading-relaxed">
-                Lubecision utilizes an advanced biocompatible phospholipid
-                formulation — similar to compounds the human body produces
-                naturally — to create a protective barrier on electrosurgical
-                instrument tips.
+                Lubecision is built around a phospholipid formulation — a class of
+                compounds related to those the body produces naturally. The
+                underlying science suggests phospholipids can form a barrier layer
+                on instrument tips; Lubecision is designed to apply that approach
+                to electrosurgical and robotic instruments.
               </p>
 
               {/* Benefits */}
@@ -428,23 +361,23 @@ export default function Home() {
                 {[
                   {
                     icon: ShieldCheck,
-                    title: 'Eliminates Eschar',
-                    desc: 'Dramatically reduces tissue buildup on electrode tips during procedures.',
+                    title: 'Designed for Eschar',
+                    desc: 'Intended to help reduce tissue buildup on instrument tips during procedures.',
                   },
                   {
                     icon: Timer,
-                    title: 'Optimizes OR Time',
-                    desc: 'Fewer hand-backs means uninterrupted surgical flow and shorter cases.',
+                    title: 'Built for OR Workflow',
+                    desc: 'Designed so teams can keep tips cleaner with fewer interruptions.',
                   },
                   {
                     icon: FlaskConical,
-                    title: 'AORN Aligned',
-                    desc: 'Designed to support alignment with AORN Perioperative Practice Guidelines on electrosurgical safety.',
+                    title: 'AORN-Informed',
+                    desc: 'Developed with AORN surgical-energy-safety guidance in mind. AORN does not endorse or approve specific products.',
                   },
                   {
                     icon: HeartPulse,
-                    title: 'Biocompatible',
-                    desc: 'Non-toxic phospholipid formula. Sterile, single-use, ready to apply.',
+                    title: 'Single-Use Format',
+                    desc: 'Intended as a sterile, single-use, ready-to-apply phospholipid solution.',
                   },
                 ].map((benefit, i) => (
                   <motion.div
@@ -510,7 +443,7 @@ export default function Home() {
                       Sterile 4mL Solution + Applicator
                     </p>
                     <p className="mt-1 text-[11px] text-slate-400">
-                      Single-use · Ready to apply · Biocompatible
+                      Single-use · Ready to apply · Phospholipid-based
                     </p>
                   </div>
                 </div>
@@ -547,7 +480,7 @@ export default function Home() {
                     PHOSPHOLIPID
                   </p>
                   <p className="text-[9px] text-slate-400 mt-0.5">
-                    Biocompatible formula
+                    Phospholipid-based
                   </p>
                 </motion.div>
               </div>
@@ -572,14 +505,14 @@ export default function Home() {
               Robotic Surgery
             </span>
             <h2 className="mt-4 text-3xl md:text-4xl lg:text-5xl font-light tracking-tight text-navy-900">
-              Essential for{' '}
-              <span className="text-gradient font-normal">da Vinci® Procedures</span>
+              Designed for{' '}
+              <span className="text-gradient font-normal">da Vinci&reg; Instruments</span>
             </h2>
             <p className="mt-5 text-lg text-slate-500 leading-relaxed">
-              With over 2.7 million robotic surgeries performed annually and growing
-              17% year-over-year, da Vinci® systems are transforming the OR — but
-              their instruments lack anti-stick coatings. Lubecision fills this
-              critical gap.
+              Robotic-assisted surgery is a large and growing part of the operating
+              room. Lubecision is designed for use with da Vinci&reg; robotic
+              instruments, applying its anti-stick approach to the same eschar
+              challenge surgeons manage in electrosurgery.
             </p>
           </motion.div>
 
@@ -599,15 +532,15 @@ export default function Home() {
                   {[
                     {
                       title: 'Surgeon Is at the Console',
-                      desc: 'Unlike open surgery, the surgeon cannot hand back instruments for quick cleaning. Every cleaning pause requires removing and reinserting instruments — disrupting the entire workflow.',
+                      desc: 'In robotic surgery the surgeon operates from the console rather than at the bedside. A cleaning pause typically means removing and reinserting instruments, which interrupts workflow.',
                     },
                     {
-                      title: 'Instruments Lack Anti-Stick Coating',
-                      desc: 'da Vinci instruments are engineered for precision articulation, not eschar prevention. Tissue adheres to instrument jaws and cautery tips throughout the procedure.',
+                      title: 'Eschar Affects Robotic Tips Too',
+                      desc: 'As in electrosurgery, tissue can adhere to instrument jaws and cautery tips through a procedure. Lubecision is designed for use with da Vinci® robotic instruments to help address this.',
                     },
                     {
-                      title: '$600–$3,500 Per Procedure in Instruments',
-                      desc: 'Robotic instrument costs far exceed traditional tools. Reducing eschar-related degradation extends instrument life and protects your facility\'s investment.',
+                      title: 'Instrument Care Matters',
+                      desc: 'Robotic instruments are a significant part of a facility\'s investment. An anti-stick approach is intended to help keep tips cleaner during use.',
                     },
                   ].map((item, i) => (
                     <motion.div
@@ -636,10 +569,10 @@ export default function Home() {
               viewport={{ once: true, margin: '-60px' }}
               transition={{ duration: 0.5, delay: 0.1 }}
             >
-              {/* Stats Grid */}
-              <div className="grid grid-cols-2 gap-4 mb-6">
+              {/* Stats Grid — neutral market context */}
+              <div className="grid grid-cols-2 gap-4">
                 {[
-                  { stat: '2.7M+', label: 'da Vinci Procedures in 2024' },
+                  { stat: '2.7M+', label: 'da Vinci® Procedures in 2024' },
                   { stat: '17%', label: 'Annual Growth Rate' },
                   { stat: '7,500+', label: 'Systems Installed Worldwide' },
                   { stat: '6+', label: 'Surgical Specialties' },
@@ -657,32 +590,10 @@ export default function Home() {
                   </motion.div>
                 ))}
               </div>
-
-              {/* Testimonial */}
-              <motion.div
-                className="rounded-xl border border-gold-200 bg-gold-50/40 p-6"
-                initial={{ opacity: 0, y: 12 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.3 }}
-              >
-                <svg className="w-6 h-6 text-gold-300 mb-2" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M4.583 17.321C3.553 16.227 3 15 3 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311C9.591 11.69 11.072 13.22 11.072 15.103c0 .99-.378 1.941-1.05 2.642-.674.7-1.587 1.094-2.54 1.094-1.076 0-2.21-.545-2.899-1.518zM16.583 17.321C15.553 16.227 15 15 15 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.986.179 3.467 1.709 3.467 3.592 0 .99-.378 1.941-1.05 2.642-.674.7-1.587 1.094-2.54 1.094-1.076 0-2.21-.545-2.899-1.518z" />
-                </svg>
-                <p className="text-sm text-slate-600 leading-relaxed italic">
-                  &ldquo;We use the product for our robotically assisted laparoscopic
-                  cases. It reduces tissue sticking to the tips and greatly reduces
-                  charring of the cautery tips. Very time beneficial since we do not
-                  have to stop and remove instruments to continually clean
-                  them.&rdquo;
-                </p>
-                <p className="mt-3 text-xs font-semibold text-navy-900">
-                  Robotic Surgery Team
-                </p>
-                <p className="text-[11px] text-slate-400">
-                  Clinical Feedback · Robotically Assisted Laparoscopic Cases
-                </p>
-              </motion.div>
+              <p className="mt-4 text-[11px] text-slate-400 leading-relaxed">
+                da Vinci® installed base and procedure-growth figures per Intuitive
+                Surgical 2024 annual reporting. Provided as general market context.
+              </p>
             </motion.div>
           </div>
 
@@ -729,45 +640,46 @@ export default function Home() {
             transition={{ duration: 0.6 }}
           >
             <span className="text-xs font-semibold tracking-[0.2em] uppercase text-gold-500">
-              The Comparison
+              The Approach
             </span>
             <h2 className="mt-4 text-3xl md:text-4xl lg:text-5xl font-light tracking-tight text-white">
-              Traditional Approach{' '}
-              <span className="text-slate-500">vs.</span>{' '}
-              <span className="text-gradient-gold font-normal">Lubecision</span>
+              The Eschar Challenge, and{' '}
+              <span className="text-gradient-gold font-normal">Our Approach</span>
             </h2>
           </motion.div>
 
           {/* Side-by-side cards */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12">
-            {/* Without Treatment Card */}
+            {/* The Challenge Card */}
             <motion.div
-              className="rounded-2xl border border-red-500/20 bg-red-950/20 p-8"
+              className="rounded-2xl border border-white/10 bg-white/[0.03] p-8"
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: '-60px' }}
               transition={{ duration: 0.5 }}
             >
               <div className="flex items-center gap-2.5 mb-6">
-                <XCircle size={20} className="text-red-400" />
-                <h3 className="text-sm font-semibold tracking-wider text-red-400 uppercase">
-                  Without Treatment
+                <AlertTriangle size={20} className="text-slate-300" />
+                <h3 className="text-sm font-semibold tracking-wider text-slate-300 uppercase">
+                  The Eschar Challenge
                 </h3>
               </div>
               <div className="space-y-4">
-                {comparisonData.map((row) => (
-                  <div key={row.label} className="flex items-start gap-3">
-                    <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-red-400/60 shrink-0" />
-                    <div>
-                      <span className="text-sm font-medium text-white/60">{row.label}: </span>
-                      <span className="text-sm text-red-300/80">{row.without}</span>
-                    </div>
+                {[
+                  'Charred tissue can accumulate on electrosurgical and robotic instrument tips during a procedure.',
+                  'Buildup can raise impedance, which may affect consistent energy delivery.',
+                  'Keeping tips clean can require pauses that interrupt surgical workflow.',
+                  'Repeated cleaning and charring is associated with wear on instrument tips.',
+                ].map((line) => (
+                  <div key={line} className="flex items-start gap-3">
+                    <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-slate-400/60 shrink-0" />
+                    <span className="text-sm text-slate-300/90">{line}</span>
                   </div>
                 ))}
               </div>
             </motion.div>
 
-            {/* With Lubecision Card */}
+            {/* Our Approach Card */}
             <motion.div
               className="rounded-2xl border border-gold-500/30 bg-gold-500/5 p-8"
               initial={{ opacity: 0, x: 20 }}
@@ -776,32 +688,45 @@ export default function Home() {
               transition={{ duration: 0.5, delay: 0.1 }}
             >
               <div className="flex items-center gap-2.5 mb-6">
-                <CheckCircle2 size={20} className="text-gold-400" />
+                <FlaskConical size={20} className="text-gold-400" />
                 <h3 className="text-sm font-semibold tracking-wider text-gold-400 uppercase">
-                  With Lubecision
+                  The Lubecision Approach
                 </h3>
               </div>
               <div className="space-y-4">
-                {comparisonData.map((row) => (
-                  <div key={row.label} className="flex items-start gap-3">
+                {[
+                  'A phospholipid solution designed to form a barrier layer on instrument tips.',
+                  'Intended to help reduce tissue buildup so tips stay cleaner through a procedure.',
+                  'Designed for use with electrosurgical and da Vinci® robotic instruments.',
+                  'Intended as a sterile, single-use, ready-to-apply format.',
+                ].map((line) => (
+                  <div key={line} className="flex items-start gap-3">
                     <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-gold-400/60 shrink-0" />
-                    <div>
-                      <span className="text-sm font-medium text-white/60">{row.label}: </span>
-                      <span className="text-sm text-gold-300">{row.withL}</span>
-                    </div>
+                    <span className="text-sm text-gold-200/90">{line}</span>
                   </div>
                 ))}
               </div>
             </motion.div>
           </div>
 
-          {/* Bottom nudge */}
-          <motion.div
-            className="text-center mt-10"
+          {/* Investigational status line */}
+          <motion.p
+            className="text-center mt-10 text-sm text-slate-400 max-w-2xl mx-auto leading-relaxed"
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.3 }}
+          >
+            {FDA_STATUS_LINE}
+          </motion.p>
+
+          {/* Bottom nudge */}
+          <motion.div
+            className="text-center mt-8"
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.4 }}
           >
             <Link
               href="/product"
@@ -843,9 +768,9 @@ export default function Home() {
                 </svg>
 
                 <blockquote className="text-xl md:text-2xl text-white font-light leading-relaxed">
-                  AORN Perioperative Practice Guidelines recognize anti-stick
-                  lubricants as part of electrosurgical safety and instrument-care
-                  best practice.
+                  Lubecision is being developed with AORN surgical-energy-safety
+                  guidance in mind. AORN does not endorse or approve specific
+                  products.
                 </blockquote>
                 <div className="mt-6 flex items-center gap-3">
                   <div className="w-px h-8 bg-gold-500/40" />
@@ -854,7 +779,7 @@ export default function Home() {
                       AORN Guidelines for Perioperative Practice
                     </p>
                     <p className="text-xs text-slate-400 mt-0.5">
-                      Electrosurgical Safety
+                      Surgical Energy Safety
                     </p>
                   </div>
                 </div>
@@ -862,18 +787,13 @@ export default function Home() {
             </div>
           </motion.div>
 
-          {/* Stats Row */}
+          {/* Stats Row — neutral market & product context */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16">
             {[
-              {
-                value: 6000,
-                suffix: '+',
-                label: 'da Vinci Systems Worldwide',
-                prefix: '',
-              },
-              { value: 17, suffix: '%', label: 'Annual Robotic-Surgery Growth', prefix: '' },
-              { value: 4, suffix: 'mL', label: 'Per Application', prefix: '' },
-              { value: 1, suffix: '', label: 'Singular Focus', prefix: '' },
+              { display: '6,000+', label: 'da Vinci® Systems Worldwide' },
+              { display: '17%', label: 'Annual Robotic-Surgery Growth' },
+              { display: '4mL', label: 'Per Application' },
+              { display: '1', label: 'Singular Focus' },
             ].map((stat, i) => (
               <motion.div
                 key={stat.label}
@@ -884,12 +804,7 @@ export default function Home() {
                 transition={{ duration: 0.5, delay: i * 0.1 }}
               >
                 <div className="text-3xl md:text-4xl font-light text-navy-900">
-                  <Counter
-                    to={stat.value}
-                    suffix={stat.suffix}
-                    prefix={stat.prefix}
-                    duration={2}
-                  />
+                  {stat.display}
                 </div>
                 <p className="mt-2 text-sm text-slate-400">{stat.label}</p>
               </motion.div>
@@ -897,8 +812,8 @@ export default function Home() {
           </div>
 
           <p className="mt-10 text-center text-xs text-slate-400">
-            da Vinci installed base and procedure-growth figures per Intuitive
-            Surgical 2024 annual reporting.
+            da Vinci® installed base and procedure-growth figures per Intuitive
+            Surgical 2024 annual reporting. Provided as general market context.
           </p>
         </div>
       </section>
@@ -919,7 +834,7 @@ export default function Home() {
               Built For You
             </span>
             <h2 className="mt-4 text-3xl md:text-4xl font-light tracking-tight text-navy-900">
-              Your Role. Your Benefits.
+              Your Role. Your Perspective.
             </h2>
           </motion.div>
 
@@ -946,11 +861,11 @@ export default function Home() {
                       Clinical Teams
                     </h3>
                     <p className="mt-3 text-slate-500 leading-relaxed max-w-sm">
-                      Optimize your surgical workflow. Eliminate disruptive eschar
-                      hand-backs and maintain uninterrupted procedural focus.
+                      Learn how Lubecision is designed to address eschar buildup
+                      and support uninterrupted procedural focus.
                     </p>
                     <div className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-navy-900 tracking-wide group-hover:text-gold-600 transition-colors">
-                      Explore Clinical Benefits
+                      Explore the Clinical Approach
                       <ArrowRight
                         size={16}
                         className="transition-transform group-hover:translate-x-1"
@@ -982,11 +897,11 @@ export default function Home() {
                       Administration
                     </h3>
                     <p className="mt-3 text-slate-500 leading-relaxed max-w-sm">
-                      Quantify the ROI. See how Lubecision reduces per-case costs,
-                      extends instrument life, and improves OR throughput.
+                      Understand the product format, intended single-use model, and
+                      how Lubecision is positioned for perioperative supply.
                     </p>
                     <div className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-navy-900 tracking-wide group-hover:text-gold-600 transition-colors">
-                      See Cost Analysis
+                      Learn More
                       <ArrowRight
                         size={16}
                         className="transition-transform group-hover:translate-x-1"
@@ -1016,48 +931,58 @@ export default function Home() {
               transition={{ duration: 0.6 }}
             >
               <span className="text-xs font-semibold tracking-[0.2em] uppercase text-gold-600">
-                Get Started
+                Stay Informed
               </span>
               <h2 className="mt-4 text-3xl md:text-4xl lg:text-5xl font-light tracking-tight text-navy-900">
-                Experience the Difference.
+                Follow Our Progress.
               </h2>
               <p className="mt-2 text-3xl md:text-4xl lg:text-5xl font-light tracking-tight text-gradient-gold">
-                Request Your Free Evaluation Kit.
+                Request Information.
               </p>
               <p className="mt-5 text-lg text-slate-500 max-w-xl mx-auto">
-                See why surgical teams are switching to Lubecision. We&apos;ll send you
-                a complimentary evaluation kit so you can experience the
-                performance firsthand.
+                Lubecision is in development. Share your email and we&apos;ll keep
+                you informed about our progress and how to get in touch.
               </p>
             </motion.div>
 
             {/* Email Capture */}
-            <motion.form
-              className="mt-10 flex flex-col sm:flex-row gap-3 max-w-lg mx-auto"
+            <motion.div
+              className="mt-10 max-w-lg mx-auto"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              onSubmit={(e) => {
-                e.preventDefault();
-                /* Placeholder — wire up to your backend */
-              }}
             >
-              <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="Enter your work email"
-                required
-                className="flex-1 px-5 py-3.5 rounded-full border border-slate-200 bg-white text-sm text-navy-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-gold-500/30 focus:border-gold-400 transition-all"
-              />
-              <button
-                type="submit"
-                className="px-8 py-3.5 text-sm font-semibold tracking-wide rounded-full bg-gold-500 text-navy-950 hover:bg-gold-400 transition-all duration-300 hover:shadow-lg hover:shadow-gold-500/25 whitespace-nowrap"
+              <form
+                className="flex flex-col sm:flex-row gap-3"
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  /* Placeholder — wire up to your backend */
+                }}
               >
-                Request Kit
-              </button>
-            </motion.form>
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="Enter your work email"
+                  required
+                  className="flex-1 px-5 py-3.5 rounded-full border border-slate-200 bg-white text-sm text-navy-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-gold-500/30 focus:border-gold-400 transition-all"
+                />
+                <button
+                  type="submit"
+                  className="px-8 py-3.5 text-sm font-semibold tracking-wide rounded-full bg-gold-500 text-navy-950 hover:bg-gold-400 transition-all duration-300 hover:shadow-lg hover:shadow-gold-500/25 whitespace-nowrap"
+                >
+                  Request Information
+                </button>
+              </form>
+              <p className="mt-3 text-xs text-slate-400">
+                By submitting, you agree to our{' '}
+                <a href="/legal/privacy" className="underline hover:text-gold-600 transition-colors">
+                  Privacy Policy
+                </a>
+                .
+              </p>
+            </motion.div>
 
             {/* Trust Badges */}
             <motion.div
@@ -1068,10 +993,10 @@ export default function Home() {
               transition={{ duration: 0.5, delay: 0.35 }}
             >
               {[
-                { icon: ShieldCheck, label: 'Sterile' },
-                { icon: FlaskConical, label: 'Single-Use' },
-                { icon: HeartPulse, label: 'Biocompatible' },
-                { icon: CheckCircle2, label: 'AORN Aligned' },
+                { icon: ShieldCheck, label: 'Sterile Single-Use' },
+                { icon: FlaskConical, label: 'Phospholipid-Based' },
+                { icon: HeartPulse, label: 'For Electrosurgical & Robotic Tips' },
+                { icon: CheckCircle2, label: 'AORN-Informed' },
               ].map((badge) => (
                 <div
                   key={badge.label}

@@ -8,7 +8,6 @@ import {
   Mail,
   MapPin,
   FlaskConical,
-  FileText,
   MessageSquare,
   ChevronRight,
   CheckCircle2,
@@ -17,6 +16,7 @@ import {
   User,
   Stethoscope,
 } from 'lucide-react';
+import { FDA_STATUS_LINE, REGULATORY_NOTICE, FORM_CONSENT } from '@/lib/compliance';
 
 const reveal = {
   hidden: { opacity: 0, y: 24 },
@@ -27,7 +27,7 @@ const reveal = {
   }),
 };
 
-type FormType = 'sample' | 'quote' | 'general';
+type FormType = 'evaluation' | 'general';
 
 export default function ContactPage() {
   return (
@@ -39,39 +39,38 @@ export default function ContactPage() {
 
 function ContactPageInner() {
   const searchParams = useSearchParams();
-  const [activeTab, setActiveTab] = useState<FormType>('sample');
+  const [activeTab, setActiveTab] = useState<FormType>('general');
   const [submitted, setSubmitted] = useState(false);
+  const [consent, setConsent] = useState(false);
 
   useEffect(() => {
     const type = searchParams.get('type');
-    if (type === 'sample' || type === 'quote' || type === 'general') {
-      setActiveTab(type);
+    // Map legacy/known params: sample → evaluation; anything else (incl. quote) → general.
+    if (type === 'sample' || type === 'evaluation') {
+      setActiveTab('evaluation');
+    } else {
+      setActiveTab('general');
     }
   }, [searchParams]);
 
   const tabs: { id: FormType; label: string; icon: typeof FlaskConical; desc: string }[] = [
     {
-      id: 'sample',
-      label: 'Request a Sample',
-      icon: FlaskConical,
-      desc: 'Get a free evaluation kit shipped to your facility',
-    },
-    {
-      id: 'quote',
-      label: 'Get a Quote',
-      icon: FileText,
-      desc: 'Volume pricing for your department or facility',
-    },
-    {
       id: 'general',
-      label: 'General Inquiry',
+      label: 'Request Information',
       icon: MessageSquare,
       desc: 'Questions, partnerships, or clinical support',
+    },
+    {
+      id: 'evaluation',
+      label: 'Request Evaluation Information',
+      icon: FlaskConical,
+      desc: 'Learn about evaluating Lubecision at your facility',
     },
   ];
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
+    if (!consent) return;
     setSubmitted(true);
   }
 
@@ -111,8 +110,8 @@ function ContactPageInner() {
               <span className="text-gradient font-normal">Connect</span>
             </h1>
             <p className="mt-4 text-lg text-slate-500 max-w-xl mx-auto">
-              Whether you&apos;re ready for a sample, need a quote, or have questions
-              — our team responds within 24 hours.
+              Questions about Lubecision or interested in evaluating it at your
+              facility? We aim to respond within a few business days.
             </p>
           </motion.div>
         </div>
@@ -162,11 +161,9 @@ function ContactPageInner() {
                     Thank You!
                   </h2>
                   <p className="mt-3 text-slate-500 max-w-md mx-auto">
-                    {activeTab === 'sample'
-                      ? 'Your evaluation kit request has been received. Our team will reach out within 24 hours to confirm shipping details.'
-                      : activeTab === 'quote'
-                        ? 'Your quote request has been submitted. A Lubecision account specialist will contact you within one business day.'
-                        : 'Your message has been received. We\'ll get back to you within 24 hours.'}
+                    {activeTab === 'evaluation'
+                      ? 'Your evaluation inquiry has been received. Our team will follow up with information about evaluating Lubecision. We aim to respond within a few business days.'
+                      : 'Your message has been received. We aim to respond within a few business days.'}
                   </p>
                   <button
                     onClick={() => setSubmitted(false)}
@@ -265,35 +262,17 @@ function ContactPageInner() {
                       </select>
                     </div>
 
-                    {/* Conditional: quantity for quotes */}
-                    {activeTab === 'quote' && (
-                      <div>
+                    {/* Conditional: what to evaluate (non-ordering, optional free text) */}
+                    {activeTab === 'evaluation' && (
+                      <div className="sm:col-span-2">
                         <label className="block text-xs font-semibold tracking-wider uppercase text-navy-900 mb-2">
-                          Estimated Annual Volume
+                          What You&apos;d Like to Evaluate
                         </label>
-                        <select className="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm text-navy-900 focus:outline-none focus:ring-2 focus:ring-gold-500/20 focus:border-gold-400 transition-all bg-white">
-                          <option value="">Select range</option>
-                          <option>1–100 units</option>
-                          <option>100–500 units</option>
-                          <option>500–2,000 units</option>
-                          <option>2,000–10,000 units</option>
-                          <option>10,000+ units</option>
-                        </select>
-                      </div>
-                    )}
-
-                    {/* Conditional: sample count */}
-                    {activeTab === 'sample' && (
-                      <div>
-                        <label className="block text-xs font-semibold tracking-wider uppercase text-navy-900 mb-2">
-                          Evaluation Kits Needed
-                        </label>
-                        <select className="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm text-navy-900 focus:outline-none focus:ring-2 focus:ring-gold-500/20 focus:border-gold-400 transition-all bg-white">
-                          <option>1 kit (20 units)</option>
-                          <option>2 kits (40 units)</option>
-                          <option>3 kits (60 units)</option>
-                          <option>Custom quantity</option>
-                        </select>
+                        <input
+                          type="text"
+                          className="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm text-navy-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-gold-500/20 focus:border-gold-400 transition-all"
+                          placeholder="Specialties, procedures, or use cases of interest (optional)"
+                        />
                       </div>
                     )}
 
@@ -307,26 +286,47 @@ function ContactPageInner() {
                         required={activeTab === 'general'}
                         className="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm text-navy-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-gold-500/20 focus:border-gold-400 transition-all resize-none"
                         placeholder={
-                          activeTab === 'sample'
-                            ? 'Any specific specialties or procedures you plan to evaluate?'
-                            : activeTab === 'quote'
-                              ? 'GPO affiliation, shipping preferences, or other requirements...'
-                              : 'How can we help?'
+                          activeTab === 'evaluation'
+                            ? 'Anything else our team should know?'
+                            : 'How can we help?'
                         }
                       />
                     </div>
                   </div>
+
+                  {/* Investigational-device disclaimer */}
+                  <p className="mt-6 text-xs leading-relaxed text-slate-500">
+                    {FDA_STATUS_LINE}
+                  </p>
+
+                  {/* Privacy consent */}
+                  <label className="mt-5 flex items-start gap-3 text-xs leading-relaxed text-slate-500">
+                    <input
+                      type="checkbox"
+                      required
+                      checked={consent}
+                      onChange={(e) => setConsent(e.target.checked)}
+                      className="mt-0.5 h-4 w-4 shrink-0 rounded border-slate-300 text-gold-500 focus:ring-gold-500/30"
+                    />
+                    <span>
+                      {FORM_CONSENT}{' '}
+                      <Link
+                        href="/legal/privacy"
+                        className="text-gold-600 hover:text-gold-500 underline underline-offset-2"
+                      >
+                        Privacy Policy
+                      </Link>
+                    </span>
+                  </label>
 
                   <button
                     type="submit"
                     className="mt-6 group inline-flex items-center gap-2.5 px-8 py-3.5 text-sm font-semibold tracking-wide rounded-full bg-gold-500 text-navy-950 hover:bg-gold-400 transition-all duration-300 hover:shadow-lg hover:shadow-gold-500/20"
                   >
                     <Send size={15} />
-                    {activeTab === 'sample'
-                      ? 'Request Evaluation Kit'
-                      : activeTab === 'quote'
-                        ? 'Submit Quote Request'
-                        : 'Send Message'}
+                    {activeTab === 'evaluation'
+                      ? 'Request Evaluation Information'
+                      : 'Request Information'}
                   </button>
                 </motion.form>
               )}
@@ -349,15 +349,6 @@ function ContactPageInner() {
                     </div>
                     info@lubecision.com
                   </a>
-                  <a
-                    href="mailto:procurement@lubecision.com"
-                    className="flex items-center gap-3 text-sm text-slate-500 hover:text-gold-600 transition-colors"
-                  >
-                    <div className="w-9 h-9 rounded-lg bg-navy-950 flex items-center justify-center shrink-0">
-                      <Mail size={14} className="text-gold-400" />
-                    </div>
-                    procurement@lubecision.com
-                  </a>
                   <div className="flex items-center gap-3 text-sm text-slate-500">
                     <div className="w-9 h-9 rounded-lg bg-navy-950 flex items-center justify-center shrink-0">
                       <MapPin size={14} className="text-gold-400" />
@@ -374,9 +365,9 @@ function ContactPageInner() {
                 </h3>
                 <div className="space-y-3">
                   {[
-                    { icon: Stethoscope, label: 'Surgeons & Clinicians', desc: 'Evaluation kits & clinical support' },
-                    { icon: Building2, label: 'Procurement Teams', desc: 'Volume pricing & GPO contracts' },
-                    { icon: User, label: 'OR Directors', desc: 'Workflow optimization & ROI data' },
+                    { icon: Stethoscope, label: 'Surgeons & Clinicians', desc: 'Product information & clinical questions' },
+                    { icon: Building2, label: 'Supply Chain Teams', desc: 'Development status & general inquiries' },
+                    { icon: User, label: 'OR Directors', desc: 'Workflow questions & evaluation interest' },
                   ].map((item) => (
                     <div key={item.label} className="flex items-start gap-3">
                       <item.icon size={16} className="text-gold-400 mt-0.5 shrink-0" />
@@ -391,12 +382,18 @@ function ContactPageInner() {
 
               {/* Response time */}
               <div className="rounded-2xl border border-gold-200 bg-gold-50/50 p-7 text-center">
-                <p className="text-3xl font-light text-gold-700">&lt;24h</p>
-                <p className="mt-1 text-sm text-gold-600 font-medium">
-                  Average Response Time
+                <p className="text-lg font-light text-gold-700">
+                  We aim to respond within a few business days.
                 </p>
                 <p className="mt-2 text-xs text-gold-500/80">
                   Business hours · Monday–Friday
+                </p>
+              </div>
+
+              {/* Regulatory notice */}
+              <div className="rounded-2xl border border-slate-200 bg-white p-7">
+                <p className="text-xs leading-relaxed text-slate-500">
+                  {REGULATORY_NOTICE}
                 </p>
               </div>
             </div>

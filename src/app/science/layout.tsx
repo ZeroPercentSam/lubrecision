@@ -1,13 +1,13 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Science & Technology — Clinical Evidence for Anti-Stick Solutions',
+  title: 'Science & Technology — The Phospholipid Anti-Stick Approach',
   description:
-    'Explore the clinical evidence, AORN guideline compliance, and phospholipid science behind Lubecision anti-stick solution for electrosurgery. Published studies, performance data, and safety profile.',
+    'Explore the phospholipid science behind Lubecision and the published research on anti-stick solutions as a product class, with context on AORN surgical-energy-safety guidance. In development; pursuing FDA 510(k) clearance.',
   openGraph: {
     title: 'Science & Technology — Lubecision',
     description:
-      'Clinical evidence, AORN compliance, and phospholipid science supporting Lubecision anti-stick solution for electrosurgical instruments.',
+      'The phospholipid science behind Lubecision and published research on the anti-stick product class. In development; pursuing FDA 510(k) clearance.',
   },
 };
 

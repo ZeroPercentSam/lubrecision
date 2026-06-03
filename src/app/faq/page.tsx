@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronRight, ChevronDown, ArrowRight, Search } from 'lucide-react';
+import { FDA_STATUS_LINE, MANUFACTURING_INTENT, AORN_NOTE } from '@/lib/compliance';
 
 interface FAQItem {
   question: string;
@@ -17,19 +18,19 @@ const faqs: FAQItem[] = [
     category: 'Product',
     question: 'What is Lubecision?',
     answer:
-      'Lubecision is a precision-engineered anti-stick phospholipid solution designed for electrosurgical instruments. It is applied to electrode tips before a procedure to prevent eschar (burned tissue) buildup, reducing surgical pauses and optimizing OR time.',
+      'Lubecision is a precision-engineered anti-stick phospholipid solution designed for electrosurgical instruments. It is intended to be applied to electrode tips before a procedure with the goal of reducing eschar (burned tissue) buildup. Its performance has not been established by the FDA.',
   },
   {
     category: 'Product',
     question: 'What is Lubecision made of?',
     answer:
-      'Lubecision is a non-toxic solution made from a biocompatible phospholipid — a naturally occurring fatty acid similar to what the human body produces. It is non-allergenic and designed to be safe for use in surgical environments.',
+      'Lubecision is formulated from a phospholipid — a naturally occurring class of molecule similar to compounds the human body produces. It is being developed for use in surgical environments; its biocompatibility and safety profile are being evaluated as part of the regulatory process and have not been established by the FDA.',
   },
   {
     category: 'Product',
     question: 'How does Lubecision work?',
     answer:
-      'Simply dip or apply the electrosurgical instrument tip into the Lubecision solution using the included sterile foam pad before the procedure begins. The phospholipid formula creates an invisible molecular barrier on the electrode surface that prevents tissue from adhering, dramatically reducing eschar buildup throughout the case.',
+      'The electrosurgical instrument tip is dipped or coated using the included sterile foam pad before the procedure begins. The phospholipid formula is designed to form a thin layer on the electrode surface intended to reduce tissue adhesion and eschar buildup during the case. This proposed mechanism has not been evaluated by the FDA.',
   },
   {
     category: 'Product',
@@ -42,13 +43,13 @@ const faqs: FAQItem[] = [
     category: 'Usage',
     question: 'What types of procedures can Lubecision be used in?',
     answer:
-      'Lubecision can be used in any procedure where electrosurgical devices are employed. This includes general surgery, ENT, OB/GYN, orthopedics, urology, plastic surgery, cardiothoracic, neurosurgery, dermatology, and pediatric surgery — among others.',
+      'Lubecision is intended for use with common electrosurgical instruments across a range of surgical specialties, such as general surgery, ENT, OB/GYN, orthopedics, urology, plastic surgery, cardiothoracic, neurosurgery, dermatology, and pediatric surgery. Cleared indications for use are subject to FDA clearance.',
   },
   {
     category: 'Usage',
     question: 'What types of devices is Lubecision compatible with?',
     answer:
-      'Lubecision is recommended for all standard electrosurgical devices including monopolar pencils, bipolar forceps, laparoscopic instruments, and robotic instruments. It is designed for use on uncoated instruments. As always, consult the device instructions for use prior to application.',
+      'Lubecision is intended for use with common electrosurgical instruments such as monopolar pencils, bipolar forceps, laparoscopic instruments, and robotic instruments. It is designed for use on uncoated instruments. Cleared indications for use are subject to FDA clearance. As always, consult the device instructions for use prior to application.',
   },
   {
     category: 'Usage',
@@ -66,76 +67,76 @@ const faqs: FAQItem[] = [
   {
     category: 'Safety & Compliance',
     question: 'Is Lubecision FDA cleared?',
-    answer:
-      'Lubecision is currently in the FDA 510(k) submission process via a predicate-based pathway. We anticipate clearance in Q4 2026, after which commercial availability begins. Evaluation samples are available to qualified surgical teams pending clearance.',
+    answer: FDA_STATUS_LINE,
   },
   {
     category: 'Safety & Compliance',
     question: 'When will Lubecision be commercially available?',
     answer:
-      'Commercial availability begins after FDA 510(k) clearance, anticipated Q4 2026. We are currently accepting evaluation-kit requests and procurement discussions in advance of launch so surgical teams and value-analysis committees can complete review when the product becomes orderable.',
+      'Lubecision is in development and is not yet available for sale. Commercial availability would follow FDA 510(k) clearance; no launch date is confirmed. You are welcome to register interest so we can share general updates as the program progresses.',
   },
   {
     category: 'Safety & Compliance',
     question: 'Is Lubecision safe?',
     answer:
-      'Lubecision is made from a biocompatible phospholipid that is non-toxic and non-allergenic — similar to compounds naturally produced by the human body. It is manufactured under cGMP and ISO 13485 standards in a regulated facility.',
+      'Lubecision is formulated from a phospholipid similar to compounds naturally produced by the human body. Its safety profile is being evaluated as part of the FDA 510(k) process and has not yet been established. ' +
+      MANUFACTURING_INTENT,
   },
   {
     category: 'Safety & Compliance',
     question: 'Is Lubecision aligned with AORN Guidelines?',
-    answer:
-      'Yes. AORN Perioperative Practice Guidelines recognize anti-stick lubricants as part of electrosurgical safety and instrument-care best practice. Lubecision is designed to support facilities’ alignment with those guidelines.',
+    answer: AORN_NOTE,
   },
   {
     category: 'Safety & Compliance',
     question: 'Who manufactures Lubecision?',
     answer:
-      'Lubecision is manufactured under cGMP (current Good Manufacturing Practice) and ISO 13485 quality-management standards at a regulated medical-device facility. Lot traceability and standard medical-device documentation accompany every unit.',
+      MANUFACTURING_INTENT +
+      ' A manufacturing partner has not yet been finalized. Upon production, units are intended to ship with lot traceability and standard medical-device documentation.',
   },
   // Robotic Surgery
   {
     category: 'Robotic Surgery',
     question: 'Can Lubecision be used with da Vinci® robotic surgical systems?',
     answer:
-      'Yes. Lubecision is fully compatible with all da Vinci® robotic surgical systems including the Si, Xi, SP, and Ion platforms. It is particularly beneficial for robotic surgery because da Vinci instruments lack anti-stick coatings, and cleaning instruments mid-procedure requires removing them from ports — a far more disruptive process than in open surgery.',
+      'Lubecision is designed for use with da Vinci® robotic instruments, including those used on the Si, Xi, SP, and Ion platforms. Robotic instruments typically lack anti-stick coatings, and cleaning them mid-procedure requires removing them from ports — a more disruptive process than in open surgery. Compatibility and cleared indications are subject to FDA clearance.',
   },
   {
     category: 'Robotic Surgery',
     question: 'How do I apply Lubecision to robotic instruments?',
     answer:
-      'Apply Lubecision to the electrosurgical instrument tips before docking the robotic arms. Simply dip or coat the instrument tips using the sterile foam applicator pad included in each kit. The application takes seconds and the phospholipid barrier will protect throughout the entire procedure.',
+      'Lubecision is intended to be applied to the electrosurgical instrument tips before docking the robotic arms. Dip or coat the instrument tips using the sterile foam applicator pad included in each kit. The application takes seconds and the phospholipid layer is intended to remain present during the procedure.',
   },
   {
     category: 'Robotic Surgery',
     question: 'Why is anti-stick protection especially important for robotic surgery?',
     answer:
-      'In robotic surgery, the surgeon operates from a console and is physically separated from the patient. When eschar builds up on instrument tips, cleaning requires undocking and removing instruments from the ports — a process that can take several minutes and significantly disrupts surgical flow. Additionally, da Vinci instruments cost $600–$3,500 per procedure and eschar-related wear accelerates their degradation. Lubecision eliminates these issues with a single pre-operative application.',
+      'In robotic surgery, the surgeon operates from a console and is physically separated from the patient. When eschar builds up on instrument tips, cleaning requires undocking and removing instruments from the ports — a process that can take several minutes and disrupt surgical flow. Lubecision is being developed to address these challenges with a single pre-operative application. Its effect on these outcomes has not been established by the FDA.',
   },
   {
     category: 'Robotic Surgery',
     question: 'Does Lubecision help with capacitive coupling concerns in robotic instruments?',
     answer:
-      'Eschar buildup on instrument tips can create insulation that contributes to stray energy events and capacitive coupling — a known safety concern in robotic electrosurgery. By preventing eschar accumulation, Lubecision helps maintain consistent current flow and reduces the conditions that contribute to these adverse events.',
+      'Eschar buildup on instrument tips can create insulation that contributes to stray energy events and capacitive coupling — a known safety concern in robotic electrosurgery. By being designed to reduce eschar accumulation, Lubecision aims to support more consistent current flow. Whether it affects these events has not been established and is being evaluated as part of the regulatory process.',
   },
   // Ordering
   {
     category: 'Ordering',
     question: 'How do I order Lubecision?',
     answer:
-      'Lubecision is currently in the FDA 510(k) submission process and is not yet commercially available. Evaluation kits are available to qualified surgical teams pending clearance. Contact us at info@lubecision.com or procurement@lubecision.com to register interest, request an evaluation kit, or discuss GPO and distribution alignment ahead of launch.',
+      'Lubecision is in development, is not yet cleared by the FDA, and is not available for sale. We are not taking orders at this time. You are welcome to contact us at info@lubecision.com to register interest and receive general updates as the program progresses.',
   },
   {
     category: 'Ordering',
-    question: 'Can I get a free sample before purchasing?',
+    question: 'Can I get a free sample or evaluation kit?',
     answer:
-      'Absolutely. We offer complimentary evaluation kits so your surgical team can experience Lubecision\'s performance firsthand. Each evaluation kit contains a full box of 20 units. Request yours on our Contact page.',
+      'Not at this time. Because Lubecision is in development and has not been cleared by the FDA, samples and evaluation kits are not being distributed. We are happy to add you to our list for general updates — reach out via our Contact page.',
   },
   {
     category: 'Ordering',
     question: 'Is Lubecision available through GPOs?',
     answer:
-      'Yes. Lubecision is compatible with major Group Purchasing Organizations. Contact our procurement team for information about GPO contracts and pricing agreements available for your facility.',
+      'Not yet. Lubecision is in development and has no executed Group Purchasing Organization agreements. GPO availability and pricing would follow FDA clearance. You are welcome to contact us to register interest for future updates.',
   },
   {
     category: 'Ordering',
@@ -345,7 +346,7 @@ export default function FAQPage() {
             </h2>
             <p className="mt-4 text-lg text-slate-500">
               Our clinical and sales teams are here to help. Reach out and
-              we&apos;ll get back to you within 24 hours.
+              we aim to respond within a few business days.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">
               <Link
@@ -359,10 +360,10 @@ export default function FAQPage() {
                 />
               </Link>
               <Link
-                href="/contact?type=sample"
+                href="/contact"
                 className="inline-flex items-center gap-2 px-8 py-3.5 text-sm font-semibold tracking-wide rounded-full border border-navy-200 text-navy-900 hover:bg-navy-50 transition-all duration-300"
               >
-                Request a Sample
+                Request Information
               </Link>
             </div>
           </motion.div>

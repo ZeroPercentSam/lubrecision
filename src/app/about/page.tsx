@@ -21,8 +21,12 @@ import {
   ChevronRight,
   Building2,
   Heart,
-  TrendingUp,
 } from 'lucide-react';
+import {
+  FDA_STATUS_SHORT,
+  FDA_STATUS_LINE,
+  MANUFACTURING_INTENT,
+} from '@/lib/compliance';
 
 /* ─────────────── Animated Counter ─────────────── */
 function Counter({
@@ -81,21 +85,21 @@ export default function AboutPage() {
     },
     {
       icon: FlaskConical,
-      title: 'Evidence-Based',
+      title: 'Science-Grounded',
       description:
-        'Every claim we make is backed by clinical data and peer-reviewed research. We don\'t rely on marketing superlatives — we rely on published evidence, independent testing, and the measurable outcomes that surgical teams report from the field.',
+        'Our development is grounded in published science on the anti-stick phospholipid product class. Rather than rely on marketing superlatives, we work from peer-reviewed literature on the category and a disciplined, mechanistic approach to formulation.',
     },
     {
       icon: Ear,
       title: 'Surgeon-Centric',
       description:
-        'Built by listening to the people who use it. Our product development is driven by direct feedback from surgeons, scrub techs, and perioperative nurses who deal with eschar buildup every single day. Their experience shapes every decision we make.',
+        'Built by listening to the people who use it. Our product development is informed by direct feedback from surgeons, scrub techs, and perioperative nurses who deal with eschar and tissue sticking every single day. Their experience shapes every decision we make.',
     },
     {
       icon: Target,
       title: 'Relentless Focus',
       description:
-        'One product. Perfected. Not a line item in a catalog of thousands. While conglomerates spread their attention across hundreds of product lines, we channel every resource into solving one critical problem better than anyone else in the world.',
+        'One product. Not a line item in a catalog of thousands. We channel every resource into a single problem — instrument-tip sticking during electrosurgery — rather than spreading our attention across hundreds of product lines.',
     },
   ];
 
@@ -120,7 +124,7 @@ export default function AboutPage() {
       initials: 'PH',
       name: 'Peter Hoffman-Brim',
       title: 'Regulatory & Government Affairs',
-      bio: 'Washington, D.C.-based regulatory advisor managing Lubecision’s 510(k) submission, FDA channel engagement, and policy environment.',
+      bio: 'Washington, D.C.-based regulatory advisor guiding Lubecision’s pursuit of FDA 510(k) clearance, FDA channel engagement, and the policy environment.',
       gradientFrom: 'from-navy-600',
       gradientTo: 'to-navy-800',
     },
@@ -136,7 +140,7 @@ export default function AboutPage() {
       initials: 'PP',
       name: 'Paul Paiani',
       title: 'International Markets',
-      bio: 'Leads Lubecision’s international expansion — Brazil (ANVISA), LATAM, EU (MDR), and the Middle East — with deep ties to leading hospital systems across each region.',
+      bio: 'Leads Lubecision’s international strategy. We intend to pursue international registration pathways (e.g., EU MDR/CE, ANVISA) across LATAM, the EU, and the Middle East, drawing on deep ties to leading hospital systems in each region.',
       gradientFrom: 'from-navy-700',
       gradientTo: 'to-navy-900',
     },
@@ -169,23 +173,25 @@ export default function AboutPage() {
   const qualityBadges = [
     {
       icon: ShieldCheck,
-      label: '510(k) Pending',
-      description: 'FDA 510(k) submission in progress. Anticipated clearance Q4 2026.',
+      label: 'In Development',
+      description: FDA_STATUS_SHORT,
     },
     {
       icon: Factory,
-      label: 'cGMP Compliant',
-      description: 'Current Good Manufacturing Practices across all operations',
+      label: 'Intended cGMP',
+      description:
+        'Intended to be manufactured under current Good Manufacturing Practices (cGMP).',
     },
     {
       icon: Award,
-      label: 'ISO 13485',
-      description: 'Manufactured in compliance with the international medical-device quality standard',
+      label: 'Intended ISO 13485',
+      description:
+        'Intended to be manufactured under the ISO 13485 medical-device quality management system.',
     },
     {
       icon: MapPin,
-      label: 'US-Based',
-      description: 'Proudly manufactured in the United States of America',
+      label: 'Quality Systems',
+      description: MANUFACTURING_INTENT,
     },
   ];
 
@@ -277,9 +283,10 @@ export default function AboutPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.55 }}
           >
-            We exist for one reason: to eliminate eschar buildup on electrosurgical
-            instruments. Not as a side project. Not as one SKU among thousands. This is
-            our singular, unwavering focus — and it drives everything we do.
+            We exist for one reason: a device designed to address eschar and tissue
+            sticking on electrosurgical instruments. Not as a side project. Not as one
+            SKU among thousands. This is our singular, unwavering focus — and it drives
+            everything we do.
           </motion.p>
         </div>
 
@@ -319,19 +326,17 @@ export default function AboutPage() {
                   unavoidable reality of surgery.
                 </p>
                 <p>
-                  The solutions that existed were afterthoughts — products from massive
-                  medical conglomerates that treated anti-stick coatings as just another
-                  line item buried in catalogs of ten thousand products. No one was
-                  dedicating real R&amp;D, real clinical attention, or real manufacturing
-                  precision to solving this specific problem. The gap wasn&apos;t just in
-                  the product — it was in the focus.
+                  We saw an opportunity for a company dedicated solely to this
+                  challenge — to bring real R&amp;D, real clinical attention, and real
+                  manufacturing discipline to a single, well-defined problem. The gap
+                  wasn&apos;t just in the product — it was in the focus.
                 </p>
                 <p>
                   That&apos;s why Lubecision was founded: to be a company dedicated
-                  solely to solving this one critical challenge. We assembled a team of
-                  biomedical engineers, perioperative clinicians, and manufacturing
-                  experts with one mandate — engineer the most effective anti-stick
-                  solution on the market, then prove it with data. The result is
+                  solely to this one challenge. We assembled a team of biomedical
+                  engineers, perioperative clinicians, and manufacturing experts with
+                  one mandate — develop a thoughtfully engineered anti-stick solution
+                  grounded in the published science on the product class. The result is
                   Lubecision: a precision-engineered phospholipid solution from a team
                   that cares about nothing else.
                 </p>
@@ -423,10 +428,10 @@ export default function AboutPage() {
                   }}
                 >
                   <p className="text-[10px] font-semibold text-gold-600 tracking-wide">
-                    CLINICAL EVIDENCE
+                    SCIENCE-GROUNDED
                   </p>
                   <p className="text-[9px] text-slate-400 mt-0.5">
-                    Data-driven development
+                    Grounded in published science
                   </p>
                 </motion.div>
               </div>
@@ -515,27 +520,21 @@ export default function AboutPage() {
             transition={{ duration: 0.6 }}
           >
             <span className="text-xs font-semibold tracking-[0.2em] uppercase text-gold-600">
-              Our Impact
+              Market Context
             </span>
             <h2 className="mt-4 text-3xl md:text-4xl lg:text-5xl font-light tracking-tight text-navy-900">
-              By the{' '}
-              <span className="text-gradient font-normal">Numbers</span>
+              The{' '}
+              <span className="text-gradient font-normal">Landscape</span>
             </h2>
           </motion.div>
 
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 mt-14">
+          <div className="grid grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12 mt-14">
             {[
               {
                 value: 6000,
                 suffix: '+',
-                label: 'da Vinci Systems Worldwide',
+                label: 'da Vinci Systems Worldwide (market context)',
                 icon: Building2,
-              },
-              {
-                value: 17,
-                suffix: '%',
-                label: 'Annual Robotic-Surgery Growth',
-                icon: TrendingUp,
               },
               {
                 value: 4,
@@ -686,18 +685,16 @@ export default function AboutPage() {
 
               <div className="mt-8 space-y-5 text-slate-600 leading-relaxed">
                 <p>
-                  Every unit of Lubecision is manufactured under rigorous quality
-                  control standards designed for the demands of the modern operating
-                  room. Our facilities adhere to current Good Manufacturing Practices
-                  (cGMP) and are registered with the FDA, ensuring full regulatory
-                  compliance at every stage of production.
+                  {MANUFACTURING_INTENT} Our manufacturing plans are built around the
+                  rigorous quality-control standards expected for the demands of the
+                  modern operating room.
                 </p>
                 <p>
-                  From raw material sourcing to final sterile packaging, our quality
-                  management system maintains traceability, consistency, and safety
-                  across every production lot. We believe that a product used in surgery
-                  should be manufactured with the same precision it&apos;s designed to
-                  deliver.
+                  From raw-material sourcing to final sterile packaging, the quality
+                  management system we intend to operate under is designed to maintain
+                  traceability and consistency across every production lot. We believe
+                  that a product used in surgery should be manufactured with the same
+                  precision it&apos;s designed to deliver.
                 </p>
               </div>
             </motion.div>
@@ -758,10 +755,10 @@ export default function AboutPage() {
                 Partner with Us
               </h2>
               <p className="mt-5 text-lg text-slate-500 max-w-xl mx-auto leading-relaxed">
-                Join the growing network of healthcare facilities that trust Lubecision
-                to optimize their electrosurgical workflows. Whether you&apos;re a
-                surgeon, a materials manager, or a GPO representative, we&apos;d love to
-                start the conversation.
+                We&apos;re building relationships with the healthcare community as we
+                advance Lubecision through development. Whether you&apos;re a surgeon, a
+                materials manager, or a GPO representative, we&apos;d love to start the
+                conversation.
               </p>
             </motion.div>
 
@@ -784,10 +781,10 @@ export default function AboutPage() {
                 />
               </Link>
               <Link
-                href="/contact?type=sample"
+                href="/contact"
                 className="group inline-flex items-center gap-2.5 px-8 py-4 text-sm font-semibold tracking-wide rounded-full border border-navy-200 text-navy-900 hover:border-navy-300 hover:bg-navy-50 transition-all duration-300"
               >
-                Request a Sample
+                Request Information
                 <ChevronRight
                   size={16}
                   className="transition-transform group-hover:translate-x-0.5"
@@ -804,9 +801,9 @@ export default function AboutPage() {
               transition={{ duration: 0.5, delay: 0.35 }}
             >
               {[
-                { icon: ShieldCheck, label: '510(k) Pending' },
-                { icon: Award, label: 'cGMP & ISO 13485' },
-                { icon: MapPin, label: 'US-Based' },
+                { icon: ShieldCheck, label: 'In Development' },
+                { icon: Award, label: 'Intended cGMP & ISO 13485' },
+                { icon: MapPin, label: 'Quality Systems' },
               ].map((badge) => (
                 <div
                   key={badge.label}
@@ -817,6 +814,16 @@ export default function AboutPage() {
                 </div>
               ))}
             </motion.div>
+
+            <motion.p
+              className="mt-6 text-xs text-slate-400 max-w-xl mx-auto leading-relaxed"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.45 }}
+            >
+              {FDA_STATUS_LINE}
+            </motion.p>
           </div>
         </div>
       </section>

@@ -1,8 +1,21 @@
 import type { MetadataRoute } from 'next';
+import { isComingSoon } from '@/lib/site-mode';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://lubecision.com';
   const lastModified = new Date();
+
+  // Pre-launch: only expose the Coming Soon home page.
+  if (isComingSoon()) {
+    return [
+      {
+        url: baseUrl,
+        lastModified,
+        changeFrequency: 'weekly',
+        priority: 1,
+      },
+    ];
+  }
 
   return [
     {

@@ -4,6 +4,7 @@ import "./globals.css";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { CookieConsent } from "@/components/CookieConsent";
+import { isComingSoon } from "@/lib/site-mode";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -54,17 +55,19 @@ export const metadata: Metadata = {
     description:
       "An investigational single-use phospholipid anti-stick solution in development. Pursuing FDA 510(k) clearance; not yet cleared or available for sale.",
   },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
-  },
+  robots: isComingSoon()
+    ? { index: false, follow: false }
+    : {
+        index: true,
+        follow: true,
+        googleBot: {
+          index: true,
+          follow: true,
+          "max-video-preview": -1,
+          "max-image-preview": "large",
+          "max-snippet": -1,
+        },
+      },
 };
 
 const jsonLd = {
@@ -93,16 +96,20 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const comingSoon = isComingSoon();
+
   return (
     <html lang="en" className={inter.variable}>
       <head>
         <link rel="icon" href="/favicon.ico" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <meta name="theme-color" content="#0F1B3D" />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
+        {!comingSoon && (
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+          />
+        )}
       </head>
       <body className="antialiased">
         <a
@@ -111,10 +118,10 @@ export default function RootLayout({
         >
           Skip to main content
         </a>
-        <Navigation />
+        {!comingSoon && <Navigation />}
         <main id="main-content">{children}</main>
-        <Footer />
-        <CookieConsent />
+        {!comingSoon && <Footer />}
+        {!comingSoon && <CookieConsent />}
       </body>
     </html>
   );
